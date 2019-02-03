@@ -46,7 +46,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         Log.i("Info","onCreateViewHolder called") ;
-        View v =  LayoutInflater.from(mCtx).inflate(R.layout.custom_layout, viewGroup, false);
+        View v =  LayoutInflater.from(mCtx).inflate(R.layout.custom_layout2, viewGroup, false);
         UserViewHolder UserViewHolder=new UserViewHolder(v);
         return UserViewHolder;
     }
@@ -54,9 +54,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder UserViewHolder, int i) {
         User user=userList.get(i);
-        //UserViewHolder.contact.setText(user.getContact());
+        UserViewHolder.contact.setText(user.getContact());
         UserViewHolder.name.setText(user.getName());
-        //UserViewHolder.quantity.setText(user.getQuantity());
+        UserViewHolder.quantity.setText(user.getQuantity());
         UserViewHolder.price.setText(user.getPrice());
         UserViewHolder.delivery.setText(user.getDelivery());
         UserViewHolder.address.setText(user.getAddress());
