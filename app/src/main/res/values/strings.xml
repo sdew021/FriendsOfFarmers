@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Friends Of Framers</string>
+    <string name="edit_message">Enter a message</string>
+    <string name="button_send">REGISTER</string>
+    <string name="NAME">ENTER YOUR NAME</string>
+    <string name="EMAIL">ENTER YOUR EMAIL ID</string>
+    <string name="PHONE_NUMBER">ENTER YOUR PHONE NUMBER</string>
+    <string name="PERMANENT_ADDRESS">ENTER YOUR PERMANENT ADDRESS</string>
+    <string name="CURRENT_ADDRESS">ENTER YOUR CURRENT ADDRESS</string>
+    <string name="FARMER_RADIO">FARMER</string>
+    <string name="CONSUMER_RADIO">CONSUMER</string>
+    <string name="PASSWORD">ENTER YOUR PASSWORD</string>
+    <string name="CONFIRM_PASSWORD">CONFIRM YOUR PASSWORD</string>
+    <string name="REGISTER_AS">REGISTER AS</string>
+    <string name="REGISTRATION_COMPLETE">REGISTRATION COMPLETED</string>
+    <string name="CLEAR">CLEAR ALL FIELDS</string>
+    <string name="already">Already A User?</string>
+    <string name="textview">TextView</string>
+    <string name="button">Button</string>
+    <string name="skip">Already A User? LOGIN</string>
+</resources>
