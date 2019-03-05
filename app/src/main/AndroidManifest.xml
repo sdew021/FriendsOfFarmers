@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".TestDatabase"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,20 +17,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".registerActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".farmerActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".CornActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".RiceActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".SugarcaneActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".WheatActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".Activity2"
-            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".registerActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".farmerActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".CornActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".RiceActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".SugarcaneActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".WheatActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Activity2"
+            android:parentActivityName=".MainActivity" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
