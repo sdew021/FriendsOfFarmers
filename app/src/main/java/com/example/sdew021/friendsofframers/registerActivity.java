@@ -51,7 +51,7 @@ public class registerActivity  extends AppCompatActivity {
         button2 = findViewById(R.id.button2);
         button3 = findViewById(R.id.button3);
         Firebase.setAndroidContext(this);
-        mRef = new Firebase("https://friendsofframers1-master.firebaseio.com/Users");
+        mRef = new Firebase("https://friends-of-farmers.firebaseio.com/Users");
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
 
         LinearLayout myLayout = (LinearLayout) findViewById(R.id.mainContainer);
