@@ -73,7 +73,7 @@ public class farmerActivity extends AppCompatActivity {
 
     }
     public void openActivity2(){
-        Intent intent=new Intent(this,Activity2.class);
+        Intent intent=new Intent(this,Profile_Activity.class);
         startActivity(intent);
     }
 
