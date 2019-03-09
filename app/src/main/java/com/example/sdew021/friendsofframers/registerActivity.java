@@ -1,5 +1,6 @@
 package com.example.sdew021.friendsofframers;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -11,6 +12,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+
+import com.firebase.client.Firebase;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class registerActivity  extends AppCompatActivity {
     int flag = 0;
@@ -24,6 +29,9 @@ public class registerActivity  extends AppCompatActivity {
     Button button;
     Button button2;
     Button button3;
+    private Firebase mRef;
+    private DatabaseReference mDatabase;
+    private ProgressDialog mDiag;
 
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 
@@ -42,6 +50,9 @@ public class registerActivity  extends AppCompatActivity {
         button = findViewById(R.id.button);
         button2 = findViewById(R.id.button2);
         button3 = findViewById(R.id.button3);
+        Firebase.setAndroidContext(this);
+        mRef = new Firebase("https://friendsofframers1-master.firebaseio.com/Users");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
 
         LinearLayout myLayout = (LinearLayout) findViewById(R.id.mainContainer);
         AnimationDrawable animationDrawable = (AnimationDrawable) myLayout.getBackground();
@@ -54,7 +65,10 @@ public class registerActivity  extends AppCompatActivity {
             public void onClick(View view){
                 checkDataEntered();
                 if(flag==0)
+                    startRegister();
+                if(flag==0)
                     gotoLogin();
+
             }
         });
 
@@ -72,6 +86,27 @@ public class registerActivity  extends AppCompatActivity {
             }
         });
     }
+
+    public void startRegister(){
+        mDiag = new ProgressDialog(this);
+        mDiag.setMessage("Registering..");
+        mDiag.show();
+        String name = editText2.getText().toString();
+        String email = editText3.getText().toString().trim();
+        String phone = editText4.getText().toString().trim();
+        String permanentadd = editText5.getText().toString().trim();
+        String currentadd = editText6.getText().toString().trim();
+        String password = editText8.getText().toString().trim();
+
+        DatabaseReference current_user_db = mDatabase.child(name);
+        current_user_db.child("email").setValue(email);
+        current_user_db.child("phone").setValue(phone);
+        current_user_db.child("permanent address").setValue(permanentadd);
+        current_user_db.child("current address").setValue(currentadd);
+        current_user_db.child("password").setValue(password);
+        mDiag.dismiss();
+        }
+
     public void gotoLogin(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
