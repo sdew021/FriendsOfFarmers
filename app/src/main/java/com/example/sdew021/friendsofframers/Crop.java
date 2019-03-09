@@ -1,24 +1,22 @@
 package com.example.sdew021.friendsofframers;
 
 public class Crop {
-    private int Crop_image;
+    public int Crop_image;
     private String Stock;
     private String Name;
     private String Porders;
 
-    public Crop(int crop_image, String name, String stock, String porders) {
-        this.Crop_image = crop_image;
+    public Crop(){}
+
+    public Crop( String name, String stock, String porders) {
         this.Stock = stock;
         this.Name = name;
         this.Porders = porders;
     }
 
-    public int getCrop_image() {
-        return Crop_image;
-    }
 
     public String getStock() {
-        return "Stock Avaialble:"+Stock;
+        return Stock;
     }
 
     public String getName() {
@@ -26,6 +24,6 @@ public class Crop {
     }
 
     public String getPorders() {
-        return "Pending Orders:"+Porders;
+        return Porders;
     }
 }
