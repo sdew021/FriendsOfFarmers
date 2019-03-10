@@ -2,6 +2,7 @@ package com.example.sdew021.friendsofframers;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -19,6 +20,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,6 +29,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.MutableData;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -43,6 +49,8 @@ import static android.support.constraint.Constraints.TAG;
 public class farmerActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private FarmerAdapter farmerAdapter;
     private DatabaseReference mDatabaseRefrence;
+    private DatabaseReference mDatabaseRefrence2;
+    private StorageReference mStorageReference;
     private RecyclerView CropList;
     private EditText searchBar;
     private ImageView profileImage;
@@ -102,6 +110,34 @@ public class farmerActivity extends AppCompatActivity implements AdapterView.OnI
 //        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
         spinner.setOnItemSelectedListener(this);
+
+
+
+        mDatabaseRefrence2= FirebaseDatabase.getInstance().getReferenceFromUrl("https://friends-of-farmers.firebaseio.com/Prateek/farmer1/Details");
+        final ValueEventListener dataListner =new ValueEventListener(){
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                FarmerProfileDetails farmerProfileDetails = dataSnapshot.getValue(FarmerProfileDetails.class);
+                mStorageReference= FirebaseStorage.getInstance().getReferenceFromUrl("gs://friends-of-farmers.appspot.com/Farmer_images/");
+                mStorageReference.child("profilePic.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Picasso.get().load(uri).fit().centerCrop().into(profileImage);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(farmerActivity.this,"Cannot load image",Toast.LENGTH_SHORT);
+                    }
+                });
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+
+        mDatabaseRefrence2.addValueEventListener(dataListner);
 
     }
     public void openActivity2(){

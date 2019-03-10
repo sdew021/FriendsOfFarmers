@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.webkit.MimeTypeMap;
@@ -43,7 +44,6 @@ public class EditProfile extends AppCompatActivity {
     private static final int GALLERY_INTENT=2;
     private ImageView pImage;
     private ProgressBar progressBar;
-    private String name;
     private Uri uri;
     private int checkImage;
     @Override
@@ -61,20 +61,6 @@ public class EditProfile extends AppCompatActivity {
         progressBar=findViewById(R.id.progressBar);
 //        nameView=findViewById(R.id.name);
         mDatabaseRefernce= FirebaseDatabase.getInstance().getReferenceFromUrl("https://friends-of-farmers.firebaseio.com/Prateek/farmer1/Details");
-        mDatabaseRefernce.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                name=dataSnapshot.child("name").getValue(String.class);
-                Upload upload= dataSnapshot.child("image").getValue(Upload.class);
-                Picasso.get().load(upload.getmImageurl()).into(pImage);
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,7 +108,19 @@ public class EditProfile extends AppCompatActivity {
 
             }
         });
-        mStorageReference= FirebaseStorage.getInstance().getReferenceFromUrl("gs://friends-of-farmers.appspot.com/Farmer_images");
+        mStorageReference= FirebaseStorage.getInstance().getReferenceFromUrl("gs://friends-of-farmers.appspot.com/Farmer_images/");
+        mStorageReference.child("profilePic.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).fit().centerCrop().into(pImage);
+                Toast.makeText(EditProfile.this,"loaded image Succesfully",Toast.LENGTH_SHORT);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(EditProfile.this,"Cannot load image",Toast.LENGTH_SHORT);
+            }
+        });
         selectImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -162,7 +160,7 @@ public class EditProfile extends AppCompatActivity {
 
     void uploadFile(Uri uri){
         if(uri!=null){
-            StorageReference filepath=mStorageReference.child(name+"."+getFileExtension(uri));
+            StorageReference filepath=mStorageReference.child("profilePic"+"."+getFileExtension(uri));
             filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -175,7 +173,7 @@ public class EditProfile extends AppCompatActivity {
                         }
                     },5000);
 
-                    Upload upload=new Upload(name,taskSnapshot.getUploadSessionUri().toString());
+                    Upload upload=new Upload("profilePic",taskSnapshot.getUploadSessionUri().toString());
                     mDatabaseRefernce.child("image").setValue(upload);
 
                 }

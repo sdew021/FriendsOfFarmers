@@ -37,7 +37,8 @@
                 android:layout_height="wrap_content"
                 android:text="Select Image from Gallary"
                 android:layout_gravity="center"
-                android:id="@+id/selectImage"/>
+                android:id="@+id/selectImage"
+                android:layout_marginTop="10dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
