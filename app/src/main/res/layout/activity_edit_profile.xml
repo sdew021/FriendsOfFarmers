@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile_Activity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout1"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="vertical"
+            >
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:id="@+id/pimage"/>
+            <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:id="@+id/progressBar"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:progressDrawable="@drawable/progress"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Image from Gallary"
+                android:layout_gravity="center"
+                android:id="@+id/selectImage"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:textColor="@color/darkblue"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20sp"/>
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="xyz@gmail.com"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"/>
+                </HorizontalScrollView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contact No."
+                    android:textColor="@color/darkblue"
+                    android:textSize="22sp"/>
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/contact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="1234567890"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:maxLength="10"
+                        android:inputType="number"/>
+                </HorizontalScrollView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Permanent Address"
+                    android:textColor="@color/darkblue"
+                    android:textSize="20sp" />
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/permanentAdd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="address"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"/>
+                </HorizontalScrollView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Current Address"
+                    android:textColor="@color/darkblue"
+                    android:textSize="20sp"/>
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/currentAdd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="address"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"/>
+                </HorizontalScrollView>
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Save Changes"
+                android:id="@+id/saveButton"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</android.support.constraint.ConstraintLayout>

@@ -59,7 +59,7 @@ public class farmerActivity extends AppCompatActivity implements AdapterView.OnI
         CropList = (RecyclerView) findViewById(R.id.recyclerView);
         spinner=(Spinner) findViewById(R.id.spinner);
         Log.w(TAG, "after spinnner");
-        mDatabaseRefrence=FirebaseDatabase.getInstance().getReferenceFromUrl("https://friends-of-farmers.firebaseio.com/Prateek");
+        mDatabaseRefrence=FirebaseDatabase.getInstance().getReferenceFromUrl("https://friends-of-farmers.firebaseio.com/Prateek/farmer1/Crop");
         listenData(this,mDatabaseRefrence);
 //        filterList(FarmerAdapter.gCropIdValue);
         CropList.setLayoutManager(new LinearLayoutManager(this));
