@@ -21,20 +21,19 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import static android.support.constraint.Constraints.TAG;
 import static android.view.View.combineMeasuredStates;
 
 public class FarmerAdapter extends RecyclerView.Adapter<FarmerAdapter.FarmerViewHolder> {
     private Context mCtx;
-    public static List<Crop> gCropList=new ArrayList<>();
-    public static List<String>gCropIds=new ArrayList<>();
+    public static Map<String,Crop> gCropIdValue=new LinkedHashMap<>();
     private List<Crop> cropList;
-    private List<String> cropIds=new ArrayList<String>();
     private OnItemCLickListener mListner;
-    private DatabaseReference mDatabseRefernce;
-    private ChildEventListener mChildEventListner;
 
     public interface OnItemCLickListener{
         void   onItemClick(Crop item);
@@ -44,81 +43,10 @@ public class FarmerAdapter extends RecyclerView.Adapter<FarmerAdapter.FarmerView
         mListner=listener;
     }
 
-    public FarmerAdapter(final Context mCtx,DatabaseReference ref) {
+    public FarmerAdapter(final Context mCtx,  List<Crop> cropList) {
         this.mCtx=mCtx;
-        mDatabseRefernce=ref;
-
-        ChildEventListener childEventListener=new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                Log.d(TAG, "onChildAdded:" + dataSnapshot.getKey());
-                Crop crop=dataSnapshot.getValue(Crop.class);
-                if (crop.getName().toLowerCase().compareTo("wheat") == 0) {
-                    crop.Crop_image=R.drawable.wheat;
-
-                } else if (crop.getName().toLowerCase().compareTo("corn") == 0) {
-                    crop.Crop_image=R.drawable.corn;
-
-                } else if (crop.getName().toLowerCase().compareTo("sugarcane") == 0) {
-                    crop.Crop_image=R.drawable.sugarcane;
-
-                } else {
-                    crop.Crop_image=R.drawable.rice;
-
-                }
-                FarmerAdapter.gCropIds.add(dataSnapshot.getKey());
-                FarmerAdapter.gCropList.add(crop);
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                Log.d(TAG, "onChildChanged:" + dataSnapshot.getKey());
-                String cropKey= dataSnapshot.getKey();
-                Crop newCrop=dataSnapshot.getValue(Crop.class);
-                int cropIndex=FarmerAdapter.gCropIds.indexOf(dataSnapshot.getKey());
-                if(cropIndex>-1){
-                    FarmerAdapter.gCropList.set(cropIndex,newCrop);
-                }
-                else{
-                    Log.w(TAG, "onChildChanged:unknown_child:" + cropKey);
-                }
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-                Log.d(TAG,"onChildRemoved:"+dataSnapshot.getKey());
-                String cropKey=dataSnapshot.getKey();
-                int cropIndex=FarmerAdapter.gCropIds.indexOf(cropKey);
-                if(cropIndex>-1){
-                    FarmerAdapter.gCropList.remove(cropIndex);
-                    FarmerAdapter.gCropIds.remove(cropIndex);
-                }
-                else{
-                    Log.w(TAG,"onChildRemoved:unknown_child:"+cropKey);
-                }
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                Log.d(TAG, "onChildMoved:" + dataSnapshot.getKey());
-                Crop movedCrop=dataSnapshot.getValue(Crop.class);
-                String cropKey=dataSnapshot.getKey();
-                int cropIndex=cropIds.indexOf(cropKey);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.w(TAG, "postComments:onCancelled", databaseError.toException());
-                Toast.makeText(mCtx, "Failed to load comments.",
-                        Toast.LENGTH_SHORT).show();
-
-            }
-        };
-
-        ref.addChildEventListener(childEventListener);
-        mChildEventListner=childEventListener;
-        this.cropList=gCropList;
-        this.cropIds=gCropIds;
+        this.cropList=cropList;
+        Log.w(TAG, "Adapter created cropList size:"+cropList.size());
     }
 
     public class FarmerViewHolder extends RecyclerView.ViewHolder{
@@ -173,19 +101,16 @@ public class FarmerAdapter extends RecyclerView.Adapter<FarmerAdapter.FarmerView
         return cropList.size();
     }
 
-    public void cleanupListener(){
-        if(mChildEventListner!=null){
-            mDatabseRefernce.removeEventListener(mChildEventListner);
-        }
-    }
 
-    public void filterList(List<Crop> filterList,List<Integer> index){
-        cropList=filterList;
-        List<String> newCropIds=new ArrayList<>();
-        for(Integer idx:index){
-            newCropIds.add(gCropIds.get(idx));
+    public void filterList( Map<String,Crop> filteredMap){
+        cropList=new ArrayList<>();
+//        Log.i("Info","filterList called CropList Size:"+cropList.size());
+        for(Map.Entry mapElement:filteredMap.entrySet()){
+            Crop crop=(Crop)mapElement.getValue();
+            cropList.add(crop);
+//            Log.w(TAG,"filter Crop:"+crop.getName());
         }
-        cropIds=newCropIds;
+//        Log.i("Info","filterList called filterMap Size:"+filteredMap.size());
         notifyDataSetChanged();
     }
 }
