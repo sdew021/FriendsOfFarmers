@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".registerActivity">
 
+
+
     <ScrollView
         android:id="@+id/scrollView2"
 
@@ -88,6 +90,42 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editText3"
+                tools:targetApi="o" />
+
+            <Button
+                android:id="@+id/otpbutton"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="64dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="64dp"
+                android:background="@drawable/button_bg"
+                android:fontFamily="@font/expletus_sans_medium_italic"
+                android:text="@string/OTPBUTTON"
+                android:textColorLink="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/otp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:autofillHints=""
+                android:background="@drawable/edittext_bg"
+                android:drawableStart="@drawable/ic_verified_user_black_24dp"
+                android:ems="10"
+                android:fontFamily="@font/expletus_sans_medium_italic"
+                android:gravity="center"
+                android:hint="@string/otp"
+                android:inputType="text"
+                android:textColorLink="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editText4"
                 tools:targetApi="o" />
 
             <EditText
