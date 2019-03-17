@@ -1,10 +1,12 @@
 package com.example.sdew021.friendsofframers;
 
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.SmsManager;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
@@ -12,10 +14,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Random;
 
 public class registerActivity  extends AppCompatActivity {
     int flag = 0;
@@ -29,11 +36,20 @@ public class registerActivity  extends AppCompatActivity {
     Button button;
     Button button2;
     Button button3;
+    EditText otp;
+    Button otpbutton;
+    RadioGroup rg;
+    RadioButton rb;
     private Firebase mRef;
     private DatabaseReference mDatabase;
     private ProgressDialog mDiag;
 
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
+    Random r = new Random();
+    int low = 1000;
+    int high = 9999;
+    int result = r.nextInt(high-low)+low;
+    String msg = Integer.toString(result);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +63,16 @@ public class registerActivity  extends AppCompatActivity {
         editText6 = findViewById(R.id.editText6);
         editText8 = findViewById(R.id.editText8);
         editText9 = findViewById(R.id.editText9);
+        otp = findViewById(R.id.otp);
+        otpbutton = findViewById(R.id.otpbutton);
         button = findViewById(R.id.button);
         button2 = findViewById(R.id.button2);
         button3 = findViewById(R.id.button3);
+        rg = findViewById(R.id.rbgroup);
         Firebase.setAndroidContext(this);
         mRef = new Firebase("https://friends-of-farmers.firebaseio.com/Users");
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+
 
         LinearLayout myLayout = (LinearLayout) findViewById(R.id.mainContainer);
         AnimationDrawable animationDrawable = (AnimationDrawable) myLayout.getBackground();
@@ -60,12 +80,34 @@ public class registerActivity  extends AppCompatActivity {
         animationDrawable.setExitFadeDuration(5000);
         animationDrawable.start();
 
+        otpbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String phone = editText4.getText().toString();
+
+
+
+                SmsManager sms = SmsManager.getDefault();
+                sms.sendTextMessage(phone,null,msg,null,null);
+                Toast.makeText(getApplicationContext(),"Message Sent Successfully!",Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+
+
+
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+                int selectedId = rg.getCheckedRadioButtonId();
+                rb = findViewById(selectedId);
+                String check = rb.getText().toString();
                 checkDataEntered();
-                if(flag==0)
-                    startRegister();
+                if(flag==0 && check.equals("FARMER"))
+                    startRegisterFarmer();
+                else
+                    startRegisterConsumer();
                 if(flag==0)
                     gotoLogin();
 
@@ -87,7 +129,7 @@ public class registerActivity  extends AppCompatActivity {
         });
     }
 
-    public void startRegister(){
+    public void startRegisterFarmer(){
         mDiag = new ProgressDialog(this);
         mDiag.setMessage("Registering..");
         mDiag.show();
@@ -98,20 +140,65 @@ public class registerActivity  extends AppCompatActivity {
         String currentadd = editText6.getText().toString().trim();
         String password = editText8.getText().toString().trim();
 
-        DatabaseReference current_user_db = mDatabase.child(name);
+        DatabaseReference current_user_db = mDatabase.child("Farmer").child(name);
         current_user_db.child("email").setValue(email);
         current_user_db.child("phone").setValue(phone);
-        current_user_db.child("permanent address").setValue(permanentadd);
-        current_user_db.child("current address").setValue(currentadd);
+        current_user_db.child("permanentAddress").setValue(permanentadd);
+        current_user_db.child("currentAddress").setValue(currentadd);
         current_user_db.child("password").setValue(password);
+        current_user_db.child("rating").setValue("0");
+
+        DatabaseReference rice= current_user_db.child("crops").child("rice");
+        rice.child("price").setValue("0");
+        rice.child("pendingOrders").setValue("0");
+        rice.child("stock").setValue("0");
+
+        DatabaseReference wheat= current_user_db.child("crops").child("wheat");
+        wheat.child("price").setValue("0");
+        wheat.child("pendingOrders").setValue("0");
+        wheat.child("stock").setValue("0");
+
+        DatabaseReference sugarcane= current_user_db.child("crops").child("sugarcane");
+        sugarcane.child("price").setValue("0");
+        sugarcane.child("pendingOrders").setValue("0");
+        sugarcane.child("stock").setValue("0");
+
+        DatabaseReference dal = current_user_db.child("crops").child("dal");
+        dal.child("price").setValue("0");
+        dal.child("pendingOrders").setValue("0");
+        dal.child("stock").setValue("0");
+
+        DatabaseReference corn = current_user_db.child("crops").child("corn");
+        corn.child("price").setValue("0");
+        corn.child("pendingOrders").setValue("0");
+        corn.child("stock").setValue("0");
+
         mDiag.dismiss();
-        }
+    }
+
+    public void startRegisterConsumer(){
+        String name = editText2.getText().toString();
+        String email = editText3.getText().toString().trim();
+        String phone = editText4.getText().toString().trim();
+        String permanentadd = editText5.getText().toString().trim();
+        String currentadd = editText6.getText().toString().trim();
+        String password = editText8.getText().toString().trim();
+
+        DatabaseReference current_user_db = mDatabase.child("Consumer").child(name);
+        current_user_db.child("email").setValue(email);
+        current_user_db.child("phone").setValue(phone);
+        current_user_db.child("permanentAddress").setValue(permanentadd);
+        current_user_db.child("currentAddress").setValue(currentadd);
+        current_user_db.child("password").setValue(password);
+    }
 
     public void gotoLogin(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 
     }
+
+
 
     private void clearForm(ViewGroup group) {
         for (int i = 0, count = group.getChildCount(); i < count; ++i) {
@@ -151,6 +238,12 @@ public class registerActivity  extends AppCompatActivity {
             return false;
     }
 
+    boolean isOtp(EditText text){
+        CharSequence str = text.getText().toString();
+        return str.equals(msg);
+    }
+
+
     boolean isSame(EditText text1,EditText text2){
         CharSequence str1 = text1.getText().toString();
         CharSequence str2 = text2.getText().toString();
@@ -187,6 +280,10 @@ public class registerActivity  extends AppCompatActivity {
         if(isShort(editText8)){
             flag=1;
             editText8.setError("Minimum 8 Character Password");
+        }
+        if(!isOtp(otp)) {
+            flag=1;
+            otp.setError("Wrong Otp");
         }
         if(!isSame(editText8,editText9)){
             flag=1;
