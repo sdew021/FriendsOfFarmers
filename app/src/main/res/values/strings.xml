@@ -24,4 +24,6 @@
         <item>Pen. Ord. Asc.</item>
         <item> Pen. Ord. Des.</item>
     </string-array>
+    <string name="OTPBUTTON">SEND OTP</string>
+    <string name="otp">ENTER OTP</string>
 </resources>
