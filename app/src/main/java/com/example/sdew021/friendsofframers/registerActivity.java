@@ -152,26 +152,31 @@ public class registerActivity  extends AppCompatActivity {
         rice.child("price").setValue("0");
         rice.child("pendingOrders").setValue("0");
         rice.child("stock").setValue("0");
+        rice.child("user").setValue("0");
 
         DatabaseReference wheat= current_user_db.child("crops").child("wheat");
         wheat.child("price").setValue("0");
         wheat.child("pendingOrders").setValue("0");
         wheat.child("stock").setValue("0");
+        wheat.child("user").setValue("0");
 
         DatabaseReference sugarcane= current_user_db.child("crops").child("sugarcane");
         sugarcane.child("price").setValue("0");
         sugarcane.child("pendingOrders").setValue("0");
         sugarcane.child("stock").setValue("0");
+        sugarcane.child("user").setValue("0");
 
         DatabaseReference dal = current_user_db.child("crops").child("dal");
         dal.child("price").setValue("0");
         dal.child("pendingOrders").setValue("0");
         dal.child("stock").setValue("0");
+        dal.child("user").setValue("0");
 
         DatabaseReference corn = current_user_db.child("crops").child("corn");
         corn.child("price").setValue("0");
         corn.child("pendingOrders").setValue("0");
         corn.child("stock").setValue("0");
+        corn.child("user").setValue("0");
 
         mDiag.dismiss();
     }
@@ -190,6 +195,18 @@ public class registerActivity  extends AppCompatActivity {
         current_user_db.child("permanentAddress").setValue(permanentadd);
         current_user_db.child("currentAddress").setValue(currentadd);
         current_user_db.child("password").setValue(password);
+
+        DatabaseReference myCart = current_user_db.child("myCart");
+        myCart.child("image").setValue("0");
+        myCart.child("name").setValue("0");
+        myCart.child("price").setValue("0");
+        myCart.child("quantity").setValue("0");
+
+        DatabaseReference orders = current_user_db.child("orders");
+        orders.child("cropPrice").setValue("0");
+        orders.child("cropname").setValue("0");
+        orders.child("quantity").setValue("0");
+        orders.child("shippingAddress").setValue("0");
     }
 
     public void gotoLogin(){
