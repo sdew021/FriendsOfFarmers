@@ -3,6 +3,7 @@ package com.example.sdew021.friendsofframers;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.DefaultDatabaseErrorHandler;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -15,8 +16,11 @@ import android.util.Patterns;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,7 +46,7 @@ public class EditProfile extends AppCompatActivity {
     private TextView emailView,contactView,permanentAddView,currentAddView,nameView;
     private DatabaseReference mDatabaseRefernce;
     private StorageReference mStorageReference;
-    private Button saveButton,selectImage;
+    private Button saveButton,selectImage,changePassword;
     private static final int GALLERY_INTENT=2;
     private ImageView pImage;
     private ProgressBar progressBar;
@@ -64,9 +68,11 @@ public class EditProfile extends AppCompatActivity {
         progressBar=findViewById(R.id.progressBar);
         currentFirebaseUser= FirebaseAuth.getInstance().getCurrentUser();
         String userId=currentFirebaseUser.getUid();
+        changePassword=findViewById(R.id.changePassword);
 //        nameView=findViewById(R.id.name);
         mDatabaseRefernce=FirebaseDatabase.getInstance().getReference().child("Users")
-                .child("Farmer").child(userId).child("crops");        saveButton.setOnClickListener(new View.OnClickListener() {
+                .child("Farmer").child(userId);
+        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email,contact,currentAdd,permanentAdd;
@@ -74,6 +80,7 @@ public class EditProfile extends AppCompatActivity {
                 contact=contactView.getText().toString();
                 currentAdd=currentAddView.getText().toString();
                 permanentAdd=permanentAddView.getText().toString();
+                changePassword=findViewById(R.id.changePassword);
                 int var=0;
                 if(!email.isEmpty()){
                     if(isValidEmail(email)) {
@@ -105,6 +112,7 @@ public class EditProfile extends AppCompatActivity {
                     uploadFile(uri);
                 }
                 if(var>0) {
+                    startActivity(new Intent(EditProfile.this,Profile_Activity.class));
                     Toast.makeText(EditProfile.this, "Valid Details Updated Succesfully", Toast.LENGTH_SHORT).show();
                 }
                 if(var==0&&checkImage!=1)
@@ -134,6 +142,20 @@ public class EditProfile extends AppCompatActivity {
                 startActivityForResult(intent1,GALLERY_INTENT);
             }
         });
+
+
+        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.reativeLayout1);
+        AnimationDrawable animationDrawable = (AnimationDrawable) relativeLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(5000);
+        animationDrawable.setExitFadeDuration(5000);
+        animationDrawable.start();
+        changePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(EditProfile.this,UpdatePassword.class));
+            }
+        });
+
     }
     public static boolean isValidEmail(CharSequence target) {
         return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
