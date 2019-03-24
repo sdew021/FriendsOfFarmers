@@ -4,9 +4,11 @@ import android.Manifest;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
@@ -35,6 +37,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Random;
+
+import static android.os.Build.VERSION_CODES.M;
 
 public class registerActivity  extends AppCompatActivity {
     int flag = 0;
@@ -72,7 +76,11 @@ public class registerActivity  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_activity);
 
-        //if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE))
+
+        if(ContextCompat.checkSelfPermission(registerActivity.this,Manifest.permission.SEND_SMS)!=PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(registerActivity.this,
+                    new String[]{Manifest.permission.SEND_SMS},1);
+        }
 
         editText2 = findViewById(R.id.editText2);
         editText3 = findViewById(R.id.editText3);
@@ -113,6 +121,10 @@ public class registerActivity  extends AppCompatActivity {
                 SmsManager sms = SmsManager.getDefault();
                 sms.sendTextMessage(phone,null,msg,null,null);
                 Toast.makeText(getApplicationContext(),"Message Sent Successfully!",Toast.LENGTH_LONG).show();
+                if(ContextCompat.checkSelfPermission(registerActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
+                    ActivityCompat.requestPermissions(registerActivity.this,
+                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+                }
 
             }
         });
@@ -257,39 +269,44 @@ public class registerActivity  extends AppCompatActivity {
         String password = editText8.getText().toString().trim();
 
         current_user_db.child("email").setValue(email);
-        current_user_db.child("phone").setValue(phone);
+        current_user_db.child("contact").setValue(phone);
         current_user_db.child("name").setValue(name);
-        current_user_db.child("permanentAddress").setValue(permanentadd);
-        current_user_db.child("currentAddress").setValue(currentadd);
+        current_user_db.child("permanentAdd").setValue(permanentadd);
+        current_user_db.child("currentAdd").setValue(currentadd);
         current_user_db.child("password").setValue(password);
-        current_user_db.child("rating").setValue("0");
+        current_user_db.child("rating").setValue(0);
 
         DatabaseReference rice= current_user_db.child("crops").child("rice");
         rice.child("price").setValue("0");
+        rice.child("name").setValue("rice");
         rice.child("pendingOrders").setValue("0");
         rice.child("stock").setValue("0");
         rice.child("user").setValue("0");
 
         DatabaseReference wheat= current_user_db.child("crops").child("wheat");
         wheat.child("price").setValue("0");
+        wheat.child("name").setValue("wheat");
         wheat.child("pendingOrders").setValue("0");
         wheat.child("stock").setValue("0");
         wheat.child("user").setValue("0");
 
         DatabaseReference sugarcane= current_user_db.child("crops").child("sugarcane");
         sugarcane.child("price").setValue("0");
+        sugarcane.child("name").setValue("sugarcane");
         sugarcane.child("pendingOrders").setValue("0");
         sugarcane.child("stock").setValue("0");
         sugarcane.child("user").setValue("0");
 
         DatabaseReference dal = current_user_db.child("crops").child("dal");
         dal.child("price").setValue("0");
+        dal.child("name").setValue("dal");
         dal.child("pendingOrders").setValue("0");
         dal.child("stock").setValue("0");
         dal.child("user").setValue("0");
 
         DatabaseReference corn = current_user_db.child("crops").child("corn");
         corn.child("price").setValue("0");
+        corn.child("name").setValue("corn");
         corn.child("pendingOrders").setValue("0");
         corn.child("stock").setValue("0");
         corn.child("user").setValue("0");
@@ -310,10 +327,10 @@ public class registerActivity  extends AppCompatActivity {
         String password = editText8.getText().toString().trim();
 
         current_user_db.child("email").setValue(email);
-        current_user_db.child("phone").setValue(phone);
+        current_user_db.child("contact").setValue(phone);
         current_user_db.child("name").setValue(name);
-        current_user_db.child("permanentAddress").setValue(permanentadd);
-        current_user_db.child("currentAddress").setValue(currentadd);
+        current_user_db.child("permanentAdd").setValue(permanentadd);
+        current_user_db.child("currentAdd").setValue(currentadd);
         current_user_db.child("password").setValue(password);
 
         DatabaseReference myCart = current_user_db.child("myCart");
