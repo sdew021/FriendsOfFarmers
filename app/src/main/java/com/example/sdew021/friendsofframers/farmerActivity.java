@@ -22,6 +22,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -58,6 +60,7 @@ public class farmerActivity extends AppCompatActivity implements AdapterView.OnI
     private List<Crop> cropList=new ArrayList<>();
     private Spinner spinner;
     private ChildEventListener mChildEventListner;
+    private FirebaseUser currentFirebaseUser;
     String searchText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +69,13 @@ public class farmerActivity extends AppCompatActivity implements AdapterView.OnI
         searchText="";
         CropList = (RecyclerView) findViewById(R.id.recyclerView);
         spinner=(Spinner) findViewById(R.id.spinner);
+        currentFirebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+        String userId=currentFirebaseUser.getUid();
+        Log.w(TAG, userId);
         Log.w(TAG, "after spinnner");
-        mDatabaseRefrence=FirebaseDatabase.getInstance().getReferenceFromUrl("https://friends-of-farmers.firebaseio.com/Prateek/farmer1/Crop");
+//        mDatabaseRefrence=FirebaseDatabase.getInstance().getReferenceFromUrl("https://friends-of-farmers.firebaseio.com/Users/Farmer/pm7FdiYxQ9Xt3lnGnmAo3rnzhcP2/crops");
+        mDatabaseRefrence=FirebaseDatabase.getInstance().getReference().child("Users")
+                .child("Farmer").child(userId).child("crops");
         listenData(this,mDatabaseRefrence);
 //        filterList(FarmerAdapter.gCropIdValue);
         CropList.setLayoutManager(new LinearLayoutManager(this));
@@ -152,7 +160,7 @@ public class farmerActivity extends AppCompatActivity implements AdapterView.OnI
         for(Entry mapElement:FarmerAdapter.gCropIdValue.entrySet()){
             String key=(String) mapElement.getKey();
             Crop crop=(Crop)mapElement.getValue();
-            if(crop.getName().toLowerCase().contains(text.toLowerCase())){
+            if(crop.getName()!=null&&crop.getName().toLowerCase().contains(text.toLowerCase())){
                 filteredMap.put(key,crop);
             }
 //            Log.w(TAG,"filter Crop:"+crop.getName());
@@ -210,7 +218,7 @@ public class farmerActivity extends AppCompatActivity implements AdapterView.OnI
         else if(position==2){
 //            Log.w(TAG,"position:"+position);
             Toast.makeText(parent.getContext(),text,Toast.LENGTH_SHORT).show();
-            FarmerAdapter.gCropIdValue=sortByPorders(FarmerAdapter.gCropIdValue,true);
+            FarmerAdapter.gCropIdValue=sortBypendingOrders(FarmerAdapter.gCropIdValue,true);
 //            printMap(FarmerAdapter.gCropIdValue);
             filter(searchText);
 
@@ -218,7 +226,7 @@ public class farmerActivity extends AppCompatActivity implements AdapterView.OnI
         else {
 //            Log.w(TAG,"position:"+position);
             Toast.makeText(parent.getContext(),text, Toast.LENGTH_SHORT).show();
-            FarmerAdapter.gCropIdValue = sortByPorders(FarmerAdapter.gCropIdValue, false);
+            FarmerAdapter.gCropIdValue = sortBypendingOrders(FarmerAdapter.gCropIdValue, false);
 //            printMap(FarmerAdapter.gCropIdValue);
             filter(searchText);
         }
@@ -265,7 +273,7 @@ public class farmerActivity extends AppCompatActivity implements AdapterView.OnI
     }
 
 
-    private static Map<String, Crop> sortByPorders(Map<String, Crop> unsortMap, final boolean order)
+    private static Map<String, Crop> sortBypendingOrders(Map<String, Crop> unsortMap, final boolean order)
     {
 
         List<Entry<String, Crop>> list = new LinkedList<Entry<String, Crop>>(unsortMap.entrySet());
@@ -273,8 +281,8 @@ public class farmerActivity extends AppCompatActivity implements AdapterView.OnI
         {
             public int compare(Entry<String, Crop> o1, Entry<String, Crop> o2)
             {
-                int stock1=Integer.parseInt(o1.getValue().getPorders());
-                int stock2=Integer.parseInt(o2.getValue().getPorders());
+                int stock1=Integer.parseInt(o1.getValue().getPendingOrders());
+                int stock2=Integer.parseInt(o2.getValue().getPendingOrders());
                 if (order)
                 {
                     return Integer.compare(stock1,stock2);
@@ -322,13 +330,13 @@ public class farmerActivity extends AppCompatActivity implements AdapterView.OnI
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 //                Log.d(TAG, "onChildAdded:" + dataSnapshot.getKey()+" HMap Size:"+FarmerAdapter.gCropIdValue.size());
                 Crop crop=dataSnapshot.getValue(Crop.class);
-                if (crop.getName().toLowerCase().compareTo("wheat") == 0) {
+                if (crop.getName()!=null&&crop.getName().toLowerCase().compareTo("wheat") == 0) {
                     crop.Crop_image=R.drawable.wheat;
 
-                } else if (crop.getName().toLowerCase().compareTo("corn") == 0) {
+                } else if (crop.getName()!=null&&crop.getName().toLowerCase().compareTo("corn") == 0) {
                     crop.Crop_image=R.drawable.corn;
 
-                } else if (crop.getName().toLowerCase().compareTo("sugarcane") == 0) {
+                } else if (crop.getName()!=null&&crop.getName().toLowerCase().compareTo("sugarcane") == 0) {
                     crop.Crop_image=R.drawable.sugarcane;
 
                 } else {

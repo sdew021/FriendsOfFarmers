@@ -90,8 +90,8 @@ public class FarmerAdapter extends RecyclerView.Adapter<FarmerAdapter.FarmerView
         Crop crop=cropList.get(i);
         farmerViewHolder.CropImage.setImageResource(crop.Crop_image);
         String stock="Stock Available:"+crop.getStock();
-        String porders="Pending Orders:"+crop.getPorders();
-        farmerViewHolder.Stock.setText(stock);
+        String porders="Pending Orders:"+crop.getPendingOrders();
+        farmerViewHolder.Stock.setText(stock+" kg");
         farmerViewHolder.Porders.setText(porders);
         farmerViewHolder.Name.setText(crop.getName());
     }

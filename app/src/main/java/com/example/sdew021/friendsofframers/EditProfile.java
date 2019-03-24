@@ -22,6 +22,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -46,6 +48,7 @@ public class EditProfile extends AppCompatActivity {
     private ProgressBar progressBar;
     private Uri uri;
     private int checkImage;
+    private FirebaseUser currentFirebaseUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,9 +62,11 @@ public class EditProfile extends AppCompatActivity {
         selectImage=findViewById(R.id.selectImage);
         pImage=findViewById(R.id.pimage);
         progressBar=findViewById(R.id.progressBar);
+        currentFirebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+        String userId=currentFirebaseUser.getUid();
 //        nameView=findViewById(R.id.name);
-        mDatabaseRefernce= FirebaseDatabase.getInstance().getReferenceFromUrl("https://friends-of-farmers.firebaseio.com/Prateek/farmer1/Details");
-        saveButton.setOnClickListener(new View.OnClickListener() {
+        mDatabaseRefernce=FirebaseDatabase.getInstance().getReference().child("Users")
+                .child("Farmer").child(userId).child("crops");        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email,contact,currentAdd,permanentAdd;

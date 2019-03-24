@@ -9,12 +9,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,6 +33,8 @@ public class Profile_Activity extends AppCompatActivity {
     private DatabaseReference mDatabaseRefernce;
     private ImageView profileImage;
     private StorageReference mStorageReference;
+    private RatingBar ratingBar;
+    private FirebaseUser  currentFirebaseUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +46,12 @@ public class Profile_Activity extends AppCompatActivity {
         nameView=findViewById(R.id.name);
         editDetails=findViewById(R.id.editDetails);
         profileImage=findViewById(R.id.profileImage);
-        mDatabaseRefernce= FirebaseDatabase.getInstance().getReferenceFromUrl("https://friends-of-farmers.firebaseio.com/Prateek/farmer1/Details");
+        ratingBar=findViewById(R.id.ratingbar);
+        currentFirebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+        String userId=currentFirebaseUser.getUid();
+        Log.d("currentFirebaseUser id",userId);
+        mDatabaseRefernce=FirebaseDatabase.getInstance().getReference().child("Users")
+                .child("Farmer").child(userId);
         final ValueEventListener dataListner =new ValueEventListener(){
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -51,6 +61,7 @@ public class Profile_Activity extends AppCompatActivity {
                 contactView.setText(farmerProfileDetails.contact);
                 currentAddView.setText((farmerProfileDetails.currentAdd));
                 permanentAddView.setText(farmerProfileDetails.permanentAdd);
+                ratingBar.setNumStars(farmerProfileDetails.rating);
                 mStorageReference= FirebaseStorage.getInstance().getReferenceFromUrl("gs://friends-of-farmers.appspot.com/Farmer_images/");
                 mStorageReference.child("profilePic.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
