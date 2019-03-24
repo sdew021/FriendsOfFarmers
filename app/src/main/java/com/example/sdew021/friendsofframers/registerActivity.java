@@ -1,13 +1,17 @@
 package com.example.sdew021.friendsofframers;
 
+import android.Manifest;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +23,14 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.EmailAuthProvider;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -33,6 +45,7 @@ public class registerActivity  extends AppCompatActivity {
     EditText editText6;
     EditText editText8;
     EditText editText9;
+    String email1,password1;
     Button button;
     Button button2;
     Button button3;
@@ -40,9 +53,10 @@ public class registerActivity  extends AppCompatActivity {
     Button otpbutton;
     RadioGroup rg;
     RadioButton rb;
-    private Firebase mRef;
+    String userID;
+    private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
-    private ProgressDialog mDiag;
+    private DatabaseReference current_user_db;
 
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     Random r = new Random();
@@ -51,10 +65,14 @@ public class registerActivity  extends AppCompatActivity {
     int result = r.nextInt(high-low)+low;
     String msg = Integer.toString(result);
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_activity);
+
+        //if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE))
 
         editText2 = findViewById(R.id.editText2);
         editText3 = findViewById(R.id.editText3);
@@ -69,8 +87,13 @@ public class registerActivity  extends AppCompatActivity {
         button2 = findViewById(R.id.button2);
         button3 = findViewById(R.id.button3);
         rg = findViewById(R.id.rbgroup);
-        Firebase.setAndroidContext(this);
-        mRef = new Firebase("https://friends-of-farmers.firebaseio.com/Users");
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseApp.initializeApp(this);
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user =mAuth.getCurrentUser();
+        if(user != null){
+            userID = user.getUid();
+        }
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
 
 
@@ -93,14 +116,71 @@ public class registerActivity  extends AppCompatActivity {
 
             }
         });
-
-
-
-
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+                checkDataEntered();
                 int selectedId = rg.getCheckedRadioButtonId();
+                rb = findViewById(selectedId);
+                final String check = rb.getText().toString();
+                Toast.makeText(registerActivity.this,check,Toast.LENGTH_SHORT).show();
+                email1 = editText3.getText().toString();
+                password1 = editText8.getText().toString();
+                mAuth.createUserWithEmailAndPassword(email1,password1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            //Toast.makeText(registerActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            userID = user.getUid();
+                            //
+                            // Toast.makeText(registerActivity.this, "Login Successful  "+user.getUid(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(registerActivity.this,"REGISTERED!!!",Toast.LENGTH_LONG).show();
+                            if(flag==0 && check.equals("FARMER")){
+                                current_user_db = mDatabase.child("Farmer").child(user.getUid());
+                                startRegisterFarmer();
+
+                            }
+                            else if(flag==0 && check.equals("CONSUMER")){
+                                current_user_db = mDatabase.child("Consumer").child(user.getUid());
+                                startRegisterConsumer();
+                            }
+
+                            if(flag==0)
+                            {
+                                //startActivity(new Intent(registerActivity.this, farmerActivity.class));
+                                /*user = mAuth.getCurrentUser();
+                                userID = user.getUid();
+                                Toast.makeText(registerActivity.this,user.getUid(),Toast.LENGTH_LONG);*/
+                            }
+
+                        }
+                        else if(email1.isEmpty()||password1.isEmpty())
+                        {
+                            Toast.makeText(registerActivity.this,"Please Enter all the details",Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Toast.makeText(registerActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+
+                /*if(flag==0 && check.equals("FARMER"))
+                    startRegisterFarmer();
+                else if(flag==0 && check.equals("CONSUMER"))
+                    startRegisterConsumer();*/
+
+
+            }
+        });
+
+
+
+        /*button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                *//*int selectedId = rg.getCheckedRadioButtonId();
                 rb = findViewById(selectedId);
                 String check = rb.getText().toString();
                 checkDataEntered();
@@ -109,11 +189,14 @@ public class registerActivity  extends AppCompatActivity {
                 else
                     startRegisterConsumer();
                 if(flag==0)
+                    gotoLogin();*//*
+                authUser();
+                if(flag==0)
                     gotoLogin();
 
             }
         });
-
+*/
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,10 +212,43 @@ public class registerActivity  extends AppCompatActivity {
         });
     }
 
+    /*public void authUser(){
+        String email = editText3.getText().toString();
+        String password = editText8.getText().toString();
+        mAuth.createUserWithEmailAndPassword(email,password)
+                .addOnCompleteListener(registerActivity.this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful() ) {
+                    //task.getResult().getUser();
+                    int selectedId = rg.getCheckedRadioButtonId();
+                    rb = findViewById(selectedId);
+                    String check = rb.getText().toString();
+                    checkDataEntered();
+                    if(flag==0 && check.equals("FARMER"))
+                        startRegisterFarmer();
+                    else
+                        startRegisterConsumer();
+
+                    Toast.makeText(getApplicationContext(), "no error occurred", Toast.LENGTH_SHORT).show();
+                } else {
+                   // updateUI(task.getResult().getUser());
+                    Toast.makeText(getApplicationContext(),"Registration unsuccessfull",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }*/
+
+
+
+    /*private void updateUI(FirebaseUser getUserFromReg){
+
+            userID = getUserFromReg.getUid();
+    }*/
+
     public void startRegisterFarmer(){
-        mDiag = new ProgressDialog(this);
-        mDiag.setMessage("Registering..");
-        mDiag.show();
+        flag = 1;
+
         String name = editText2.getText().toString();
         String email = editText3.getText().toString().trim();
         String phone = editText4.getText().toString().trim();
@@ -140,9 +256,9 @@ public class registerActivity  extends AppCompatActivity {
         String currentadd = editText6.getText().toString().trim();
         String password = editText8.getText().toString().trim();
 
-        DatabaseReference current_user_db = mDatabase.child("Farmer").child(name);
         current_user_db.child("email").setValue(email);
         current_user_db.child("phone").setValue(phone);
+        current_user_db.child("name").setValue(name);
         current_user_db.child("permanentAddress").setValue(permanentadd);
         current_user_db.child("currentAddress").setValue(currentadd);
         current_user_db.child("password").setValue(password);
@@ -178,10 +294,14 @@ public class registerActivity  extends AppCompatActivity {
         corn.child("stock").setValue("0");
         corn.child("user").setValue("0");
 
-        mDiag.dismiss();
+        flag=0;
+        gotoLogin();
+
     }
 
     public void startRegisterConsumer(){
+        flag=1;
+
         String name = editText2.getText().toString();
         String email = editText3.getText().toString().trim();
         String phone = editText4.getText().toString().trim();
@@ -189,9 +309,9 @@ public class registerActivity  extends AppCompatActivity {
         String currentadd = editText6.getText().toString().trim();
         String password = editText8.getText().toString().trim();
 
-        DatabaseReference current_user_db = mDatabase.child("Consumer").child(name);
         current_user_db.child("email").setValue(email);
         current_user_db.child("phone").setValue(phone);
+        current_user_db.child("name").setValue(name);
         current_user_db.child("permanentAddress").setValue(permanentadd);
         current_user_db.child("currentAddress").setValue(currentadd);
         current_user_db.child("password").setValue(password);
@@ -207,6 +327,8 @@ public class registerActivity  extends AppCompatActivity {
         orders.child("cropname").setValue("0");
         orders.child("quantity").setValue("0");
         orders.child("shippingAddress").setValue("0");
+        flag=0;
+        gotoLogin();
     }
 
     public void gotoLogin(){
