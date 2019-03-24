@@ -49,8 +49,9 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
         if(user != null){
-            finish();
-            startActivity(new Intent(MainActivity.this, MainActivity.class));
+            FirebaseAuth.getInstance().signOut();
+            /*firebaseAuth.signOut();*/
+            startActivity(new Intent(MainActivity.this, farmerActivity.class));
         }
         login3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
         return result;
     }
     public void gotoRegister(){
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         Intent intent1 = new Intent(this, registerActivity.class);
         startActivity(intent1);
     }

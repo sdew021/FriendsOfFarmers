@@ -312,6 +312,7 @@ public class registerActivity  extends AppCompatActivity {
         corn.child("user").setValue("0");
 
         flag=0;
+
         gotoLogin();
 
     }
@@ -345,12 +346,15 @@ public class registerActivity  extends AppCompatActivity {
         orders.child("quantity").setValue("0");
         orders.child("shippingAddress").setValue("0");
         flag=0;
+
         gotoLogin();
     }
 
     public void gotoLogin(){
+        FirebaseAuth.getInstance().signOut();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
 
     }
 
