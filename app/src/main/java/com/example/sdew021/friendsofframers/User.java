@@ -1,5 +1,7 @@
 package com.example.sdew021.friendsofframers;
 
+
+
 public class User {
     private String contact;
     private String Address;
@@ -40,4 +42,6 @@ public class User {
     public String getQuantity() {
         return "Quantity:"+Quantity;
     }
+
+    User(){}
 }

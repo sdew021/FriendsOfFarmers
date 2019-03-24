@@ -175,14 +175,14 @@ public class farmerActivity extends AppCompatActivity implements AdapterView.OnI
                 if (crop != null) {
                     Log.i("Item clicked", "");
                     if (crop.getName().toLowerCase().compareTo("wheat") == 0) {
-                        Intent intent1 = new Intent(farmerActivity.this, WheatActivity.class);
+                        Intent intent1 = new Intent(farmerActivity.this, Activity2.class);
                         startActivity(intent1);
                     } else if (crop.getName().toLowerCase().compareTo("corn") == 0) {
-                        Intent intent2 = new Intent(farmerActivity.this, CornActivity.class);
+                        Intent intent2 = new Intent(farmerActivity.this, Activity2.class);
 
                         startActivity(intent2);
                     } else if (crop.getName().toLowerCase().compareTo("sugarcane") == 0) {
-                        Intent intent3 = new Intent(farmerActivity.this, SugarcaneActivity.class);
+                        Intent intent3 = new Intent(farmerActivity.this, Activity2.class);
                         startActivity(intent3);
                     } else {
                         Intent intent4 = new Intent(farmerActivity.this, RiceActivity.class);
@@ -339,8 +339,10 @@ public class farmerActivity extends AppCompatActivity implements AdapterView.OnI
                 } else if (crop.getName()!=null&&crop.getName().toLowerCase().compareTo("sugarcane") == 0) {
                     crop.Crop_image=R.drawable.sugarcane;
 
-                } else {
+                } else if(crop.getName()!=null&&crop.getName().toLowerCase().compareTo("rice") == 0) {
                     crop.Crop_image=R.drawable.rice;
+                } else if(crop.getName()!=null&&crop.getName().toLowerCase().compareTo("dal") == 0) {
+                    crop.Crop_image = R.drawable.dal;
                 }
                 FarmerAdapter.gCropIdValue.put(dataSnapshot.getKey(),crop);
                 FarmerAdapter.gCropIdValue=sortByStock(FarmerAdapter.gCropIdValue,true);

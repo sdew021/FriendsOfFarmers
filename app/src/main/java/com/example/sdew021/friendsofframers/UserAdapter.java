@@ -10,16 +10,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {
 
     private Context mCtx;
-    private List<User> userList;
+    private List<User> userList=new ArrayList<>();
+    public static Map<String,User> gUserIdValue=new LinkedHashMap<>();
 
-    public UserAdapter(Context mCtx,List<User> userList) {
+    public UserAdapter(Context mCtx) {
         this.mCtx=mCtx;
-        this.userList = userList;
     }
 
     public class UserViewHolder extends RecyclerView.ViewHolder{
@@ -65,6 +68,18 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     @Override
     public int getItemCount() {
         return userList.size();
+    }
+
+    public void filterList( Map<String,User> filteredMap){
+        userList=new ArrayList<>();
+//        Log.i("Info","filterList called CropList Size:"+cropList.size());
+        for(Map.Entry mapElement:filteredMap.entrySet()){
+            User user=(User)mapElement.getValue();
+            userList.add(user);
+//            Log.w(TAG,"filter Crop:"+crop.getName());
+        }
+//        Log.i("Info","filterList called filterMap Size:"+filteredMap.size());
+        notifyDataSetChanged();
     }
 
 }
