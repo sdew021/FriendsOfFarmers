@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/lightGrey"
+        android:id="@+id/rlayout2"
+        android:padding="5dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:padding="5dp"
+            android:id="@+id/rlayout1"
+            android:layout_marginTop="5dp">
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/mycart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rlayout1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:fontFamily="sans-serif-condensed-light"
+            android:text="My Orders"
+            android:textColor="@color/blue"
+            android:textSize="30sp" />
+    </RelativeLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listView">
+
+    </ListView>
+
+
+    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:id="@+id/cropname"/>
+
+    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:id="@+id/cropquantity"/>
+
+
+    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:id="@+id/shippingaddress"/>
+
+    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:id="@+id/cropPrice"/>
+
+
+</LinearLayout>

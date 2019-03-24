@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:title="My Profile"
+        android:id="@+id/id_Profile"
+        android:orderInCategory="100"
+        />
+
+    <item
+        android:title="Yours Orders"
+        android:id="@+id/id_orders"
+        android:orderInCategory="102"
+        />
+
+    <item
+        android:title="Change Language"
+        android:id="@+id/id_lang"
+        android:orderInCategory="105"
+        />
+
+    <item
+        android:title="Today's Deals"
+        android:id="@+id/id_deals"
+        android:orderInCategory="101"
+    />
+
+    <item
+        android:title="My Cart"
+        android:id="@+id/id_cart"
+        android:orderInCategory="103"
+        />
+
+    <item
+        android:title="My Wishlist"
+        android:id="@+id/id_wishlist"
+        android:orderInCategory="104"
+        />
+
+
+</menu>

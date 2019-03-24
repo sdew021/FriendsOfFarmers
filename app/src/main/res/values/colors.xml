@@ -13,4 +13,6 @@
     <color name="black">#000000</color>
     <color name="darkblue">#0099cc</color>
     <color name="red">#f44141</color>
+    <color name="blue">#0000FF</color>
+    <color name="lightGrey">#D3D3D3</color>
 </resources>

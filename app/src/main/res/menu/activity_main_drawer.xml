@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="My Account" />
+        <item
+            android:id="@+id/nav_deals"
+            android:icon="@drawable/ic_favorite_black_24dp"
+            android:title="Deals of the Day!" />
+        <item
+            android:id="@+id/nav_orders"
+            android:icon="@drawable/ic_folder_black_24dp"
+            android:title="My Orders" />
+        <item
+            android:id="@+id/nav_cart"
+            android:icon="@drawable/ic_local_grocery_store_black_24dp"
+            android:title="My Cart" />
+
+        <item android:id="@+id/nav_exit"
+            android:icon="@drawable/ic_exit_to_app_black_24dp"
+            android:title="Exit"/>
+    </group>
+    <!--<item-->
+        <!--android:id="@+id/group2"-->
+        <!--android:title="title2">-->
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:title="item1" />-->
+            <!--<item-->
+                <!--android:title="item2" />-->
+            <!--<item-->
+                <!--android:title="item3" />-->
+        <!--</menu>-->
+    <!--</item>-->
+
+
+
+
+
+</menu>
