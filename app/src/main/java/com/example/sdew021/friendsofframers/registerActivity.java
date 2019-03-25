@@ -335,13 +335,12 @@ public class registerActivity  extends AppCompatActivity {
         current_user_db.child("currentAdd").setValue(currentadd);
         current_user_db.child("password").setValue(password);
 
-        DatabaseReference myCart = current_user_db.child("myCart");
-        myCart.child("image").setValue("0");
+        DatabaseReference myCart = current_user_db.child("myCart").child("item");
         myCart.child("name").setValue("0");
         myCart.child("price").setValue("0");
         myCart.child("quantity").setValue("0");
 
-        DatabaseReference orders = current_user_db.child("orders");
+        DatabaseReference orders = current_user_db.child("orders").child("item");
         orders.child("cropPrice").setValue("0");
         orders.child("cropname").setValue("0");
         orders.child("quantity").setValue("0");
