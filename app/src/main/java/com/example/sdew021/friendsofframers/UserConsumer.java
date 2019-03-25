@@ -2,7 +2,7 @@ package com.example.sdew021.friendsofframers;
 
 class UserConsumer {
 
-    public String name,phone,email,currentAddress,permanentAddress,password;
+    public String name,contact,email,currentAdd,permanentAdd,password;
 
     public UserConsumer(){
 
@@ -10,10 +10,10 @@ class UserConsumer {
 
     public UserConsumer(String name, String phone, String email, String currentAddress, String permanentAddress,String password) {
         this.name = name;
-        this.phone = phone;
+        this.contact = phone;
         this.email = email;
-        this.currentAddress = currentAddress;
-        this.permanentAddress = permanentAddress;
+        this.currentAdd = currentAddress;
+        this.permanentAdd = permanentAddress;
         this.password = password;
     }
 
@@ -26,11 +26,11 @@ class UserConsumer {
     }
 
     public String getPhone() {
-        return phone;
+        return contact;
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.contact = phone;
     }
 
     public String getEmail() {
@@ -42,29 +42,29 @@ class UserConsumer {
     }
 
     public String getCurrentAddress() {
-        return currentAddress;
+        return currentAdd;
     }
 
     public void setCurrentAddress(String currentAddress) {
-        this.currentAddress = currentAddress;
+        this.currentAdd = currentAddress;
     }
 
     public String getPermanentAddress() {
-        return permanentAddress;
+        return permanentAdd;
     }
 
     public void setPermanentAddress(String permanentAddress) {
-        this.permanentAddress = permanentAddress;
+        this.permanentAdd= permanentAddress;
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
+                ", phone='" + contact + '\'' +
                 ", email='" + email + '\'' +
-                ", currentAddress='" + currentAddress + '\'' +
-                ", permanentAddress='" + permanentAddress + '\'' +
+                ", currentAddress='" + currentAdd + '\'' +
+                ", permanentAddress='" + permanentAdd + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

@@ -47,7 +47,7 @@ public class secondActivity extends AppCompatActivity{
         name.setEnabled(false);
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://friends-of-farmers.firebaseio.com/Users/Consumer/Saurabh");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child("Consumer").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

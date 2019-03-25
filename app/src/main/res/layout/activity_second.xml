@@ -267,13 +267,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="10dp"
                 android:layout_margin="40dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/border_style"
+                android:background="@drawable/button_bg1"
                 android:fontFamily="sans-serif-condensed-light"
                 android:onClick="save_details"
                 android:text="Save Details"
-                android:textColor="@color/blue"
+                android:textColor="@color/black"
                 android:textSize="20dp"
                 />
 
