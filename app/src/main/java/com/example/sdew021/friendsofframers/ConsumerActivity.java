@@ -154,7 +154,7 @@ public class ConsumerActivity extends AppCompatActivity implements NavigationVie
             startActivity(new Intent(this, dealsday.class));
 
         } else if (id == R.id.nav_orders) {
-            startActivity(new Intent(this, myorders.class));
+            startActivity(new Intent(this, orders.class));
 
         } else if (id == R.id.nav_cart) {
             startActivity(new Intent(this, start.class));
