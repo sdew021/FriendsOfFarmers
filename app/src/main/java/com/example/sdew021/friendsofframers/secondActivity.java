@@ -89,7 +89,7 @@ public class secondActivity extends AppCompatActivity{
 
     public void save_details(View view) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReferenceFromUrl("https://friends-of-farmers.firebaseio.com/Users/Consumer/Saurabh");
+        DatabaseReference myRef = database.getReference().child("Users").child("Consumer").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         myRef.child("currentAddress").setValue(address.getText().toString());
         myRef.child("name").setValue(name.getText().toString());
         myRef.child("permanentAddress").setValue(permanentaddress.getText().toString());
