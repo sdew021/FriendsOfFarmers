@@ -20,6 +20,8 @@ class CustomListAdapter extends BaseAdapter {
     //  ArrayList<MyOrders> myOrdersArrayList = new ArrayList<>();
     LayoutInflater layoutInflater = null;
 
+
+
     public CustomListAdapter(Activity activity, ArrayList customListDataModelArray) {
         this.activity = activity;
         this.cartArrayList = customListDataModelArray;
@@ -76,7 +78,21 @@ class CustomListAdapter extends BaseAdapter {
         viewHolder.cropQuantity.setText("Quantity : " + cartArrayList.get(pos).getQuantity());
         viewHolder.cropPrice.setText("Price : " + cartArrayList.get(pos).getPrice());
         if(cartArrayList.get(pos).getName().toLowerCase().compareTo("wheat")==0)
+            viewHolder.imageview.setImageResource(R.drawable.wheat);
+
+         if(cartArrayList.get(pos).getName().toLowerCase().compareTo("dal")==0)
+            viewHolder.imageview.setImageResource(R.drawable.dal);
+
+         if(cartArrayList.get(pos).getName().toLowerCase().compareTo("sugarcane")==0)
             viewHolder.imageview.setImageResource(R.drawable.sugarcane);
+
+         if(cartArrayList.get(pos).getName().toLowerCase().compareTo("rice")==0)
+            viewHolder.imageview.setImageResource(R.drawable.rice);
+
+         if(cartArrayList.get(pos).getName().toLowerCase().compareTo("corn")==0)
+            viewHolder.imageview.setImageResource(R.drawable.corn);
+
+
 
 
         return vi;
