@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/linLay"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
@@ -41,12 +42,15 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listView">
+        android:id="@+id/listViewOrders"
+
+        >
 
     </ListView>
 
 
     <TextView
+
     android:layout_width="match_parent"
     android:layout_height="40dp"
     android:id="@+id/cropname"/>
@@ -66,6 +70,7 @@
     android:layout_width="match_parent"
     android:layout_height="40dp"
     android:id="@+id/cropPrice"/>
+
 
 
 </LinearLayout>
