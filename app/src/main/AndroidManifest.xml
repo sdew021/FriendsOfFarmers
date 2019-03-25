@@ -23,6 +23,7 @@
             android:name=".CornActivity"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".UpdatePassword" />
+        <activity android:name=".ConsumerActivity"/>
         <activity android:name=".EditProfile" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Profile_Activity" />

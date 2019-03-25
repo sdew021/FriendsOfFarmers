@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         if(user != null){
             FirebaseAuth.getInstance().signOut();
             /*firebaseAuth.signOut();*/
-            startActivity(new Intent(MainActivity.this, farmerActivity.class));
+            /*startActivity(new Intent(MainActivity.this, farmerActivity.class));*/
         }
         login3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,15 +91,17 @@ public class MainActivity extends AppCompatActivity {
         login2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Email=email.getText().toString().trim();
+                password = Password.getText().toString().trim();
                 firebaseAuth.signInWithEmailAndPassword(Email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            //Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                             if(validatee(Email,password))
                             {
                                 startActivity(new Intent(MainActivity.this, ConsumerActivity.class));
-                            };
+                            }
 
                         }
                         else if(Email.isEmpty()||password.isEmpty())
