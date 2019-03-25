@@ -13,6 +13,7 @@
 
         <TextView
             android:id="@+id/cropname"
+            android:fontFamily="@font/expletus_sans_medium_italic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -26,6 +27,7 @@
 
         <TextView
             android:id="@+id/cropquantity"
+            android:fontFamily="@font/expletus_sans_medium_italic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -39,6 +41,7 @@
 
         <TextView
             android:id="@+id/cropPrice"
+            android:fontFamily="@font/expletus_sans_medium_italic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -52,6 +55,7 @@
 
         <TextView
             android:id="@+id/address"
+            android:fontFamily="@font/expletus_sans_medium_italic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"

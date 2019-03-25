@@ -33,7 +33,8 @@
             android:layout_below="@id/rlayout1"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
-            android:fontFamily="sans-serif-condensed-light"
+            android:fontFamily="@font/expletus_sans_medium_italic"
+
             android:text="My Orders"
             android:textColor="@color/blue"
             android:textSize="30sp" />
@@ -53,22 +54,26 @@
 
     android:layout_width="match_parent"
     android:layout_height="40dp"
+        android:fontFamily="@font/expletus_sans_medium_italic"
     android:id="@+id/cropname"/>
 
     <TextView
     android:layout_width="match_parent"
     android:layout_height="40dp"
+        android:fontFamily="@font/expletus_sans_medium_italic"
     android:id="@+id/cropquantity"/>
 
 
     <TextView
     android:layout_width="match_parent"
     android:layout_height="40dp"
+        android:fontFamily="@font/expletus_sans_medium_italic"
     android:id="@+id/shippingaddress"/>
 
     <TextView
     android:layout_width="match_parent"
     android:layout_height="40dp"
+        android:fontFamily="@font/expletus_sans_medium_italic"
     android:id="@+id/cropPrice"/>
 
 

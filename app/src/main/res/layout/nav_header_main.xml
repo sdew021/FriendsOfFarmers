@@ -23,6 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:fontFamily="@font/expletus_sans_medium_italic"
         android:text="Saurabh Dewangan"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
