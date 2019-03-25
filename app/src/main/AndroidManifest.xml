@@ -23,6 +23,10 @@
             android:name=".CornActivity"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".UpdatePassword" />
+        <activity android:name=".secondActivity"/>
+        <activity android:name=".dealsday"/>
+        <activity android:name=".orders"/>
+        <activity android:name=".start"/>
         <activity android:name=".ConsumerActivity"/>
         <activity android:name=".EditProfile" />
         <activity android:name=".MainActivity" />

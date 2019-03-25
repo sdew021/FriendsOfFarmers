@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 public class animActivity extends AppCompatActivity {
 
-    private int SPLASH_TIME_OUT = 4000;
+    private int SPLASH_TIME_OUT = 2500;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
