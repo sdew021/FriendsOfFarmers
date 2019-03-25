@@ -138,7 +138,8 @@ public class registerActivity  extends AppCompatActivity {
                 Toast.makeText(registerActivity.this,check,Toast.LENGTH_SHORT).show();
                 email1 = editText3.getText().toString();
                 password1 = editText8.getText().toString();
-                mAuth.createUserWithEmailAndPassword(email1,password1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                if(flag==0)
+                    mAuth.createUserWithEmailAndPassword(email1,password1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
