@@ -1,6 +1,8 @@
 package com.example.sdew021.friendsofframers;
 
 import com.firebase.ui.database.FirebaseListAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,6 +24,7 @@ public class start extends AppCompatActivity {
     FirebaseListAdapter adapter;
     ArrayList<Cart> cartArrayList;
     start activity;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle saveInstanceState) {
@@ -29,9 +32,10 @@ public class start extends AppCompatActivity {
         setContentView(R.layout.my_cart);
         cartArrayList = new ArrayList<Cart>();
         activity = this;
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         lv = (ListView) findViewById(R.id.listView);
         DatabaseReference myRef = FirebaseDatabase.getInstance()
-                .getReferenceFromUrl("https://friends-of-farmers.firebaseio.com/Users/Consumer/Saurabh/myCart");
+                .getReference().child("Users").child("Consumer").child(userId).child("myCart");
 //
 //        Cart c1 = new Cart("Sugar","100","50");
 //        myRef.child("c1").setValue(c1);
