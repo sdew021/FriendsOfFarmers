@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                             if(validatee(Email,password))
                             {
                                 startActivity(new Intent(MainActivity.this, farmerActivity.class));
-                            };
+                            }
 
                         }
                         else if(Email.isEmpty()||password.isEmpty())

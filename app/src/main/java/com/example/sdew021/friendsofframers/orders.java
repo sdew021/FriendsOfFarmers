@@ -1,6 +1,7 @@
 package com.example.sdew021.friendsofframers;
 
 import com.firebase.ui.database.FirebaseListAdapter;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -8,9 +9,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -23,18 +26,26 @@ public class orders extends AppCompatActivity {
     ArrayList<MyOrders> myOrdersArrayList;
     orders activity;
 
+
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.myorders);
+
+        String userId  = FirebaseAuth.getInstance().getCurrentUser().getUid();
         myOrdersArrayList = new ArrayList<MyOrders>();
         activity = this;
-        lv = (ListView) findViewById(R.id.listView);
+        lv = (ListView) findViewById(R.id.listViewOrders);
         DatabaseReference myRef = FirebaseDatabase.getInstance()
-                .getReferenceFromUrl("https://friends-of-farmers.firebaseio.com/Users/Consumer/Saurabh/orders");
+                .getReference().child("Users").child("Consumer").child(userId).child("orders");
 //
 //        Cart c1 = new Cart("Sugar","100","50");
 //        myRef.child("c1").setValue(c1);
+
+        /*LinearLayout myLayout = (LinearLayout) findViewById(R.id.linLay);
+        AnimationDrawable animationDrawable = (AnimationDrawable) myLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(5000);
+        animationDrawable.setExitFadeDuration(5000);*/
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override

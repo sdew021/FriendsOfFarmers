@@ -138,7 +138,8 @@ public class registerActivity  extends AppCompatActivity {
                 Toast.makeText(registerActivity.this,check,Toast.LENGTH_SHORT).show();
                 email1 = editText3.getText().toString();
                 password1 = editText8.getText().toString();
-                mAuth.createUserWithEmailAndPassword(email1,password1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                if(flag==0)
+                    mAuth.createUserWithEmailAndPassword(email1,password1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
@@ -334,13 +335,12 @@ public class registerActivity  extends AppCompatActivity {
         current_user_db.child("currentAdd").setValue(currentadd);
         current_user_db.child("password").setValue(password);
 
-        DatabaseReference myCart = current_user_db.child("myCart");
-        myCart.child("image").setValue("0");
+        DatabaseReference myCart = current_user_db.child("myCart").child("item");
         myCart.child("name").setValue("0");
         myCart.child("price").setValue("0");
         myCart.child("quantity").setValue("0");
 
-        DatabaseReference orders = current_user_db.child("orders");
+        DatabaseReference orders = current_user_db.child("orders").child("item");
         orders.child("cropPrice").setValue("0");
         orders.child("cropname").setValue("0");
         orders.child("quantity").setValue("0");

@@ -67,7 +67,7 @@ class OrdersLisAdapter extends BaseAdapter {
         } else {
 
             viewHolder = (ViewHolder) vi.getTag();
-
+        }
 //        Picasso.with(activity)
 //                .load(cartArrayList.get(pos).getImage())
 //                .placeholder(activity.getDrawable(R.drawable.cauli))
@@ -78,7 +78,7 @@ class OrdersLisAdapter extends BaseAdapter {
             viewHolder.cropPrice.setText("Price : " + myOrdersArrayList.get(pos).getCropPrice());
             viewHolder.cropAddress.setText("Shipping Address : " + myOrdersArrayList.get(pos).getShippingAddress());
 
-        }
+
         return vi;
     }
 }

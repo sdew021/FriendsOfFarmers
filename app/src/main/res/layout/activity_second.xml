@@ -27,11 +27,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/expletus_sans_medium_italic"
             android:layout_alignParentRight="true"
             android:text="Edit Details"
             android:onClick="edit"
             android:textColor="@color/black"
-            android:fontFamily="sans-serif-condensed-light"
+
             android:textSize="20dp"
             android:layout_margin="10dp"
             android:background="@color/colorAccent"/>
@@ -57,10 +58,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/rlayout1"
+            android:fontFamily="@font/expletus_sans_medium_italic"
 
             android:layout_alignParentLeft="true"
             android:layout_marginTop="5dp"
-            android:fontFamily="sans-serif-condensed-light"
+
             android:text="My Profile"
             android:textColor="@color/black"
             android:textSize="26sp"
@@ -104,6 +106,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Name"
+                    android:fontFamily="@font/expletus_sans_medium_italic"
                     android:textColor="@color/blue"
                     android:textSize="22sp"/>
                 <HorizontalScrollView
@@ -115,7 +118,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="enter the name here"
-                        android:fontFamily="sans-serif-condensed-light"
+                        android:fontFamily="@font/expletus_sans_medium_italic"
+
                         android:textColor="@color/black"
                         android:background="@drawable/edittext_back"
                         android:textSize="20sp"
@@ -136,6 +140,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/expletus_sans_medium_italic"
                     android:text="Contact No."
                     android:textColor="@color/blue"
                     android:textSize="22sp"/>
@@ -149,8 +154,9 @@
                         android:id="@+id/userContact"
                         android:inputType="number"
                         android:layout_width="wrap_content"
+                        android:fontFamily="@font/expletus_sans_medium_italic"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-condensed-light"
+
                         android:textColor="@color/black"
                         android:hint="enter the number here"
                         android:background="@drawable/edittext_back"
@@ -171,6 +177,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/expletus_sans_medium_italic"
                     android:text="Email"
                     android:textColor="@color/blue"
                     android:textSize="22sp"/>
@@ -181,8 +188,9 @@
                     <EditText
                         android:id="@+id/userEmail"
                         android:layout_width="wrap_content"
+                        android:fontFamily="@font/expletus_sans_medium_italic"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-condensed-light"
+
                         android:textColor="@color/black"
                         android:hint="enter the email here"
                         android:background="@drawable/edittext_back"
@@ -203,6 +211,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/expletus_sans_medium_italic"
                     android:text="Current Address"
                     android:textColor="@color/blue"
                     android:textSize="22sp"/>
@@ -216,7 +225,8 @@
                         android:id="@+id/userAddress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-condensed-light"
+                        android:fontFamily="@font/expletus_sans_medium_italic"
+
                         android:textColor="@color/black"
                         android:hint="enter the current address here"
                         android:background="@drawable/edittext_back"
@@ -236,6 +246,7 @@
                 android:paddingVertical="10dp">
                 <TextView
                     android:layout_width="wrap_content"
+                    android:fontFamily="@font/expletus_sans_medium_italic"
                     android:layout_height="wrap_content"
                     android:text="Parmanent Address"
                     android:textColor="@color/blue"
@@ -250,7 +261,7 @@
                         android:id="@+id/userPermanent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-condensed-light"
+                        android:fontFamily="@font/expletus_sans_medium_italic"
                         android:background="@drawable/edittext_back"
                         android:textColor="@color/black"
                         android:hint="enter the permanent address here"
@@ -267,13 +278,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="10dp"
                 android:layout_margin="40dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/border_style"
-                android:fontFamily="sans-serif-condensed-light"
+                android:background="@drawable/button_bg1"
+                android:fontFamily="@font/expletus_sans_medium_italic"
                 android:onClick="save_details"
                 android:text="Save Details"
-                android:textColor="@color/blue"
+                android:textColor="@color/black"
                 android:textSize="20dp"
                 />
 

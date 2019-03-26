@@ -17,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,8 +32,10 @@ public class ConsumerActivity extends AppCompatActivity implements NavigationVie
     String user_id = "Saurabh Dewangan";
     //FirebaseAuth firebaseAuth;
     // DatabaseReference databaseReference ;
+    FirebaseAuth mAuth;
 
     TextView name_profile;
+    private FirebaseUser user;
 
 
 
@@ -42,6 +46,10 @@ public class ConsumerActivity extends AppCompatActivity implements NavigationVie
         //profile = new Users();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        String userId = user.getUid();
+        mAuth = FirebaseAuth.getInstance();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -74,7 +82,7 @@ public class ConsumerActivity extends AppCompatActivity implements NavigationVie
         // for users name
         //irebaseApp.initializeApp(this);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReferenceFromUrl("https://friends-of-farmers.firebaseio.com/Users/Consumer/Saurabh");
+        DatabaseReference myRef = database.getReference().child("Users").child("Consumer").child(userId);
         //FirebaseDatabase firebaseDatabase;
 //          DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("message");
         //databaseReference = FirebaseDatabase.getInstance().getReference(user_id);
@@ -83,7 +91,7 @@ public class ConsumerActivity extends AppCompatActivity implements NavigationVie
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
+                UserConsumer user = dataSnapshot.getValue(UserConsumer.class);
                 name_profile = findViewById(R.id.name_profile);
                 // Log.d("Second", user);
                 //  name_profile.setText(user.getName());
@@ -160,10 +168,12 @@ public class ConsumerActivity extends AppCompatActivity implements NavigationVie
             startActivity(new Intent(this, start.class));
 
         } else if(id == R.id.nav_exit){
-            Intent intent = new Intent(Intent.ACTION_MAIN);
+            /*Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_HOME);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+            startActivity(intent);*/
+            mAuth.signOut();
+            startActivity(new Intent(ConsumerActivity.this,MainActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
