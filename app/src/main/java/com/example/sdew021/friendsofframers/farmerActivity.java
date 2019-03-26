@@ -175,19 +175,24 @@ public class farmerActivity extends AppCompatActivity implements AdapterView.OnI
                 if (crop != null) {
                     Log.i("Item clicked", "");
                     if (crop.getName().toLowerCase().compareTo("wheat") == 0) {
-                        Intent intent1 = new Intent(farmerActivity.this, Activity2.class);
+                        Intent intent1 = new Intent(farmerActivity.this, WheatActivity.class);
                         startActivity(intent1);
                     } else if (crop.getName().toLowerCase().compareTo("corn") == 0) {
-                        Intent intent2 = new Intent(farmerActivity.this, Activity2.class);
+                        Intent intent2 = new Intent(farmerActivity.this, CornActivity.class);
 
                         startActivity(intent2);
                     } else if (crop.getName().toLowerCase().compareTo("sugarcane") == 0) {
-                        Intent intent3 = new Intent(farmerActivity.this, Activity2.class);
+                        Intent intent3 = new Intent(farmerActivity.this, SugarcaneActivity.class);
                         startActivity(intent3);
-                    } else {
+                    } else if(crop.getName().toLowerCase().compareTo("rice") == 0){
                         Intent intent4 = new Intent(farmerActivity.this, RiceActivity.class);
                         startActivity(intent4);
                     }
+                    else{
+                        Intent intent4 = new Intent(farmerActivity.this, DalActivity.class);
+                        startActivity(intent4);
+                    }
+
                 }
                 else
                     Log.i("NULL ITEM", "NULL ITEM");

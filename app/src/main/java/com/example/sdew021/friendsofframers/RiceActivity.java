@@ -23,6 +23,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,7 +43,9 @@ public class RiceActivity extends AppCompatActivity {
     private DatabaseReference listdatabaseRefernce;
     private EditText mEnterQuantity;
     private ChildEventListener mChildEventListner;
-
+    private FirebaseUser user;
+    private int price;
+    private int stock;
     EditText editText1;
     EditText editText2;
     int flag = 1;
@@ -60,7 +64,9 @@ public class RiceActivity extends AppCompatActivity {
         button2 = (Button) findViewById(R.id.button2);
         editText1 = (EditText) findViewById(R.id.enterquantity);
         editText2 = (EditText) findViewById(R.id.enterquantity2);//https://friends-of-farmers.firebaseio.com/Rishi/Farmer1/Crops/Crop2
-        mDatabase = FirebaseDatabase.getInstance().getReferenceFromUrl("https://friends-of-farmers.firebaseio.com/Users/Farmer/Saurabh/crops/crop1");
+        user= FirebaseAuth.getInstance().getCurrentUser();
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").
+                child("Farmer").child(user.getUid()).child("crops").child("rice");
 //        button1.setOnClickListener(new View.OnClickListener() {
 //                                       @Override
 //                                       public void onClick(View v) {
@@ -79,9 +85,8 @@ public class RiceActivity extends AppCompatActivity {
                     Toast.makeText(RiceActivity.this, "Enter Price:" + editText1.getText().toString(), Toast.LENGTH_SHORT).show();
                     flag = 0;
                 } else {
-//                    int price=Integer.parseInt(dataSnapshot.getValue().toString());
-//                    price = Integer.parseInt(editText1.getText().toString())+price;
                     mDatabase.child("price").setValue(editText1.getText().toString());
+                    Log.i("Price","price:"+price);
                     Log.i("Price Updated Success","Price Updated Success");
                     Toast.makeText(RiceActivity.this, "Price Updated Success", Toast.LENGTH_SHORT).show();
                 }
@@ -97,11 +102,22 @@ public class RiceActivity extends AppCompatActivity {
                     Toast.makeText(RiceActivity.this, "Enter Quantity:" + editText2.getText().toString(), Toast.LENGTH_SHORT).show();
                     flag = 0;
                 } else {
-                    mDatabase.child("stock").setValue(editText2.getText().toString());
+                    mDatabase.child("stock").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            stock=Integer.parseInt(dataSnapshot.getValue().toString());
+                            stock = Integer.parseInt(editText2.getText().toString())+stock;
+                            mDatabase.child("stock").setValue(Integer.toString(stock));
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                            Toast.makeText(RiceActivity.this,"Unable to Connect to database ",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
                     Log.i(" Quantity Success","Quantity Success");
                     Toast.makeText(RiceActivity.this, "Quantity Updated Success", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
         RecyclerView recyclerView=findViewById(R.id.recylerview);
@@ -238,5 +254,3 @@ public class RiceActivity extends AppCompatActivity {
         mChildEventListner=childEventListener;
     }
 }
-
-

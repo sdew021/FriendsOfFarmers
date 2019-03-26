@@ -36,7 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CornActivity extends AppCompatActivity {
+public class DalActivity extends AppCompatActivity {
 
     private Button button1, button2;
     private DatabaseReference mDatabase;
@@ -45,7 +45,6 @@ public class CornActivity extends AppCompatActivity {
     private ChildEventListener mChildEventListner;
     private FirebaseUser user;
     private int stock;
-
     EditText editText1;
     EditText editText2;
     int flag = 1;
@@ -66,7 +65,7 @@ public class CornActivity extends AppCompatActivity {
         editText2 = (EditText) findViewById(R.id.enterquantity2);//https://friends-of-farmers.firebaseio.com/Rishi/Farmer1/Crops/Crop2
         user= FirebaseAuth.getInstance().getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").
-                child("Farmer").child(user.getUid()).child("crops").child("corn");//        button1.setOnClickListener(new View.OnClickListener() {
+                child("Farmer").child(user.getUid()).child("crops").child("dal");//        button1.setOnClickListener(new View.OnClickListener() {
 //                                       @Override
 //                                       public void onClick(View v) {
 //                                           if (editText1.getText().toString().equals("")) {
@@ -81,14 +80,14 @@ public class CornActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (editText1.getText().toString().isEmpty()) {
-                    Toast.makeText(CornActivity.this, "Enter Price:" + editText1.getText().toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DalActivity.this, "Enter Price:" + editText1.getText().toString(), Toast.LENGTH_SHORT).show();
                     flag = 0;
                 } else {
 //                    int price=Integer.parseInt(dataSnapshot.getValue().toString());
 //                    price = Integer.parseInt(editText1.getText().toString())+price;
                     mDatabase.child("price").setValue(editText1.getText().toString());
                     Log.i("Price Updated Success","Price Updated Success");
-                    Toast.makeText(CornActivity.this, "Price Updated Success", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DalActivity.this, "Price Updated Success", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -99,7 +98,7 @@ public class CornActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (editText2.getText().toString().isEmpty()) {
-                    Toast.makeText(CornActivity.this, "Enter Quantity:" + editText2.getText().toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DalActivity.this, "Enter Quantity:" + editText2.getText().toString(), Toast.LENGTH_SHORT).show();
                     flag = 0;
                 } else {
                     mDatabase.child("stock").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -111,12 +110,12 @@ public class CornActivity extends AppCompatActivity {
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
-                            Toast.makeText(CornActivity.this,"Unable to Connect to database ",
+                            Toast.makeText(DalActivity.this,"Unable to Connect to database ",
                                     Toast.LENGTH_SHORT).show();
                         }
                     });
                     Log.i(" Quantity Success","Quantity Success");
-                    Toast.makeText(CornActivity.this, "Quantity Updated Success", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DalActivity.this, "Quantity Updated Success", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -191,7 +190,7 @@ public class CornActivity extends AppCompatActivity {
 //
 //            }
 //        });
-        listdatabaseRefernce= FirebaseDatabase.getInstance().getReferenceFromUrl("https://friends-of-farmers.firebaseio.com/Users/Farmer/Saurabh/crops/crop4/Customers");
+        listdatabaseRefernce= FirebaseDatabase.getInstance().getReferenceFromUrl("https://friends-of-farmers.firebaseio.com/Users/Farmer/Saurabh/crops/crop5/Customers");
 
 
         ChildEventListener childEventListener=new ChildEventListener() {
@@ -246,7 +245,7 @@ public class CornActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Log.w("oncancelled", "postComments:onCancelled", databaseError.toException());
-                Toast.makeText(CornActivity.this, "Failed to load User data.",Toast.LENGTH_SHORT).show();
+                Toast.makeText(DalActivity.this, "Failed to load User data.",Toast.LENGTH_SHORT).show();
 
             }
         };
@@ -254,4 +253,5 @@ public class CornActivity extends AppCompatActivity {
         mChildEventListner=childEventListener;
     }
 }
+
 

@@ -52,7 +52,8 @@
         <activity
             android:name=".Activity2"
             android:parentActivityName=".MainActivity" />
-
+        <activity android:name=".DalActivity"
+            android:parentActivityName=".MainActivity"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
