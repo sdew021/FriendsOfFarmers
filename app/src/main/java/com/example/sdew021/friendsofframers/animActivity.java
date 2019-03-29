@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.transition.Explode;
 
 public class animActivity extends AppCompatActivity {
+
+
 
     private int SPLASH_TIME_OUT = 2500;
     @Override
@@ -13,6 +16,9 @@ public class animActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anim);
 
+        getWindow().setEnterTransition(new Explode());
+
+        getWindow().setExitTransition(new Explode());
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
