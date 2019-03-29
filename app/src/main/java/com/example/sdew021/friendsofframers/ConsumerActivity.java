@@ -175,7 +175,6 @@ public class ConsumerActivity extends AppCompatActivity implements NavigationVie
             mAuth.signOut();
             startActivity(new Intent(ConsumerActivity.this,MainActivity.class));
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
