@@ -10,15 +10,12 @@ public class animActivity extends AppCompatActivity {
 
 
 
-    private int SPLASH_TIME_OUT = 2500;
+    private int SPLASH_TIME_OUT = 1750;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anim);
 
-        getWindow().setEnterTransition(new Explode());
-
-        getWindow().setExitTransition(new Explode());
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

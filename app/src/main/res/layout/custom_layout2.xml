@@ -10,9 +10,10 @@
         android:layout_height="match_parent"
         android:layout_margin="20dp"
 
-        app:cardBackgroundColor="@color/colorAccent"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="25dp"
         app:cardElevation="10dp"
+        app:contentPadding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,24 +33,27 @@
                 android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/expletus_sans_medium_italic"
                 android:text="name"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/expletus_sans_medium_italic"
                 android:text="address"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/contact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/expletus_sans_medium_italic"
                 android:text="contact"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
 
@@ -57,24 +61,27 @@
                 android:id="@+id/quantity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/expletus_sans_medium_italic"
                 android:text="quantity"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/expletus_sans_medium_italic"
                 android:text="price"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/delivery"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/expletus_sans_medium_italic"
                 android:text="delivery"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
         </LinearLayout>
 

@@ -77,7 +77,6 @@ public class registerActivity  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_activity);
 
-
         if(ContextCompat.checkSelfPermission(registerActivity.this,Manifest.permission.SEND_SMS)!=PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(registerActivity.this,
                     new String[]{Manifest.permission.SEND_SMS},1);
