@@ -37,6 +37,7 @@ public class Profile_Activity extends AppCompatActivity {
     private StorageReference mStorageReference;
     private RatingBar ratingBar;
     private FirebaseUser  currentFirebaseUser;
+    private String userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +51,7 @@ public class Profile_Activity extends AppCompatActivity {
         profileImage=findViewById(R.id.profileImage);
         ratingBar=findViewById(R.id.ratingbar);
         currentFirebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        String userId=currentFirebaseUser.getUid();
+        userId=currentFirebaseUser.getUid();
         Log.d("currentFirebaseUser id",userId);
         mDatabaseRefernce=FirebaseDatabase.getInstance().getReference().child("Users")
                 .child("Farmer").child(userId);
@@ -64,8 +65,8 @@ public class Profile_Activity extends AppCompatActivity {
                 currentAddView.setText((farmerProfileDetails.currentAdd));
                 permanentAddView.setText(farmerProfileDetails.permanentAdd);
                 ratingBar.setNumStars(farmerProfileDetails.rating);
-                mStorageReference= FirebaseStorage.getInstance().getReferenceFromUrl("gs://friends-of-farmers.appspot.com/Farmer_images/");
-                mStorageReference.child("profilePic.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                mStorageReference= FirebaseStorage.getInstance().getReferenceFromUrl("gs://friends-of-farmers.appspot.com/");
+                mStorageReference.child(userId).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
                         Picasso.get().load(uri).fit().centerCrop().into(profileImage);

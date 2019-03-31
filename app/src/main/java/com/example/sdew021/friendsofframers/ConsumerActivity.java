@@ -8,15 +8,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -65,7 +62,7 @@ public class ConsumerActivity extends AppCompatActivity implements NavigationVie
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(ConsumerActivity.this, PankajFarmers.class);
+                Intent i = new Intent(ConsumerActivity.this, UserFarmers.class);
 
                 startActivity(i);
 

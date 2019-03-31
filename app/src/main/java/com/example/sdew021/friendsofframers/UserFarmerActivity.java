@@ -2,7 +2,6 @@ package com.example.sdew021.friendsofframers;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -20,8 +19,6 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -29,17 +26,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.MutableData;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -48,7 +40,7 @@ import java.util.Map.Entry;
 
 import static android.support.constraint.Constraints.TAG;
 
-public class PankajFarmerActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class UserFarmerActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private FarmerAdapter farmerAdapter;
     private DatabaseReference mDatabaseRefrence;
     private DatabaseReference mDatabaseRefrence2;
@@ -71,7 +63,7 @@ public class PankajFarmerActivity extends AppCompatActivity implements AdapterVi
         CropList = (RecyclerView) findViewById(R.id.recyclerView);
 //        spinner=(Spinner) findViewById(R.id.spinner);
         currentFirebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        String userId=PankajFarmers.farmerId;
+        String userId= UserFarmers.farmerId;
         Log.w(TAG, userId);
         Log.w(TAG, "after spinnner");
 //        mDatabaseRefrence=FirebaseDatabase.getInstance().getReferenceFromUrl("https://friends-of-farmers.firebaseio.com/Users/Farmer/pm7FdiYxQ9Xt3lnGnmAo3rnzhcP2/crops");
@@ -136,7 +128,7 @@ public class PankajFarmerActivity extends AppCompatActivity implements AdapterVi
 //                }).addOnFailureListener(new OnFailureListener() {
 //                    @Override
 //                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(PankajFarmerActivity.this,"Cannot load image",Toast.LENGTH_SHORT);
+//                        Toast.makeText(UserFarmerActivity.this,"Cannot load image",Toast.LENGTH_SHORT);
 //                    }
 //                });
             }
@@ -176,26 +168,26 @@ public class PankajFarmerActivity extends AppCompatActivity implements AdapterVi
                 if (crop != null) {
                     Log.i("Item clicked", "");
                     if (crop.getName().toLowerCase().compareTo("wheat") == 0) {
-                        PankajFarmerActivity.clickedCropName="wheat";
-                        Intent intent1 = new Intent(PankajFarmerActivity.this, checkout.class);
+                        UserFarmerActivity.clickedCropName="wheat";
+                        Intent intent1 = new Intent(UserFarmerActivity.this, checkout.class);
                         startActivity(intent1);
                     } else if (crop.getName().toLowerCase().compareTo("corn") == 0) {
-                        PankajFarmerActivity.clickedCropName="corn";
-                        Intent intent2 = new Intent(PankajFarmerActivity.this, checkout.class);
+                        UserFarmerActivity.clickedCropName="corn";
+                        Intent intent2 = new Intent(UserFarmerActivity.this, checkout.class);
 
                         startActivity(intent2);
                     } else if (crop.getName().toLowerCase().compareTo("sugarcane") == 0) {
-                        PankajFarmerActivity.clickedCropName="sugarcane";
-                        Intent intent3 = new Intent(PankajFarmerActivity.this, checkout.class);
+                        UserFarmerActivity.clickedCropName="sugarcane";
+                        Intent intent3 = new Intent(UserFarmerActivity.this, checkout.class);
                         startActivity(intent3);
                     } else if(crop.getName().toLowerCase().compareTo("rice") == 0){
-                        PankajFarmerActivity.clickedCropName="rice";
-                        Intent intent4 = new Intent(PankajFarmerActivity.this, checkout.class);
+                        UserFarmerActivity.clickedCropName="rice";
+                        Intent intent4 = new Intent(UserFarmerActivity.this, checkout.class);
                         startActivity(intent4);
                     }
                     else{
-                        PankajFarmerActivity.clickedCropName="dal";
-                        Intent intent4 = new Intent(PankajFarmerActivity.this, checkout.class);
+                        UserFarmerActivity.clickedCropName="dal";
+                        Intent intent4 = new Intent(UserFarmerActivity.this, checkout.class);
                         startActivity(intent4);
                     }
 
@@ -215,14 +207,14 @@ public class PankajFarmerActivity extends AppCompatActivity implements AdapterVi
         if(position==0){
 //            Log.w(TAG,"position:"+position);
             Toast.makeText(parent.getContext(),text,Toast.LENGTH_SHORT).show();
-            FarmerAdapter.gCropIdValue=sortByStock(FarmerAdapter.gCropIdValue,true);
+//            FarmerAdapter.gCropIdValue=sortByStock(FarmerAdapter.gCropIdValue,true);
 //            printMap(FarmerAdapter.gCropIdValue);
             filter(searchText);
         }
         else if(position==1){
 //            Log.w(TAG,"position:"+position);
             Toast.makeText(parent.getContext(),text,Toast.LENGTH_SHORT).show();
-            FarmerAdapter.gCropIdValue=sortByStock(FarmerAdapter.gCropIdValue,false);
+//            FarmerAdapter.gCropIdValue=sortByStock(FarmerAdapter.gCropIdValue,false);
 //            printMap(FarmerAdapter.gCropIdValue);
             filter(searchText);
         }
@@ -248,40 +240,40 @@ public class PankajFarmerActivity extends AppCompatActivity implements AdapterVi
 
     }
 
-    private static Map<String, Crop> sortByStock(Map<String, Crop> unsortMap, final boolean order)
-    {
+//    private static Map<String, Crop> sortByStock(Map<String, Crop> unsortMap, final boolean order)
+//    {
+//
+//        List<Entry<String, Crop>> list = new LinkedList<Entry<String, Crop>>(unsortMap.entrySet());
+//        Collections.sort(list, new Comparator<Entry<String, Crop>>()
+//        {
+//            public int compare(Entry<String, Crop> o1, Entry<String, Crop> o2)
+//            {
+//                int stock1=Integer.parseInt(o1.getValue().getStock());
+//                int stock2=Integer.parseInt(o2.getValue().getStock());
+//                if (order)
+//                {
+//                    return Integer.compare(stock1,stock2);
+//                }
+//                else
+//                {
+//                    return Integer.compare(stock2,stock1);
+//
+//                }
+//            }
+//        });
 
-        List<Entry<String, Crop>> list = new LinkedList<Entry<String, Crop>>(unsortMap.entrySet());
-        Collections.sort(list, new Comparator<Entry<String, Crop>>()
-        {
-            public int compare(Entry<String, Crop> o1, Entry<String, Crop> o2)
-            {
-                int stock1=Integer.parseInt(o1.getValue().getStock());
-                int stock2=Integer.parseInt(o2.getValue().getStock());
-                if (order)
-                {
-                    return Integer.compare(stock1,stock2);
-                }
-                else
-                {
-                    return Integer.compare(stock2,stock1);
-
-                }
-            }
-        });
-
-        // Maintaining insertion order with the help of LinkedList
-        Map<String, Crop> sortedMap = new LinkedHashMap<>();
-        printList(list);
-//        Log.d(TAG,"Break");
-        for (int i=0;i<list.size();++i)
-        {
-//            Log.d(TAG,"i="+i+" Key :" + list.get(i).getKey() + " Value :"+ list.get(i).getValue().getStock());
-            sortedMap.put(list.get(i).getKey(), list.get(i).getValue());
-        }
-//        printMap(sortedMap);
-        return sortedMap;
-    }
+//        // Maintaining insertion order with the help of LinkedList
+//        Map<String, Crop> sortedMap = new LinkedHashMap<>();
+//        printList(list);
+////        Log.d(TAG,"Break");
+//        for (int i=0;i<list.size();++i)
+//        {
+////            Log.d(TAG,"i="+i+" Key :" + list.get(i).getKey() + " Value :"+ list.get(i).getValue().getStock());
+//            sortedMap.put(list.get(i).getKey(), list.get(i).getValue());
+//        }
+////        printMap(sortedMap);
+//        return sortedMap;
+//    }
 
 
     private static Map<String, Crop> sortBypendingOrders(Map<String, Crop> unsortMap, final boolean order)
@@ -356,7 +348,7 @@ public class PankajFarmerActivity extends AppCompatActivity implements AdapterVi
                     crop.Crop_image = R.drawable.dal;
                 }
                 FarmerAdapter.gCropIdValue.put(dataSnapshot.getKey(),crop);
-                FarmerAdapter.gCropIdValue=sortByStock(FarmerAdapter.gCropIdValue,true);
+//                FarmerAdapter.gCropIdValue=sortByStock(FarmerAdapter.gCropIdValue,true);
                 farmerAdapter.filterList(FarmerAdapter.gCropIdValue);
 //                filterList(FarmerAdapter.gCropIdValue);
 

@@ -9,7 +9,7 @@
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardview"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:layout_width="match_parent"
         android:layout_margin="20dp"
         app:cardElevation="50dp"
@@ -39,7 +39,7 @@
         android:fontFamily="@font/expletus_sans_medium_italic"
         android:text="Crop:"
         android:textColor="@color/black"
-        android:textSize="25dp" />
+        android:textSize="20dp" />
 
         <TextView
             android:id="@+id/cropView"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
-            android:textSize="30sp"
+            android:textSize="20dp"
             android:textColor="@color/blue"
             android:text="wheat" />
 
@@ -68,7 +68,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/expletus_sans_medium_italic"
         android:textColor="@color/black"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:text="Price" />
         <TextView
             android:id="@+id/priceView"
@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="10dp"
-            android:textSize="30sp"
+            android:textSize="20dp"
             android:textColor="@color/blue"
             android:text="wheat" />
     </LinearLayout>
@@ -93,7 +93,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="8dp"
         android:fontFamily="@font/expletus_sans_medium_italic"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:textColor="@color/black"
         android:layout_marginTop="10dp"
         android:text="Stock" />
@@ -103,7 +103,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="10dp"
-            android:textSize="30sp"
+            android:textSize="20dp"
             android:textColor="@color/blue"
             android:text="wheat" />
     </LinearLayout>
@@ -128,7 +128,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="8dp"
                 android:fontFamily="@font/expletus_sans_medium_italic"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"
                 android:text="Name" />
@@ -138,7 +138,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="10dp"
-                android:textSize="30sp"
+                android:textSize="20dp"
                 android:textColor="@color/blue"
                 android:text="wheat" />
         </LinearLayout>
@@ -155,7 +155,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="8dp"
                 android:fontFamily="@font/expletus_sans_medium_italic"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"
                 android:text="Contact" />
@@ -165,7 +165,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="10dp"
-                android:textSize="30sp"
+                android:textSize="20dp"
                 android:textColor="@color/blue"
                 android:text="wheat" />
         </LinearLayout>
@@ -182,7 +182,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="8dp"
                 android:fontFamily="@font/expletus_sans_medium_italic"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"
                 android:text="Email" />
@@ -192,7 +192,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="10dp"
-                android:textSize="30sp"
+                android:textSize="20dp"
                 android:textColor="@color/blue"
                 android:text="wheat" />
         </LinearLayout>
@@ -208,7 +208,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="8dp"
                 android:fontFamily="@font/expletus_sans_medium_italic"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"
                 android:text="Address" />
@@ -218,14 +218,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="10dp"
-                android:textSize="30sp"
+                android:textSize="20dp"
                 android:textColor="@color/blue"
                 android:text="wheat" />
         </LinearLayout>
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/continueBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout9"
@@ -250,7 +250,7 @@
         android:fontFamily="@font/expletus_sans_medium_italic"
         android:textColor="@color/black"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
 
 
         android:text="Seller Details"

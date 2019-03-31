@@ -4,17 +4,14 @@ package com.example.sdew021.friendsofframers;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -24,7 +21,7 @@ import java.util.List;
 
 public class fname extends RecyclerView.Adapter<fname.MyViewHolder> {
 
-    private List<PankajFarmerDetails> farmerList;
+    private List<UserFarmerDetails> farmerList;
     private Context context;
     private StorageReference mStorageReference;
 
@@ -42,7 +39,7 @@ public class fname extends RecyclerView.Adapter<fname.MyViewHolder> {
     }
 
 
-    public fname(List<PankajFarmerDetails> moviesList,Context context1) {
+    public fname(List<UserFarmerDetails> moviesList, Context context1) {
         this.farmerList = moviesList;
         this.context=context1;
 
@@ -62,8 +59,8 @@ public class fname extends RecyclerView.Adapter<fname.MyViewHolder> {
         holder.name_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PankajFarmers.farmerId=farmerList.get(position).farmerId;
-                context.startActivity(new Intent(context,PankajFarmerActivity.class));
+                UserFarmers.farmerId=farmerList.get(position).farmerId;
+                context.startActivity(new Intent(context, UserFarmerActivity.class));
             }
         });
         mStorageReference= FirebaseStorage.getInstance()

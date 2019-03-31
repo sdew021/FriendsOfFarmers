@@ -52,10 +52,11 @@ public class FarmerPage1 extends AppCompatActivity {
 
         NavigationView navigationView=findViewById(R.id.nav_view);
         drawerLayout=findViewById(R.id.drawer_layout);
-
+        user= FirebaseAuth.getInstance().getCurrentUser();
+        userId=user.getUid();
         mStorageReference= FirebaseStorage.getInstance().
-                getReferenceFromUrl("gs://friends-of-farmers.appspot.com/Farmer_images/");
-        mStorageReference.child("profilePic.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                getReferenceFromUrl("gs://friends-of-farmers.appspot.com/");
+        mStorageReference.child(userId).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 profileImage=findViewById(R.id.navProfileImage);
@@ -67,8 +68,6 @@ public class FarmerPage1 extends AppCompatActivity {
                 Toast.makeText(FarmerPage1.this,"Cannot load image",Toast.LENGTH_SHORT);
             }
         });
-        user= FirebaseAuth.getInstance().getCurrentUser();
-        userId=user.getUid();
         mDatabaseRefernce= FirebaseDatabase.getInstance().getReference().child("Users")
                 .child("Farmer").child(userId).child("name");
         final ValueEventListener dataListner =new ValueEventListener(){

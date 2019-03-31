@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.widget.TextView;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -15,12 +13,12 @@ import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class PankajFarmers extends AppCompatActivity {
+public class UserFarmers extends AppCompatActivity {
 
     private RecyclerView mNameView;
     public  static String farmerId;
     private Firebase mRef10;
-    ArrayList<PankajFarmerDetails> farmerList;
+    ArrayList<UserFarmerDetails> farmerList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +42,9 @@ public class PankajFarmers extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
-                    PankajFarmerDetails pankajFarmerDetails=dataSnapshot1.getValue(PankajFarmerDetails.class);
-                    pankajFarmerDetails.farmerId=dataSnapshot1.getKey().toString();
-                    farmerList.add(pankajFarmerDetails);
+                    UserFarmerDetails userFarmerDetails =dataSnapshot1.getValue(UserFarmerDetails.class);
+                    userFarmerDetails.farmerId=dataSnapshot1.getKey().toString();
+                    farmerList.add(userFarmerDetails);
                 }
                 f.notifyDataSetChanged();
                 mRef10.removeEventListener(this);

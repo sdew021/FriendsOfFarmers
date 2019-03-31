@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public  class PankajFarmerDetails {
+public  class UserFarmerDetails {
     String name;
     String farmerId;
 

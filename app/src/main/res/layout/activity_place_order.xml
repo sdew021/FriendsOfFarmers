@@ -14,7 +14,7 @@
             android:id="@+id/cropView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="25dp"
+            android:textSize="35dp"
             android:fontFamily="@font/expletus_sans_medium_italic"
             android:textColor="@color/black"
             android:text="Crop Image with name"
@@ -66,7 +66,7 @@
             android:textColor="@color/black"
             android:textSize="25dp" />
 
-        <EditText
+        <TextView
             android:id="@+id/addressView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -74,13 +74,15 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:background="@drawable/edittext_bg"
             android:paddingStart="5dp"
             android:layout_marginTop="15dp"
             android:drawableStart="@drawable/ic_location_on_black_24dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text=" Address" />
+            android:text=" Address"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            />
 
         <TextView
             android:id="@+id/cartView"

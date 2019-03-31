@@ -62,6 +62,7 @@ public class farmerActivity extends AppCompatActivity implements AdapterView.OnI
     private ChildEventListener mChildEventListner;
     private FirebaseUser currentFirebaseUser;
     String searchText;
+    private String userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +71,7 @@ public class farmerActivity extends AppCompatActivity implements AdapterView.OnI
         CropList = (RecyclerView) findViewById(R.id.recyclerView);
         spinner=(Spinner) findViewById(R.id.spinner);
         currentFirebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        String userId=currentFirebaseUser.getUid();
+        userId=currentFirebaseUser.getUid();
         Log.w(TAG, userId);
         Log.w(TAG, "after spinnner");
 //        mDatabaseRefrence=FirebaseDatabase.getInstance().getReferenceFromUrl("https://friends-of-farmers.firebaseio.com/Users/Farmer/pm7FdiYxQ9Xt3lnGnmAo3rnzhcP2/crops");
@@ -126,8 +127,8 @@ public class farmerActivity extends AppCompatActivity implements AdapterView.OnI
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 FarmerProfileDetails farmerProfileDetails = dataSnapshot.getValue(FarmerProfileDetails.class);
-                mStorageReference= FirebaseStorage.getInstance().getReferenceFromUrl("gs://friends-of-farmers.appspot.com/Farmer_images/");
-                mStorageReference.child("profilePic.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                mStorageReference= FirebaseStorage.getInstance().getReferenceFromUrl("gs://friends-of-farmers.appspot.com/");
+                mStorageReference.child(userId).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
                         Picasso.get().load(uri).fit().centerCrop().into(profileImage);
