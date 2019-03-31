@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".MainActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/cropView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:fontFamily="@font/expletus_sans_medium_italic"
+            android:textColor="@color/black"
+            android:text="Crop Image with name"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="30dp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="39dp" />
+
+        <TextView
+            android:id="@+id/priceView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cropView"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/expletus_sans_medium_italic"
+            android:text="Price per Kg"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            tools:layout_editor_absoluteX="34dp"
+            tools:layout_editor_absoluteY="131dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView4"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/expletus_sans_medium_italic"
+            android:text="Enter Quantity"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText"
+            android:layout_marginStart="18dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/expletus_sans_medium_italic"
+            android:text="Shipping Address"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+
+        <EditText
+            android:id="@+id/addressView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView2"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/edittext_bg"
+            android:paddingStart="5dp"
+            android:layout_marginTop="15dp"
+            android:drawableStart="@drawable/ic_location_on_black_24dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=" Address" />
+
+        <TextView
+            android:id="@+id/cartView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addressView"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/button_bg"
+            android:fontFamily="@font/expletus_sans_medium_italic"
+            android:paddingTop="8dp"
+
+            android:paddingRight="18dp"
+            android:text="Add to cart"
+
+
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/orderView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cartView"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="60dp"
+            android:background="@drawable/button_bg"
+            android:fontFamily="@font/expletus_sans_medium_italic"
+            android:paddingTop="8dp"
+
+            android:paddingRight="18dp"
+            android:text="Place order"
+            android:textAlignment="center"
+
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+
+        <EditText
+            android:id="@+id/quantityView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/expletus_sans_medium_italic"
+            android:hint="Enter the quantity"
+            android:paddingStart="5dp"
+            android:drawableStart="@drawable/ic_add_shopping_cart_black_24dp"
+            android:background="@drawable/edittext_bg"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/quantityView"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/expletus_sans_medium_italic"
+            android:text="Total price "
+
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView3"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:drawableStart="@drawable/ic_monetization_on_black_24dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edittext_bg"
+            android:paddingStart="5dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/priceView"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/expletus_sans_medium_italic"
+            android:text="Stock available "
+
+
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+
+
+    </RelativeLayout>
+</ScrollView>
