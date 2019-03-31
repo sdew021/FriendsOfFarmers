@@ -7,82 +7,62 @@
     android:background="@drawable/background"
     tools:context=".MainActivity">
 
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:layout_margin="20dp"
+        app:cardElevation="50dp"
+        app:cardCornerRadius="20dp"
+        android:background="@drawable/background">
 
-    <TextView
-        android:id="@+id/nameView"
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+           android:layout_height="match_parent"
+            app:srcCompat="@drawable/corn"
+            android:scaleType="fitXY"/>
+    </android.support.v7.widget.CardView>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/expletus_sans_medium_italic"
-        android:text="Name"
-        android:textColor="@color/black"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/emailView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:id="@+id/linearLayout1"
+        android:layout_below="@id/cardview"
+        android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/emailView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/nameView"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/black"
-        android:fontFamily="@font/expletus_sans_medium_italic"
-        android:paddingLeft="8dp"
-        android:text="Email"
-        android:textSize="25dp" />
-
-    <TextView
-        android:id="@+id/phoneView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/emailView"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/expletus_sans_medium_italic"
-        android:paddingLeft="8dp"
-        android:text="Phone"
-        android:textColor="@color/black"
-        android:textSize="25dp" />
-
-    <TextView
-        android:id="@+id/addressView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/phoneView"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="8dp"
-        android:fontFamily="@font/expletus_sans_medium_italic"
-        android:textColor="@color/black"
-        android:text="Address"
-        android:textSize="25dp" />
-
-    <TextView
-        android:id="@+id/cropView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView3"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/expletus_sans_medium_italic"
-        android:text="Crop"
+        android:text="Crop:"
         android:textColor="@color/black"
         android:textSize="25dp" />
 
-    <TextView
-        android:id="@+id/priceView"
-        android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/cropView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:textSize="30sp"
+            android:textColor="@color/blue"
+            android:text="wheat" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cropView"
+        android:id="@+id/linearLayout2"
+        android:layout_below="@id/linearLayout1">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="10dp"
@@ -90,12 +70,26 @@
         android:textColor="@color/black"
         android:textSize="25dp"
         android:text="Price" />
+        <TextView
+            android:id="@+id/priceView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:textSize="30sp"
+            android:textColor="@color/blue"
+            android:text="wheat" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout3"
+        android:layout_below="@id/linearLayout2">
 
     <TextView
-        android:id="@+id/stockView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/priceView"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="8dp"
         android:fontFamily="@font/expletus_sans_medium_italic"
@@ -103,12 +97,138 @@
         android:textColor="@color/black"
         android:layout_marginTop="10dp"
         android:text="Stock" />
+        <TextView
+            android:id="@+id/stockView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:textSize="30sp"
+            android:textColor="@color/blue"
+            android:text="wheat" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView2"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout9">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout5"
+            android:layout_below="@id/textView2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/expletus_sans_medium_italic"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:text="Name" />
+            <TextView
+                android:id="@+id/nameView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp"
+                android:textSize="30sp"
+                android:textColor="@color/blue"
+                android:text="wheat" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout6"
+            android:layout_below="@id/textView2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/expletus_sans_medium_italic"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:text="Contact" />
+            <TextView
+                android:id="@+id/phoneView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp"
+                android:textSize="30sp"
+                android:textColor="@color/blue"
+                android:text="wheat" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout7"
+            android:layout_below="@id/textView2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/expletus_sans_medium_italic"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:text="Email" />
+            <TextView
+                android:id="@+id/emailView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp"
+                android:textSize="30sp"
+                android:textColor="@color/blue"
+                android:text="wheat" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout8"
+            android:layout_below="@id/textView2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/expletus_sans_medium_italic"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:text="Address" />
+            <TextView
+                android:id="@+id/addressView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp"
+                android:textSize="30sp"
+                android:textColor="@color/blue"
+                android:text="wheat" />
+        </LinearLayout>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/addressView"
+        android:layout_below="@+id/linearLayout9"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginTop="40dp"
@@ -126,7 +246,7 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/stockView"
+        android:layout_below="@+id/linearLayout3"
         android:fontFamily="@font/expletus_sans_medium_italic"
         android:textColor="@color/black"
         android:layout_marginLeft="8dp"
@@ -139,12 +259,7 @@
         android:textAlignment="center"
         android:textSize="30dp" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_marginTop="40dp"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:srcCompat="@drawable/corn" />
+
 
 
 </RelativeLayout>
