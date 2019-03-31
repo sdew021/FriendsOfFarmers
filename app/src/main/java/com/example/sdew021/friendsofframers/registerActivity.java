@@ -329,6 +329,7 @@ public class registerActivity  extends AppCompatActivity {
         current_user_db.child("contact").setValue(phone);
         current_user_db.child("name").setValue(name);
         current_user_db.child("balance").setValue("1000");
+        current_user_db.child("role").setValue("farmer");
         current_user_db.child("image").setValue("gs://friends-of-farmers.appspot.com/Farmer_images/appicon.jpg");
         current_user_db.child("permanentAdd").setValue(permanentadd);
         current_user_db.child("currentAdd").setValue(currentadd);
@@ -390,6 +391,7 @@ public class registerActivity  extends AppCompatActivity {
         current_user_db.child("contact").setValue(phone);
         current_user_db.child("balance").setValue("1000");
         current_user_db.child("name").setValue(name);
+        current_user_db.child("role").setValue("farmer");
         current_user_db.child("image").setValue("gs://friends-of-farmers.appspot.com/Farmer_images/appicon.jpg");
         current_user_db.child("permanentAdd").setValue(permanentadd);
         current_user_db.child("currentAdd").setValue(currentadd);

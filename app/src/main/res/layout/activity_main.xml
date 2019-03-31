@@ -81,20 +81,21 @@
 
     <Button
         android:id="@+id/login1"
-        android:layout_width="332dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="356dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="70dp"
         android:background="@drawable/button_bg"
         android:fontFamily="@font/expletus_sans_medium_italic"
-        android:text="Login as Farmer"
+        android:text="LOGIN"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
 
-    <Button
+    <!--<Button
         android:id="@+id/login2"
         android:layout_width="332dp"
         android:layout_height="51dp"
@@ -107,7 +108,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />-->
 
 
 </android.support.constraint.ConstraintLayout>
