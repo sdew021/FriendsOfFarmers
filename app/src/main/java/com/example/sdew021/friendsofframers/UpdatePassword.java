@@ -47,38 +47,43 @@ public class UpdatePassword extends AppCompatActivity {
             public void onClick(View v) {
                 String oldPassword=oldPasswordView.getText().toString();
                 final String confirmPassword=confirmPasswordView.getText().toString();
-                if(oldPassword.compareTo(confirmPassword)==0) {
-                    AuthCredential credential = EmailAuthProvider
-                            .getCredential(user.getEmail(), oldPassword);
-                    user.reauthenticate(credential)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        final String newPass=newPassowordView.getText().toString();
-                                        user.updatePassword(newPass).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if (task.isSuccessful()) {
-                                                    mDatabaseReference.child("password").setValue(newPass);
-                                                    Toast.makeText(UpdatePassword.this, "Password Update Succesfully", Toast.LENGTH_SHORT).show();
-                                                    startActivity(new Intent(UpdatePassword.this,Profile_Activity.class));
-                                                } else {
-                                                    Toast.makeText(UpdatePassword.this, "Error password not updated", Toast.LENGTH_SHORT).show();
-
-                                                }
-                                            }
-                                        });
-                                    } else {
-                                        Toast.makeText(UpdatePassword.this, "Password Incorrect", Toast.LENGTH_SHORT).show();
-
-                                    }
-                                }
-                            });
+                if(oldPassword.compareTo("")==0||confirmPassword.compareTo("")==0||
+                        newPassowordView.getText().toString().compareTo("")==0){
+                    Toast.makeText(UpdatePassword.this,"Some Fields Are empty",Toast.LENGTH_SHORT).show();
                 }
-                else{
-                    confirmPasswordView.setError("Password do not match");
-                    Toast.makeText(UpdatePassword.this, "Please Enter Same Passwords", Toast.LENGTH_SHORT).show();
+                else {
+                    if (oldPassword.compareTo(confirmPassword) == 0) {
+                        AuthCredential credential = EmailAuthProvider
+                                .getCredential(user.getEmail(), oldPassword);
+                        user.reauthenticate(credential)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            final String newPass = newPassowordView.getText().toString();
+                                            user.updatePassword(newPass).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful()) {
+                                                        mDatabaseReference.child("password").setValue(newPass);
+                                                        Toast.makeText(UpdatePassword.this, "Password Update Succesfully", Toast.LENGTH_SHORT).show();
+                                                        startActivity(new Intent(UpdatePassword.this, Profile_Activity.class));
+                                                    } else {
+                                                        Toast.makeText(UpdatePassword.this, "Error password not updated", Toast.LENGTH_SHORT).show();
+
+                                                    }
+                                                }
+                                            });
+                                        } else {
+                                            Toast.makeText(UpdatePassword.this, "Password Incorrect", Toast.LENGTH_SHORT).show();
+
+                                        }
+                                    }
+                                });
+                    } else {
+                        confirmPasswordView.setError("Password do not match");
+                        Toast.makeText(UpdatePassword.this, "Please Enter Same Passwords", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
