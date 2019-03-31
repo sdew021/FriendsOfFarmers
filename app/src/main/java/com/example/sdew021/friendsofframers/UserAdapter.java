@@ -39,7 +39,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             contact=(TextView) itemView.findViewById(R.id.contact);
             address=(TextView) itemView.findViewById(R.id.address);
             price=(TextView) itemView.findViewById(R.id.price);
-            delivery=(TextView) itemView.findViewById(R.id.delivery);
             quantity=(TextView) itemView.findViewById(R.id.quantity);
         }
     }
@@ -61,7 +60,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         UserViewHolder.name.setText(user.getName());
         UserViewHolder.quantity.setText(user.getQuantity());
         UserViewHolder.price.setText(user.getPrice());
-        UserViewHolder.delivery.setText(user.getDelivery());
         UserViewHolder.address.setText(user.getAddress());
     }
 

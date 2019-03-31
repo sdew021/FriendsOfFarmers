@@ -7,7 +7,6 @@ public class User {
     private String Address;
     private String Name;
     private String Price;
-    private String delivery;
     private String Quantity;
 
     public void setContact(String contact) {
@@ -26,29 +25,24 @@ public class User {
         Price = price;
     }
 
-    public void setDelivery(String delivery) {
-        this.delivery = delivery;
-    }
-
     public void setQuantity(String quantity) {
         Quantity = quantity;
     }
 
-    public User(String name, String address, String contact, String price, String delivery, String quantity) {
+    public User(String name, String address, String contact, String price, String quantity) {
         this.contact = contact;
         Address = address;
         Name = name;
         Price = price;
-        this.delivery = delivery;
         Quantity = quantity;
     }
 
     public String getContact() {
-        return "contact:"+contact;
+        return contact;
     }
 
     public String getAddress() {
-        return "Address:"+Address;
+        return Address;
     }
 
     public String getName() {
@@ -56,15 +50,11 @@ public class User {
     }
 
     public String getPrice() {
-        return "Price:"+Price;
-    }
-
-    public String getDelivery() {
-        return "Estimated delivery Time:"+delivery;
+        return "Rs:"+Price;
     }
 
     public String getQuantity() {
-        return "Quantity:"+Quantity;
+        return Quantity+" Kg";
     }
 
     User(){}
