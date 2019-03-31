@@ -1,10 +1,14 @@
+/*
+*   Contributed by Saurabh Dewangan
+*   17CO140
+*/
+
 package com.example.sdew021.friendsofframers;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.transition.Explode;
 
 public class animActivity extends AppCompatActivity {
 

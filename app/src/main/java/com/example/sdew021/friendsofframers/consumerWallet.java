@@ -1,3 +1,8 @@
+/*
+ *   Contributed by Saurabh Dewangan
+ *   17CO140
+ */
+
 package com.example.sdew021.friendsofframers;
 
 import android.support.annotation.NonNull;
@@ -89,6 +94,9 @@ public class consumerWallet extends AppCompatActivity {
             public void onClick(View v) {
                 if(user.isEmailVerified() && check(amount) == 0 && checkMsg(checkOtp)){
                     withdrawMoney();
+                }
+                else{
+                    Toast.makeText(consumerWallet.this,"Verfiy Email",Toast.LENGTH_LONG).show();
                 }
             }
         });

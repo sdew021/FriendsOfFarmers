@@ -3,18 +3,27 @@ package com.example.sdew021.friendsofframers;
 class UserConsumer {
 
     public String name,contact,email,currentAdd,permanentAdd,password;
-
+    public String profImg;
     public UserConsumer(){
 
     }
 
-    public UserConsumer(String name, String phone, String email, String currentAddress, String permanentAddress,String password) {
+    public UserConsumer(String name, String phone, String email, String currentAddress, String permanentAddress,String password,String profImg) {
         this.name = name;
         this.contact = phone;
         this.email = email;
         this.currentAdd = currentAddress;
         this.permanentAdd = permanentAddress;
         this.password = password;
+        this.profImg = profImg;
+    }
+
+    public String getProfImg() {
+        return profImg;
+    }
+
+    public void setProfImg(String profImg) {
+        this.profImg = profImg;
     }
 
     public String getName() {
@@ -59,13 +68,14 @@ class UserConsumer {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "UserConsumer{" +
                 "name='" + name + '\'' +
                 ", contact='" + contact + '\'' +
                 ", email='" + email + '\'' +
                 ", currentAdd='" + currentAdd + '\'' +
                 ", permanentAdd='" + permanentAdd + '\'' +
                 ", password='" + password + '\'' +
+                ", profImg='" + profImg + '\'' +
                 '}';
     }
 }

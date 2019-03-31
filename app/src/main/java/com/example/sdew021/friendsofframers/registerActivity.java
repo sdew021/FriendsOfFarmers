@@ -1,3 +1,8 @@
+/*
+ *   Contributed by Saurabh Dewangan
+ *   17CO140
+ */
+
 package com.example.sdew021.friendsofframers;
 
 import android.Manifest;
@@ -6,8 +11,11 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.AnimationDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.storage.StorageManager;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -25,6 +33,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
+import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.common.internal.Objects;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -36,7 +45,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
+import java.io.InputStream;
 import java.util.Random;
 
 import static android.os.Build.VERSION_CODES.M;
@@ -59,9 +72,13 @@ public class registerActivity  extends AppCompatActivity {
     RadioGroup rg;
     RadioButton rb;
     String userID;
+    private static final int GALLERY_INTENT=2;
+    private Uri uri;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     private DatabaseReference current_user_db;
+    private FirebaseStorage storage = FirebaseStorage.getInstance();
+    StorageReference storageRef = storage.getReference();
 
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     Random r = new Random();
@@ -76,6 +93,8 @@ public class registerActivity  extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_activity);
+
+
 
         if(ContextCompat.checkSelfPermission(registerActivity.this,Manifest.permission.SEND_SMS)!=PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(registerActivity.this,
@@ -152,11 +171,30 @@ public class registerActivity  extends AppCompatActivity {
                             Toast.makeText(registerActivity.this,"REGISTERED!!!",Toast.LENGTH_LONG).show();
                             if(flag==0 && check.equals("FARMER")){
                                 current_user_db = mDatabase.child("Farmer").child(user.getUid());
+                                StorageReference uploadpp = storageRef.child(user.getUid());
+                                uri = Uri.parse("android.resource://com.example.sdew021.friendsofframers/drawable/farmer_icon_app");
+                                try {
+                                    InputStream stream = getContentResolver().openInputStream(uri);
+                                    uploadpp.putStream(stream);
+                                    Toast.makeText(registerActivity.this, "PP UPLOADED!!!", Toast.LENGTH_SHORT).show();
+                                }catch (Exception e){
+                                    Log.d("Error","Profile pic error",null);
+                                }
                                 startRegisterFarmer();
 
                             }
+
                             else if(flag==0 && check.equals("CONSUMER")){
                                 current_user_db = mDatabase.child("Consumer").child(user.getUid());
+                                StorageReference uploadpp = storageRef.child(user.getUid());
+                                uri = Uri.parse("android.resource://com.example.sdew021.friendsofframers/drawable/farmer_icon_app");
+                                try {
+                                    InputStream stream = getContentResolver().openInputStream(uri);
+                                    uploadpp.putStream(stream);
+                                    Toast.makeText(registerActivity.this, "PP UPLOADED!!!", Toast.LENGTH_SHORT).show();
+                                }catch (Exception e){
+                                    Log.d("Error","Profile pic error",null);
+                                }
                                 startRegisterConsumer();
                             }
 
@@ -225,6 +263,8 @@ public class registerActivity  extends AppCompatActivity {
             }
         });
     }
+
+
 
     /*public void authUser(){
         String email = editText3.getText().toString();
