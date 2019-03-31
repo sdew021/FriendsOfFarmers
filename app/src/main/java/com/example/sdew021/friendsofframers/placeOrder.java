@@ -29,6 +29,8 @@ public class placeOrder extends AppCompatActivity {
     private String userId,name,stock,p;
     private int price;
     private User userDetails=new User();
+    private int balFlag = 0;
+    private long count;
     private MyOrders myOrders=new MyOrders();
 
     @Override
@@ -144,19 +146,81 @@ public class placeOrder extends AppCompatActivity {
                 if(quantityView.getText()!=null&&quantityView.getText().toString().compareTo("")!=0) {
                     final int quantity = Integer.parseInt(quantityView.getText().toString());
                     final int dStock = Integer.parseInt(stock);
+
+
+
+
                     if (dStock <quantity)
                         Toast.makeText(placeOrder.this, "Quantity cannot be  greater than available stock", Toast.LENGTH_SHORT).show();
-
-
                     else{
                         userDetails.setPrice(totalPriceView.getText().toString());
                         userDetails.setQuantity(quantityView.getText().toString());
                         mDatabaseReferenceFarmer.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                long count = dataSnapshot.child("crops").child(UserFarmerActivity.clickedCropName).child("user").getChildrenCount();
-                                mDatabaseReferenceFarmer.child("crops").child(UserFarmerActivity.clickedCropName).child("stock").setValue(Integer.toString(dStock-quantity));
-                                mDatabaseReferenceFarmer.child("crops").child(UserFarmerActivity.clickedCropName).child("user").child("user" + count).setValue(userDetails);
+                                count = dataSnapshot.child("crops").child(UserFarmerActivity.clickedCropName).child("user").getChildrenCount();
+
+
+                                mDabaseReferenceUser.child("balance").addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        String bal = dataSnapshot.getValue(String.class);
+                                        int currentBal = Integer.parseInt(bal);
+                                        if(Integer.parseInt(totalPriceView.getText().toString())>currentBal){
+
+                                            Toast.makeText(placeOrder.this,"Insufficient Balance",Toast.LENGTH_SHORT).show();
+                                        }
+                                        else{
+                                            currentBal-=Integer.parseInt(totalPriceView.getText().toString());
+                                            String newBal = Integer.toString(currentBal);
+
+                                            myOrders.setCropname(UserFarmerActivity.clickedCropName);
+                                            myOrders.setCropPrice(totalPriceView.getText().toString());
+                                            myOrders.setQuantity(quantityView.getText().toString());
+                                            mDabaseReferenceUser.addListenerForSingleValueEvent(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                    long count = dataSnapshot.child("orders").getChildrenCount();
+                                                    mDabaseReferenceUser.child("orders").child("item" + count).setValue(myOrders);
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                                }
+                                            });
+
+                                            Toast.makeText(placeOrder.this, "Order placed succesfully, Go to My orders ", Toast.LENGTH_SHORT).show();
+
+                                            mDabaseReferenceUser.child("balance").setValue(newBal);
+                                            mDatabaseReferenceFarmer.child("crops").child(UserFarmerActivity.clickedCropName).child("stock").setValue(Integer.toString(dStock-quantity));
+                                            mDatabaseReferenceFarmer.child("crops").child(UserFarmerActivity.clickedCropName).child("user").child("user" + count).setValue(userDetails);
+                                            mDatabaseReferenceFarmer.child("crops").child(UserFarmerActivity.clickedCropName).child("pendingOrders").setValue(Long.toString(count));
+                                            mDatabaseReferenceFarmer.child("balance").addListenerForSingleValueEvent(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                    String currentBal = dataSnapshot.getValue(String.class);
+                                                    int bal = Integer.parseInt(currentBal);
+                                                    bal+=Integer.parseInt(totalPriceView.getText().toString());
+                                                    String newBal = Integer.toString(bal);
+                                                    mDatabaseReferenceFarmer.child("balance").setValue(newBal);
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                                }
+                                            });
+                                        }
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+
                             }
 
                             @Override
@@ -164,23 +228,7 @@ public class placeOrder extends AppCompatActivity {
 
                             }
                         });
-                        myOrders.setCropname(UserFarmerActivity.clickedCropName);
-                        myOrders.setCropPrice(totalPriceView.getText().toString());
-                        myOrders.setQuantity(quantityView.getText().toString());
-                        mDabaseReferenceUser.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                long count = dataSnapshot.child("orders").getChildrenCount();
-                                mDabaseReferenceUser.child("orders").child("item" + count).setValue(myOrders);
-                            }
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                            }
-                        });
-
-                        Toast.makeText(placeOrder.this, "Order placed succesfully, Go to My orders ", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else
