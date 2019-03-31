@@ -65,7 +65,7 @@ public class ConsumerActivity extends AppCompatActivity implements NavigationVie
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(ConsumerActivity.this, Activity2.class);
+                Intent i = new Intent(ConsumerActivity.this, PankajFarmers.class);
 
                 startActivity(i);
 
