@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +46,7 @@ public class DalActivity extends AppCompatActivity {
     private ChildEventListener mChildEventListner;
     private FirebaseUser user;
     private int stock;
+    private ImageView img;
     EditText editText1;
     EditText editText2;
     int flag = 1;
@@ -58,7 +60,8 @@ public class DalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rice);
 
-
+        img = (ImageView) findViewById(R.id.riceimage);
+        img.setImageResource(R.drawable.dal);
         button1 = (Button) findViewById(R.id.button1);
         button2 = (Button) findViewById(R.id.button2);
         editText1 = (EditText) findViewById(R.id.enterquantity);
