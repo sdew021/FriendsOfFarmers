@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--/*
+*   Contributed by Saurabh Dewangan
+*   17CO140
+*/-->
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/expletus_sans_medium_italic</item>

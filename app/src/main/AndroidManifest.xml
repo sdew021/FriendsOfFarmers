@@ -20,6 +20,7 @@
         <activity android:name=".PankajCrops" />
         <activity android:name=".PankajFarmers" />
         <activity android:name=".FarmerPage1" />
+        <activity android:name=".PasswordActivity"/>
         <activity
             android:name=".WheatActivity"
             android:parentActivityName=".farmerActivity"></activity>
@@ -35,12 +36,6 @@
         <activity android:name=".orders" />
         <activity android:name=".start" />
         <activity android:name=".ConsumerActivity" />
-        <activity android:name=".FarmerPage1" />
-        <activity android:name=".secondActivity"/>
-        <activity android:name=".dealsday"/>
-        <activity android:name=".orders"/>
-        <activity android:name=".start"/>
-        <activity android:name=".ConsumerActivity"/>
         <activity android:name=".EditProfile" />
         <activity android:name=".consumerWallet"/>
         <activity android:name=".MainActivity" />

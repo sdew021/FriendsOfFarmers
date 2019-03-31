@@ -54,7 +54,7 @@ class UserConsumer {
         return currentAdd;
     }
 
-    public void setCurrentAdd(String currentAddress) {
+    public void setCurrentAdd(String currentAdd) {
         this.currentAdd = currentAdd;
     }
 

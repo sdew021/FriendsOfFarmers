@@ -69,7 +69,6 @@ public class secondActivity extends AppCompatActivity{
                 permanentaddress.setText(user.getPermanentAdd());
                 contact.setText(user.getPhone());
                 email.setText(user.getEmail());
-//                profImg.setImageResource(user.getProfImg());
 
 //                email.setEnabled(false);
 //                address.setEnabled(false);
@@ -95,11 +94,13 @@ public class secondActivity extends AppCompatActivity{
     public void save_details(View view) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference().child("Users").child("Consumer").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        myRef.child("currentAddress").setValue(address.getText().toString());
+        myRef.child("currentAdd").setValue(address.getText().toString());
         myRef.child("name").setValue(name.getText().toString());
         myRef.child("permanentAddress").setValue(permanentaddress.getText().toString());
         myRef.child("phone").setValue(contact.getText().toString());
 //        myRef.child("profImg").setValue(profImg.get)
+        myRef.child("permanentAdd").setValue(permanentaddress.getText().toString());
+        myRef.child("contact").setValue(contact.getText().toString());
         name.setEnabled(false);
         address.setEnabled(false);
         permanentaddress.setEnabled(false);
