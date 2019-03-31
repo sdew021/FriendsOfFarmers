@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:layout_margin="20dp"
 
-        app:cardBackgroundColor="@color/white"
+        app:cardBackgroundColor="@color/carview1color"
         app:cardCornerRadius="25dp"
         app:cardElevation="10dp"
         app:contentPadding="10dp"
@@ -34,8 +34,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/expletus_sans_medium_italic"
-                android:text="name"
-                android:textColor="@color/black"
+                android:text="Name"
+                android:textColor="@color/blue"
                 android:textSize="24sp" />
 
             <TextView
@@ -43,8 +43,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/expletus_sans_medium_italic"
-                android:text="address"
-                android:textColor="@color/black"
+                android:text="Address"
+                android:textColor="@color/blue"
                 android:textSize="24sp" />
 
             <TextView
@@ -52,8 +52,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/expletus_sans_medium_italic"
-                android:text="contact"
-                android:textColor="@color/black"
+                android:text="Contact"
+                android:textColor="@color/blue"
                 android:textSize="24sp" />
 
 
@@ -62,8 +62,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/expletus_sans_medium_italic"
-                android:text="quantity"
-                android:textColor="@color/black"
+                android:text="Quantity"
+                android:textColor="@color/blue"
                 android:textSize="24sp" />
 
             <TextView
@@ -71,8 +71,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/expletus_sans_medium_italic"
-                android:text="price"
-                android:textColor="@color/black"
+                android:text="Price"
+                android:textColor="@color/blue"
                 android:textSize="24sp" />
 
         </LinearLayout>

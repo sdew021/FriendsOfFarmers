@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
@@ -32,6 +33,7 @@ public class secondActivity extends AppCompatActivity{
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     private ImageView profImg;
+//    private Button btnProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,13 @@ public class secondActivity extends AppCompatActivity{
         name.setEnabled(false);
         profImg.setEnabled(false);
 
+
+//        btnProfile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(secondActivity.this,uploadProfilePic.class));
+//            }
+//        });
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child("Consumer").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         databaseReference.addValueEventListener(new ValueEventListener() {

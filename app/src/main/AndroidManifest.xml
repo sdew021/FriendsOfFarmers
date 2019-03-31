@@ -13,11 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".feedback"></activity>
+        <activity android:name=".feedback" />
         <activity android:name=".help" />
         <activity android:name=".placeOrder" />
         <activity android:name=".checkout" />
-        <activity android:name=".UserFarmerActivity"></activity>
+        <activity android:name=".UserFarmerActivity" />
         <activity android:name=".MyApplication" />
         <activity android:name=".UserCrops" />
         <activity android:name=".UserFarmers" />
@@ -44,7 +44,6 @@
         <activity android:name=".Profile_Activity" />
         <activity android:name=".TestDatabase" />
         <activity android:name=".animActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

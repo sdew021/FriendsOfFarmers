@@ -50,11 +50,11 @@ public class User {
     }
 
     public String getPrice() {
-        return "Rs:"+Price;
+        return Price;
     }
 
     public String getQuantity() {
-        return Quantity+" Kg";
+        return Quantity+ " Kg";
     }
 
     User(){}

@@ -47,6 +47,7 @@ public class WheatActivity extends AppCompatActivity {
     private FirebaseUser user;
     private int stock;
     private ImageView img;
+    private String userId;
 
     EditText editText1;
     EditText editText2;
@@ -67,18 +68,10 @@ public class WheatActivity extends AppCompatActivity {
         button2 = (Button) findViewById(R.id.button2);
         editText1 = (EditText) findViewById(R.id.enterquantity);
         editText2 = (EditText) findViewById(R.id.enterquantity2);
-       //https://friends-of-farmers.firebaseio.com/Rishi/Farmer1/Crops/Crop2
         user= FirebaseAuth.getInstance().getCurrentUser();
+        userId=user.getUid();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").
-                child("Farmer").child(user.getUid()).child("crops").child("wheat");//        button1.setOnClickListener(new View.OnClickListener() {
-//                                       @Override
-//                                       public void onClick(View v) {
-//                                           if (editText1.getText().toString().equals("")) {
-//                                               Toast.makeText(RiceActivity.this, "Quantity Entered ", Toast.LENGTH_SHORT).show();
-//                                               flag = 0;
-//                                           }
-//                                       }
-//                                   });
+                child("Farmer").child(user.getUid()).child("crops").child("wheat");
 
 
         button1.setOnClickListener(new View.OnClickListener() {
@@ -129,73 +122,9 @@ public class WheatActivity extends AppCompatActivity {
         userAdapter=new UserAdapter(this);
         recyclerView.setAdapter(userAdapter);
 
-//        textView1 = (TextView)findViewById(R.id.textView6);
-//        textView2 = (TextView)findViewById(R.id.textView7);
-//        textView3 = (TextView)findViewById(R.id.textView8);
-//        textView4 = (TextView)findViewById(R.id.textView10);
-//        textView5 = (TextView)findViewById(R.id.textView11);
+        listdatabaseRefernce= FirebaseDatabase.getInstance().getReference().child("Users").child("Farmer")
+                .child(userId).child("crops").child("wheat").child("user");
 
-
-
-//        textView1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent intent = new Intent(RiceActivity.this, user1Activity.class);
-//
-//                startActivity(intent);
-//
-//            }
-//        });
-//
-//
-//        textView2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent intent = new Intent(RiceActivity.this, user2Activity.class);
-//
-//                startActivity(intent);
-//
-//            }
-//        });
-//
-//
-//        textView3.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent intent = new Intent(RiceActivity.this, user3Activity.class);
-//
-//                startActivity(intent);
-//
-//            }
-//        });
-//
-//
-//        textView4.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent intent = new Intent(RiceActivity.this, user4Activity.class);
-//
-//                startActivity(intent);
-//
-//            }
-//        });
-//
-//
-//        textView5.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent intent = new Intent(RiceActivity.this, user5Activity.class);
-//
-//                startActivity(intent);
-//
-//            }
-//        });
-        listdatabaseRefernce= FirebaseDatabase.getInstance().getReferenceFromUrl("https://friends-of-farmers.firebaseio.com/Users/Farmer/Saurabh/crops/crop2/Customers");
 
 
         ChildEventListener childEventListener=new ChildEventListener() {

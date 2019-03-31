@@ -47,6 +47,7 @@ public class DalActivity extends AppCompatActivity {
     private FirebaseUser user;
     private int stock;
     private ImageView img;
+    private String userId;
     EditText editText1;
     EditText editText2;
     int flag = 1;
@@ -67,6 +68,7 @@ public class DalActivity extends AppCompatActivity {
         editText1 = (EditText) findViewById(R.id.enterquantity);
         editText2 = (EditText) findViewById(R.id.enterquantity2);//https://friends-of-farmers.firebaseio.com/Rishi/Farmer1/Crops/Crop2
         user= FirebaseAuth.getInstance().getCurrentUser();
+        userId=user.getUid();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").
                 child("Farmer").child(user.getUid()).child("crops").child("dal");//        button1.setOnClickListener(new View.OnClickListener() {
 //                                       @Override
@@ -193,7 +195,8 @@ public class DalActivity extends AppCompatActivity {
 //
 //            }
 //        });
-        listdatabaseRefernce= FirebaseDatabase.getInstance().getReferenceFromUrl("https://friends-of-farmers.firebaseio.com/Users/Farmer/Saurabh/crops/crop5/Customers");
+        listdatabaseRefernce= FirebaseDatabase.getInstance().getReference().child("Users").child("Farmer")
+                .child(userId).child("crops").child("dal").child("user");
 
 
         ChildEventListener childEventListener=new ChildEventListener() {
