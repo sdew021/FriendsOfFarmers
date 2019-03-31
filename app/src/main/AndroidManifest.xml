@@ -42,6 +42,7 @@
         <activity android:name=".start"/>
         <activity android:name=".ConsumerActivity"/>
         <activity android:name=".EditProfile" />
+        <activity android:name=".consumerWallet"/>
         <activity android:name=".MainActivity" />
         <activity android:name=".Profile_Activity" />
         <activity android:name=".TestDatabase" />
@@ -67,6 +68,7 @@
             android:parentActivityName=".MainActivity" />
         <activity android:name=".DalActivity"
             android:parentActivityName=".MainActivity"/>
+        <activity android:name=".FarmerWallet"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

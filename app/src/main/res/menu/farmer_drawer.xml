@@ -6,7 +6,7 @@
             android:icon="@drawable/ic_person_black_24dp"
             android:title="My Profile" />
         <item
-            android:id="@+id/nav_cart"
+            android:id="@+id/nav_wallet"
             android:icon="@drawable/ic_account_balance_wallet_black_24dp"
             android:title="My Wallet" />
         <item
@@ -14,7 +14,7 @@
             android:icon="@drawable/ic_build_black_24dp"
             android:title="Update Password" />
 
-        <item android:id="@+id/nav_exit"
+        <item android:id="@+id/nav_logout"
             android:icon="@drawable/ic_exit_to_app_black_24dp"
             android:title="Logout"/>
     </group>

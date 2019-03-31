@@ -24,22 +24,22 @@ public class dealsday extends AppCompatActivity {
                 startActivity(new Intent(dealsday.this,Activity2.class));
             }
         });
-
-        Wheat=findViewById(R.id.wheatimage);
-        Wheat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(dealsday.this,Activity2.class));
-            }
-        });
-
-        Dal=findViewById(R.id.dalimage);
-        Dal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(dealsday.this,Activity2.class));
-            }
-        });
+//
+//        Wheat=findViewById(R.id.wheatimage);
+//        Wheat.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(dealsday.this,Activity2.class));
+//            }
+//        });
+//
+//        Dal=findViewById(R.id.);
+//        Dal.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(dealsday.this,Activity2.class));
+//            }
+//        });
     }
 
 }

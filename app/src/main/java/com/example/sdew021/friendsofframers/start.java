@@ -10,9 +10,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -25,11 +28,14 @@ public class start extends AppCompatActivity {
     ArrayList<Cart> cartArrayList;
     start activity;
     private FirebaseUser user;
+    private ImageView sugarcane,Dal,Wheat,corn,rice;
 
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.my_cart);
+
+
         cartArrayList = new ArrayList<Cart>();
         activity = this;
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();

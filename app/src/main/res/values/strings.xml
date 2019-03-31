@@ -58,6 +58,7 @@
     <string name="cauliimage">cauliimage</string>
     <string name="cropname">TextView</string>
     <string name="pankajActivity">Pankaj Ativity !!</string>
+    <string name="sugarcaneprice">Sugarcane (5/Pcs)</string>
 
     <string-array name="search_crops">
 

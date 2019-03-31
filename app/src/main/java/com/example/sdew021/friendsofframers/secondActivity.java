@@ -34,7 +34,7 @@ public class secondActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.myprofile_userside);
         name =findViewById(R.id.userName);
         address = findViewById(R.id.userAddress);
         permanentaddress =  findViewById(R.id.userPermanent);
@@ -61,8 +61,8 @@ public class secondActivity extends AppCompatActivity{
 
                 //Log.d("Second", user.toString());
                 name.setText(user.getName());
-                address.setText(user.getCurrentAddress());
-                permanentaddress.setText(user.getPermanentAddress());
+                address.setText(user.getCurrentAdd());
+                permanentaddress.setText(user.getPermanentAdd());
                 contact.setText(user.getPhone());
                 email.setText(user.getEmail());
 

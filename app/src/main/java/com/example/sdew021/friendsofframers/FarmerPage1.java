@@ -3,9 +3,11 @@ package com.example.sdew021.friendsofframers;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -33,6 +35,8 @@ public class FarmerPage1 extends AppCompatActivity {
     private DatabaseReference mDatabaseRefernce;
     private String userId;
     private FirebaseUser user;
+    private DrawerLayout drawerLayout;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,10 @@ public class FarmerPage1 extends AppCompatActivity {
                 startActivity(new Intent(FarmerPage1.this,farmerActivity.class));
             }
         });
+
+        NavigationView navigationView=findViewById(R.id.nav_view);
+        drawerLayout=findViewById(R.id.drawer_layout);
+
         mStorageReference= FirebaseStorage.getInstance().
                 getReferenceFromUrl("gs://friends-of-farmers.appspot.com/Farmer_images/");
         mStorageReference.child("profilePic.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -76,5 +84,32 @@ public class FarmerPage1 extends AppCompatActivity {
             }
         };
         mDatabaseRefernce.addValueEventListener(dataListner);
+
+
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                menuItem.setChecked(true);
+                drawerLayout.closeDrawers();
+                int menuItemId=menuItem.getItemId();
+                if(menuItemId==R.id.nav_profile){
+                    startActivity(new Intent(FarmerPage1.this,Profile_Activity.class));
+                }
+                else if(menuItemId==R.id.Update_Password){
+                    startActivity(new Intent(FarmerPage1.this,UpdatePassword.class));
+                }
+                else if(menuItemId==R.id.nav_wallet){
+                    startActivity(new Intent(FarmerPage1.this,FarmerWallet.class));
+                }else if(menuItemId==R.id.nav_logout){
+                    mAuth=FirebaseAuth.getInstance();
+                    mAuth.signOut();
+                    startActivity(new Intent(FarmerPage1.this,MainActivity.class));
+                }
+                return true;
+            }
+        });
     }
+
+
 }

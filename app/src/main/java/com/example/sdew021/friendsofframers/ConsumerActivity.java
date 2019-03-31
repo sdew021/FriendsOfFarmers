@@ -167,6 +167,9 @@ public class ConsumerActivity extends AppCompatActivity implements NavigationVie
         } else if (id == R.id.nav_cart) {
             startActivity(new Intent(this, start.class));
 
+//        } else if (id == R.id.nav_wallet) {
+//            startActivity(new Intent(this, consumerWallet.class));
+
         } else if(id == R.id.nav_exit){
             /*Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_HOME);
