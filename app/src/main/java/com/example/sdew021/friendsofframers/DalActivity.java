@@ -52,6 +52,8 @@ public class DalActivity extends AppCompatActivity {
     int flag = 1;
     List<User> userList;
     UserAdapter userAdapter;
+    TextView priceView,quantatyView,pOrdersView;
+    private DatabaseReference mDatabaseReference;
 
     TextView textView1,textView2,textView3,textView4,textView5;
 
@@ -60,6 +62,10 @@ public class DalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rice);
 
+        priceView=findViewById(R.id.cp);
+        quantatyView=findViewById(R.id.quant);
+        pOrdersView=findViewById(R.id.porders);
+
         img = (ImageView) findViewById(R.id.riceimage);
         img.setImageResource(R.drawable.dal);
         button1 = (Button) findViewById(R.id.button1);
@@ -67,6 +73,24 @@ public class DalActivity extends AppCompatActivity {
         editText1 = (EditText) findViewById(R.id.enterquantity);
         editText2 = (EditText) findViewById(R.id.enterquantity2);//https://friends-of-farmers.firebaseio.com/Rishi/Farmer1/Crops/Crop2
         user= FirebaseAuth.getInstance().getCurrentUser();
+
+        mDatabaseReference=FirebaseDatabase.getInstance().getReference().child("Users").
+                child("Farmer").child(user.getUid()).child("crops").child("dal");
+        mDatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                priceView.setText(dataSnapshot.child("price").getValue(String.class));
+                quantatyView.setText(dataSnapshot.child("stock").getValue(String.class));
+                pOrdersView.setText(dataSnapshot.child("pendingOrders").getValue(String.class));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").
                 child("Farmer").child(user.getUid()).child("crops").child("dal");//        button1.setOnClickListener(new View.OnClickListener() {
 //                                       @Override

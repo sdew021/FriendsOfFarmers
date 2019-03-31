@@ -13,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.util.MonthDisplayHelper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,6 +42,7 @@ public class RiceActivity extends AppCompatActivity {
 
     private Button button1, button2;
     private DatabaseReference mDatabase;
+    private DatabaseReference mDatabaseReference;
     private DatabaseReference listdatabaseRefernce;
     private EditText mEnterQuantity;
     private ChildEventListener mChildEventListner;
@@ -54,6 +56,7 @@ public class RiceActivity extends AppCompatActivity {
     List<User> userList;
     UserAdapter userAdapter;
     private String userId;
+    private TextView priceView,quantatyView,pOrdersView;
 
     TextView textView1,textView2,textView3,textView4,textView5;
 
@@ -61,6 +64,11 @@ public class RiceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rice);
+
+
+        priceView=findViewById(R.id.cp);
+        quantatyView=findViewById(R.id.quant);
+        pOrdersView=findViewById(R.id.porders);
 
         img = (ImageView) findViewById(R.id.riceimage);
         img.setImageResource(R.drawable.rice);
@@ -70,6 +78,25 @@ public class RiceActivity extends AppCompatActivity {
         editText2 = (EditText) findViewById(R.id.enterquantity2);//https://friends-of-farmers.firebaseio.com/Rishi/Farmer1/Crops/Crop2
         user= FirebaseAuth.getInstance().getCurrentUser();
         userId=user.getUid();
+        mDatabaseReference=FirebaseDatabase.getInstance().getReference().child("Users").
+                child("Farmer").child(user.getUid()).child("crops").child("rice");
+        mDatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                priceView.setText(dataSnapshot.child("price").getValue(String.class));
+                quantatyView.setText(dataSnapshot.child("stock").getValue(String.class));
+                pOrdersView.setText(dataSnapshot.child("pendingOrders").getValue(String.class));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").
                 child("Farmer").child(user.getUid()).child("crops").child("rice");
 //        button1.setOnClickListener(new View.OnClickListener() {
