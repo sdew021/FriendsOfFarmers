@@ -77,7 +77,6 @@ public class registerActivity  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_activity);
 
-
         if(ContextCompat.checkSelfPermission(registerActivity.this,Manifest.permission.SEND_SMS)!=PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(registerActivity.this,
                     new String[]{Manifest.permission.SEND_SMS},1);
@@ -289,7 +288,8 @@ public class registerActivity  extends AppCompatActivity {
         current_user_db.child("email").setValue(email);
         current_user_db.child("contact").setValue(phone);
         current_user_db.child("name").setValue(name);
-        current_user_db.child("image").setValue("gs://friends-of-farmers.appspot.com/Farmer_images/profilePic.jpg");
+        current_user_db.child("balance").setValue("1000");
+        current_user_db.child("image").setValue("gs://friends-of-farmers.appspot.com/Farmer_images/appicon.jpg");
         current_user_db.child("permanentAdd").setValue(permanentadd);
         current_user_db.child("currentAdd").setValue(currentadd);
         current_user_db.child("password").setValue(password);
@@ -348,7 +348,9 @@ public class registerActivity  extends AppCompatActivity {
 
         current_user_db.child("email").setValue(email);
         current_user_db.child("contact").setValue(phone);
+        current_user_db.child("balance").setValue("1000");
         current_user_db.child("name").setValue(name);
+        current_user_db.child("image").setValue("gs://friends-of-farmers.appspot.com/Farmer_images/appicon.jpg");
         current_user_db.child("permanentAdd").setValue(permanentadd);
         current_user_db.child("currentAdd").setValue(currentadd);
         current_user_db.child("password").setValue(password);

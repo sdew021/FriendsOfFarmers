@@ -20,19 +20,19 @@
         <activity android:name=".FarmerPage1" />
         <activity
             android:name=".WheatActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".farmerActivity"></activity>
         <activity
             android:name=".SugarcaneActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".farmerActivity" />
         <activity
             android:name=".CornActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".farmerActivity" />
         <activity android:name=".UpdatePassword" />
-        <activity android:name=".secondActivity" />
-        <activity android:name=".dealsday" />
-        <activity android:name=".orders" />
-        <activity android:name=".start" />
-        <activity android:name=".ConsumerActivity" />
+        <activity android:name=".secondActivity"/>
+        <activity android:name=".dealsday"/>
+        <activity android:name=".orders"/>
+        <activity android:name=".start"/>
+        <activity android:name=".ConsumerActivity"/>
         <activity android:name=".EditProfile" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Profile_Activity" />
@@ -57,10 +57,8 @@
         <activity
             android:name=".Activity2"
             android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".DalActivity"
-            android:parentActivityName=".MainActivity" />
-
+        <activity android:name=".DalActivity"
+            android:parentActivityName=".MainActivity"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
