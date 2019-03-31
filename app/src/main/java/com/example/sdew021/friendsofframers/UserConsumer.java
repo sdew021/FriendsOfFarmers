@@ -45,7 +45,7 @@ class UserConsumer {
         return currentAdd;
     }
 
-    public void setCurrentAdd(String currentAddress) {
+    public void setCurrentAdd(String currentAdd) {
         this.currentAdd = currentAdd;
     }
 
@@ -61,10 +61,10 @@ class UserConsumer {
     public String toString() {
         return "User{" +
                 "name='" + name + '\'' +
-                ", phone='" + contact + '\'' +
+                ", contact='" + contact + '\'' +
                 ", email='" + email + '\'' +
-                ", currentAddress='" + currentAdd + '\'' +
-                ", permanentAddress='" + permanentAdd + '\'' +
+                ", currentAdd='" + currentAdd + '\'' +
+                ", permanentAdd='" + permanentAdd + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
