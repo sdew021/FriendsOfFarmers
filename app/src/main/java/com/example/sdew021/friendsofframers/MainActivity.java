@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                             if(validatee(Email,password))
                             {
-                                startActivity(new Intent(MainActivity.this, farmerActivity.class));
+                                startActivity(new Intent(MainActivity.this, FarmerPage1.class));
                             }
 
                         }

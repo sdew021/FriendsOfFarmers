@@ -65,7 +65,7 @@ public class ConsumerActivity extends AppCompatActivity implements NavigationVie
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(ConsumerActivity.this, Activity2.class);
+                Intent i = new Intent(ConsumerActivity.this, PankajFarmers.class);
 
                 startActivity(i);
 
@@ -164,9 +164,6 @@ public class ConsumerActivity extends AppCompatActivity implements NavigationVie
         } else if (id == R.id.nav_orders) {
             startActivity(new Intent(this, orders.class));
 
-        } else if (id == R.id.nav_cart) {
-            startActivity(new Intent(this, start.class));
-
         } else if(id == R.id.nav_exit){
             /*Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_HOME);
@@ -175,7 +172,6 @@ public class ConsumerActivity extends AppCompatActivity implements NavigationVie
             mAuth.signOut();
             startActivity(new Intent(ConsumerActivity.this,MainActivity.class));
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

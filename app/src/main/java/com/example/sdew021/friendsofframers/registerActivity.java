@@ -25,6 +25,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
+import com.google.android.gms.common.internal.Objects;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -75,7 +76,6 @@ public class registerActivity  extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_activity);
-
 
         if(ContextCompat.checkSelfPermission(registerActivity.this,Manifest.permission.SEND_SMS)!=PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(registerActivity.this,
@@ -146,6 +146,7 @@ public class registerActivity  extends AppCompatActivity {
                             //Toast.makeText(registerActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
                             userID = user.getUid();
+                            sendVerificationEmail();
                             //
                             // Toast.makeText(registerActivity.this, "Login Successful  "+user.getUid(), Toast.LENGTH_SHORT).show();
                             Toast.makeText(registerActivity.this,"REGISTERED!!!",Toast.LENGTH_LONG).show();
@@ -259,6 +260,21 @@ public class registerActivity  extends AppCompatActivity {
             userID = getUserFromReg.getUid();
     }*/
 
+    public void sendVerificationEmail(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(registerActivity.this,"Email Sent",Toast.LENGTH_LONG);
+                }
+                else{
+                    Toast.makeText(registerActivity.this,"Email Not Sent",Toast.LENGTH_LONG);
+                }
+            }
+        });
+    }
+
     public void startRegisterFarmer(){
         flag = 1;
 
@@ -272,6 +288,8 @@ public class registerActivity  extends AppCompatActivity {
         current_user_db.child("email").setValue(email);
         current_user_db.child("contact").setValue(phone);
         current_user_db.child("name").setValue(name);
+        current_user_db.child("balance").setValue("1000");
+        current_user_db.child("image").setValue("gs://friends-of-farmers.appspot.com/Farmer_images/appicon.jpg");
         current_user_db.child("permanentAdd").setValue(permanentadd);
         current_user_db.child("currentAdd").setValue(currentadd);
         current_user_db.child("password").setValue(password);
@@ -330,7 +348,9 @@ public class registerActivity  extends AppCompatActivity {
 
         current_user_db.child("email").setValue(email);
         current_user_db.child("contact").setValue(phone);
+        current_user_db.child("balance").setValue("1000");
         current_user_db.child("name").setValue(name);
+        current_user_db.child("image").setValue("gs://friends-of-farmers.appspot.com/Farmer_images/appicon.jpg");
         current_user_db.child("permanentAdd").setValue(permanentadd);
         current_user_db.child("currentAdd").setValue(currentadd);
         current_user_db.child("password").setValue(password);

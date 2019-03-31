@@ -78,7 +78,10 @@
                     style="?android:attr/ratingBarStyleIndicator"
                     android:numStars="5"
                     android:stepSize="0.1"
-                    android:isIndicator="true" />
+                    android:secondaryProgressTint="#00f"
+                    android:backgroundTint="#f00"
+                    android:isIndicator="true"
+                    android:theme="@style/rating_bar_theme"/>
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
