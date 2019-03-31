@@ -256,8 +256,8 @@ public class registerActivity  extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(registerActivity.this,registerActivity.class));
-                //clearForm((ViewGroup) findViewById(R.id.scrollView2));
+                //startActivity(new Intent(registerActivity.this,registerActivity.class));
+                clearForm((ViewGroup) findViewById(R.id.scrollView2));
             }
         });
 
