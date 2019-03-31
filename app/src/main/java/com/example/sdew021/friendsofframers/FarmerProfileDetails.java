@@ -1,4 +1,9 @@
 package com.example.sdew021.friendsofframers;
+/*
+ *   Contributed by Prateek Sahu
+ *   17CO130
+ */
+
 
 public class FarmerProfileDetails {
     String name,email,contact,currentAdd,permanentAdd;
