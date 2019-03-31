@@ -53,6 +53,7 @@ public class RiceActivity extends AppCompatActivity {
     int flag = 1;
     List<User> userList;
     UserAdapter userAdapter;
+    private String userId;
 
     TextView textView1,textView2,textView3,textView4,textView5;
 
@@ -68,6 +69,7 @@ public class RiceActivity extends AppCompatActivity {
         editText1 = (EditText) findViewById(R.id.enterquantity);
         editText2 = (EditText) findViewById(R.id.enterquantity2);//https://friends-of-farmers.firebaseio.com/Rishi/Farmer1/Crops/Crop2
         user= FirebaseAuth.getInstance().getCurrentUser();
+        userId=user.getUid();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").
                 child("Farmer").child(user.getUid()).child("crops").child("rice");
 //        button1.setOnClickListener(new View.OnClickListener() {
@@ -194,7 +196,8 @@ public class RiceActivity extends AppCompatActivity {
 //
 //            }
 //        });
-        listdatabaseRefernce= FirebaseDatabase.getInstance().getReferenceFromUrl("https://friends-of-farmers.firebaseio.com/Users/Farmer/Saurabh/crops/crop1/Customers");
+        listdatabaseRefernce= FirebaseDatabase.getInstance().getReference().child("Users").child("Farmer")
+                .child(userId).child("crops").child("rice").child("user");
 
 
         ChildEventListener childEventListener=new ChildEventListener() {
