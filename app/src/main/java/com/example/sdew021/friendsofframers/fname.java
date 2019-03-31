@@ -28,7 +28,6 @@ public class fname extends RecyclerView.Adapter<fname.MyViewHolder> {
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name_view;
         public ImageView farmerImageView;
-
         public MyViewHolder(View view) {
             super(view);
             name_view = (TextView) view.findViewById(R.id.name);
@@ -64,8 +63,8 @@ public class fname extends RecyclerView.Adapter<fname.MyViewHolder> {
             }
         });
         mStorageReference= FirebaseStorage.getInstance()
-                .getReferenceFromUrl("gs://friends-of-farmers.appspot.com/Farmer_images/");
-        mStorageReference.child("profilePic.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                .getReferenceFromUrl("gs://friends-of-farmers.appspot.com/");
+        mStorageReference.child(farmerList.get(position).farmerId).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 Picasso.get().load(uri).fit().centerCrop().into(holder.farmerImageView);
