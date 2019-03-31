@@ -2,16 +2,14 @@ package com.example.sdew021.friendsofframers;
 
 public class FarmerProfileDetails {
     String name,email,contact,currentAdd,permanentAdd;
-    Upload image;
     int rating;
 
-    public FarmerProfileDetails(String name, String email, String contact, String currentAdd, String permanentAdd, Upload image,int rating) {
+    public FarmerProfileDetails(String name, String email, String contact, String currentAdd, String permanentAdd,int rating) {
         this.name = name;
         this.email = email;
         this.contact = contact;
         this.currentAdd = currentAdd;
         this.permanentAdd = permanentAdd;
-        this.image = image;
         this.rating=rating;
 
     }
@@ -62,14 +60,6 @@ public class FarmerProfileDetails {
 
     public void setPermanentAdd(String permanentAdd) {
         this.permanentAdd = permanentAdd;
-    }
-
-    public Upload getImage() {
-        return image;
-    }
-
-    public void setImage(Upload image) {
-        this.image = image;
     }
 
     public FarmerProfileDetails(){}

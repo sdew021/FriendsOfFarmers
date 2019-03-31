@@ -53,6 +53,7 @@ public class EditProfile extends AppCompatActivity {
     private Uri uri;
     private int checkImage;
     private FirebaseUser currentFirebaseUser;
+    private String userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +68,7 @@ public class EditProfile extends AppCompatActivity {
         pImage=findViewById(R.id.pimage);
         progressBar=findViewById(R.id.progressBar);
         currentFirebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        String userId=currentFirebaseUser.getUid();
+        userId=currentFirebaseUser.getUid();
         changePassword=findViewById(R.id.changePassword);
 //        nameView=findViewById(R.id.name);
         mDatabaseRefernce=FirebaseDatabase.getInstance().getReference().child("Users")
@@ -121,8 +122,8 @@ public class EditProfile extends AppCompatActivity {
 
             }
         });
-        mStorageReference= FirebaseStorage.getInstance().getReferenceFromUrl("gs://friends-of-farmers.appspot.com/Farmer_images/");
-        mStorageReference.child("profilePic.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        mStorageReference= FirebaseStorage.getInstance().getReferenceFromUrl("gs://friends-of-farmers.appspot.com/");
+        mStorageReference.child(userId).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 Picasso.get().load(uri).fit().centerCrop().into(pImage);
@@ -187,7 +188,7 @@ public class EditProfile extends AppCompatActivity {
 
     void uploadFile(Uri uri){
         if(uri!=null){
-            StorageReference filepath=mStorageReference.child("profilePic"+"."+getFileExtension(uri));
+            StorageReference filepath=mStorageReference.child(userId);
             filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -199,9 +200,6 @@ public class EditProfile extends AppCompatActivity {
                             progressBar.setProgress(0);
                         }
                     },5000);
-
-                    Upload upload=new Upload("profilePic",taskSnapshot.getUploadSessionUri().toString());
-                    mDatabaseRefernce.child("image").setValue(upload);
 
                 }
             }).addOnFailureListener(new OnFailureListener() {

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:paddingBottom="8dp"
     android:layout_height="match_parent"
-    tools:context=".PankajFarmers">
+    tools:context=".UserFarmers">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/nameView"

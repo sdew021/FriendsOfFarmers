@@ -7,24 +7,42 @@ public class User {
     private String Address;
     private String Name;
     private String Price;
-    private String delivery;
     private String Quantity;
 
-    public User(String name,  String address,String contact, String price, String delivery, String quantity) {
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public void setPrice(String price) {
+        Price = price;
+    }
+
+    public void setQuantity(String quantity) {
+        Quantity = quantity;
+    }
+
+    public User(String name, String address, String contact, String price, String quantity) {
         this.contact = contact;
         Address = address;
         Name = name;
         Price = price;
-        this.delivery = delivery;
         Quantity = quantity;
     }
 
     public String getContact() {
-        return "contact:"+contact;
+        return contact;
     }
 
     public String getAddress() {
-        return "Address:"+Address;
+        return Address;
     }
 
     public String getName() {
@@ -32,15 +50,11 @@ public class User {
     }
 
     public String getPrice() {
-        return "Price:"+Price;
-    }
-
-    public String getDelivery() {
-        return "Estimated delivery Time:"+delivery;
+        return "Rs:"+Price;
     }
 
     public String getQuantity() {
-        return "Quantity:"+Quantity;
+        return Quantity+" Kg";
     }
 
     User(){}
