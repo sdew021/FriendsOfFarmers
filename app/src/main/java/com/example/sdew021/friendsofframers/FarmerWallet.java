@@ -89,6 +89,8 @@ public class FarmerWallet extends AppCompatActivity {
             public void onClick(View v) {
                 if(user.isEmailVerified() && check(amount) == 0 && checkMsg(checkOtp)){
                     withdrawMoney();
+                }else{
+                    Toast.makeText(FarmerWallet.this,"Verfiy Email",Toast.LENGTH_LONG).show();
                 }
             }
         });

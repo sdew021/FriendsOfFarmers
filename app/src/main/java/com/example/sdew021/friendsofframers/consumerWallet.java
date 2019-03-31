@@ -90,6 +90,9 @@ public class consumerWallet extends AppCompatActivity {
                 if(user.isEmailVerified() && check(amount) == 0 && checkMsg(checkOtp)){
                     withdrawMoney();
                 }
+                else{
+                    Toast.makeText(consumerWallet.this,"Verfiy Email",Toast.LENGTH_LONG).show();
+                }
             }
         });
 
