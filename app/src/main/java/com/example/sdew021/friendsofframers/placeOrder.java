@@ -27,7 +27,7 @@ public class placeOrder extends AppCompatActivity {
     private DatabaseReference mDabaseReferenceCart,getmDabaseReferenceOrder;
     private FirebaseUser user;
     private String userId,name,stock,p;
-    private double price;
+    private int price;
     private User userDetails=new User();
     private MyOrders myOrders=new MyOrders();
 
@@ -56,7 +56,7 @@ public class placeOrder extends AppCompatActivity {
                 p = dataSnapshot.child("crops").child(UserFarmerActivity.clickedCropName)
                         .child("price").getValue(String.class);
                 priceView.setText(p);
-                price = Double.parseDouble(p);
+                price = Integer.parseInt(p);
             }
 
             @Override
@@ -92,8 +92,8 @@ public class placeOrder extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.toString().compareTo("") != 0) {
-                    double tprice = price * (Double.parseDouble(s.toString()));
-                    totalPriceView.setText(Double.toString(tprice));
+                    int tprice = price * (Integer.parseInt(s.toString()));
+                    totalPriceView.setText(Integer.toString(tprice));
                 } else
                     totalPriceView.setText("0");
             }
