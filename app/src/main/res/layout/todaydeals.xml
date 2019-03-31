@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,7 +8,6 @@
     android:layout_height="match_parent"
     tools:context=".dealsday"
     android:orientation="vertical">
-
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,6 +18,7 @@
         android:background="@color/lightGrey"
         android:id="@+id/rlayout2"
         android:padding="5dp">
+
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -37,10 +39,12 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/expletus_sans_medium_italic"
-            android:text="Deals Of The Day"
+            android:text="Deal Of The Day"
             android:textColor="@color/blue"
             android:textSize="30sp" />
     </RelativeLayout>
+
+
 
     <!--<TextView-->
         <!--android:id="@+id/deals"-->
@@ -70,78 +74,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="735dp"
+                android:background="@drawable/gradient1"/>
 
-            <!--<View-->
-                <!--android:id="@+id/View0"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="1dp"-->
-                <!--android:layout_marginStart="8dp"-->
-                <!--android:layout_marginEnd="8dp"-->
-                <!--android:background="@color/black"-->
-                <!--app:layout_constraintEnd_toEndOf="parent"-->
-                <!--app:layout_constraintStart_toStartOf="parent"/>-->
-
-            <!--<android.support.v7.widget.CardView-->
-                <!--android:id="@+id/wheatcard"-->
-                <!--android:layout_width="384dp"-->
-                <!--android:layout_height="179dp"-->
-                <!--android:layout_marginStart="8dp"-->
-                <!--android:layout_marginTop="8dp"-->
-                <!--android:layout_marginEnd="8dp"-->
-                <!--android:layout_marginBottom="8dp"-->
-                <!--app:cardCornerRadius="700dp"-->
-                <!--app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--app:layout_constraintEnd_toEndOf="parent"-->
-                <!--app:layout_constraintHorizontal_bias="0.272"-->
-                <!--app:layout_constraintStart_toStartOf="parent"-->
-                <!--app:layout_constraintTop_toTopOf="parent"-->
-                <!--app:layout_constraintVertical_bias="0.141">-->
-
-                <!--<ImageView-->
-                    <!--android:id="@+id/pulseimage"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:contentDescription="@string/wheatimage"-->
-                    <!--android:scaleType="fitXY"-->
-                    <!--android:src="@drawable/sugarcane">-->
-
-                <!--</ImageView>-->
-            <!--</android.support.v7.widget.CardView>-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/wheatprice"-->
-                <!--android:layout_width="387dp"-->
-                <!--android:layout_height="40dp"-->
-                <!--android:layout_marginStart="8dp"-->
-                <!--android:layout_marginTop="8dp"-->
-                <!--android:layout_marginEnd="8dp"-->
-                <!--android:layout_marginBottom="8dp"-->
-                <!--android:text="Wheat ( 32/Kg)"-->
-                <!--android:textColor="@color/blue"-->
-                <!--android:textSize="18sp"-->
-                <!--app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--app:layout_constraintEnd_toEndOf="parent"-->
-                <!--app:layout_constraintHorizontal_bias="0.375"-->
-                <!--app:layout_constraintStart_toStartOf="parent"-->
-                <!--app:layout_constraintTop_toTopOf="parent"-->
-                <!--app:layout_constraintVertical_bias="0.394" />-->
-
-            <!--<View-->
-                <!--android:id="@+id/View1"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="1dp"-->
-                <!--android:layout_marginStart="8dp"-->
-                <!--android:layout_marginEnd="8dp"-->
-                <!--android:background="@color/black"-->
-                <!--app:layout_constraintEnd_toEndOf="parent"-->
-                <!--app:layout_constraintStart_toStartOf="parent"/>-->
 
             <android.support.v7.widget.CardView
+                android:id="@+id/imagecard"
                 android:layout_width="match_parent"
                 android:layout_height="179dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -169,279 +114,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
                 android:layout_marginStart="30dp"
+                android:layout_marginTop="216dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="20dp"
-                android:text="Sugarcane (5/Pcs)"
+                android:layout_marginBottom="-241dp"
                 android:fontFamily="@font/expletus_sans_medium_italic"
+                android:text="@string/sugarcaneprice"
                 android:textColor="@color/blue"
-                android:textSize="25dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.187"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.747" />
-
+                android:textSize="25sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imagecard" />
 
             <View
-                android:id="@+id/View"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
                 android:background="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.768" />
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="255dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sugarcaneprice" />
 
 
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="179dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="8dp"
-                app:cardCornerRadius="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.272"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.589">
-
-                <ImageView
-                    android:id="@+id/wheatimage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/onionimage"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/wheat">
-
-                </ImageView>
-            </android.support.v7.widget.CardView>
-
-            <TextView
-                android:id="@+id/riceprice"
-                android:layout_width="match_parent"
-                android:layout_height="32dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="20dp"
-                android:text="Wheat (12/kg)"
-                android:fontFamily="@font/expletus_sans_medium_italic"
-                android:textSize="25dp"
-                android:textColor="@color/blue"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.187"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.747" />
-
-
-            <View
-                android:id="@+id/View2"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.768" />
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="179dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="8dp"
-                app:cardCornerRadius="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0">
-
-                <ImageView
-                    android:id="@+id/dalimage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/brinjalimage"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/dal">
-
-                </ImageView>
-            </android.support.v7.widget.CardView>
-
-            <TextView
-                android:id="@+id/brinjalprice"
-                android:layout_width="match_parent"
-                android:layout_height="32dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="20dp"
-                android:text="Dal (25/kg)"
-                android:textColor="@color/blue"
-                android:fontFamily="@font/expletus_sans_medium_italic"
-                android:textSize="25dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                                                     app:layout_constraintHorizontal_bias="0.187"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.747" />
-
-            <View
-                android:id="@+id/View3"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.768" />
-
-            <!--<android.support.v7.widget.CardView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="179dp"-->
-                <!--android:layout_marginStart="30dp"-->
-                <!--android:layout_marginTop="30dp"-->
-                <!--android:layout_marginEnd="30dp"-->
-                <!--android:layout_marginBottom="8dp"-->
-                <!--app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--app:layout_constraintEnd_toEndOf="parent"-->
-                <!--app:layout_constraintHorizontal_bias="0.0"-->
-                <!--app:layout_constraintStart_toStartOf="parent"-->
-                <!--app:layout_constraintTop_toTopOf="parent"-->
-                <!--app:layout_constraintVertical_bias="1.0">-->
-
-                <!--<ImageView-->
-                    <!--android:id="@+id/carrotimage"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:contentDescription="@string/carrotimage"-->
-                    <!--android:scaleType="centerCrop"-->
-                    <!--android:src="@drawable/carrot">-->
-
-                <!--</ImageView>-->
-            <!--</android.support.v7.widget.CardView>-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/carrotprice"-->
-                <!--android:layout_width="386dp"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:layout_marginStart="8dp"-->
-                <!--android:layout_marginTop="8dp"-->
-                <!--android:layout_marginEnd="8dp"-->
-                <!--android:layout_marginBottom="8dp"-->
-                <!--android:text="Carrot (30/Kg)"-->
-                <!--android:textColor="@color/blue"-->
-                <!--app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--app:layout_constraintEnd_toEndOf="parent"-->
-                <!--app:layout_constraintHorizontal_bias="0.187"-->
-                <!--app:layout_constraintStart_toStartOf="parent"-->
-                <!--app:layout_constraintTop_toTopOf="parent"-->
-                <!--app:layout_constraintVertical_bias="0.747" />-->
-
-            <!--<View-->
-                <!--android:id="@+id/View4"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="1dp"-->
-                <!--android:layout_marginStart="8dp"-->
-                <!--android:layout_marginTop="8dp"-->
-                <!--android:layout_marginEnd="8dp"-->
-                <!--android:layout_marginBottom="8dp"-->
-                <!--android:background="@color/black"-->
-                <!--app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--app:layout_constraintEnd_toEndOf="parent"-->
-                <!--app:layout_constraintHorizontal_bias="0.0"-->
-                <!--app:layout_constraintStart_toStartOf="parent"-->
-                <!--app:layout_constraintTop_toTopOf="parent"-->
-                <!--app:layout_constraintVertical_bias="0.768" />-->
-
-
-            <!--<android.support.v7.widget.CardView-->
-                <!--android:layout_width="384dp"-->
-                <!--android:layout_height="179dp"-->
-                <!--android:layout_marginStart="8dp"-->
-                <!--android:layout_marginTop="8dp"-->
-                <!--android:layout_marginEnd="8dp"-->
-                <!--android:layout_marginBottom="8dp"-->
-                <!--app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--app:layout_constraintEnd_toEndOf="parent"-->
-                <!--app:layout_constraintHorizontal_bias="0.0"-->
-                <!--app:layout_constraintStart_toStartOf="parent"-->
-                <!--app:layout_constraintTop_toTopOf="parent"-->
-                <!--app:layout_constraintVertical_bias="1.0">-->
-
-                <!--<ImageView-->
-                    <!--android:id="@+id/cauliimage"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:contentDescription="@string/cauliimage"-->
-                    <!--android:scaleType="centerCrop"-->
-                    <!--android:src="@drawable/cauli">-->
-
-                <!--</ImageView>-->
-            <!--</android.support.v7.widget.CardView>-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/cauliprice"-->
-                <!--android:layout_width="386dp"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:layout_marginStart="8dp"-->
-                <!--android:layout_marginTop="8dp"-->
-                <!--android:layout_marginEnd="8dp"-->
-                <!--android:layout_marginBottom="8dp"-->
-                <!--android:text="Cauliflower (35/Kg)"-->
-                <!--android:textColor="@color/blue"-->
-                <!--app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--app:layout_constraintEnd_toEndOf="parent"-->
-                <!--app:layout_constraintHorizontal_bias="0.187"-->
-                <!--app:layout_constraintStart_toStartOf="parent"-->
-                <!--app:layout_constraintTop_toTopOf="parent"-->
-                <!--app:layout_constraintVertical_bias="0.747" />-->
-
-            <!--<View-->
-                <!--android:id="@+id/View5"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="1dp"-->
-                <!--android:layout_marginStart="8dp"-->
-                <!--android:layout_marginTop="8dp"-->
-                <!--android:layout_marginEnd="8dp"-->
-                <!--android:layout_marginBottom="8dp"-->
-                <!--android:background="@color/black"-->
-                <!--app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--app:layout_constraintEnd_toEndOf="parent"-->
-                <!--app:layout_constraintHorizontal_bias="0.0"-->
-                <!--app:layout_constraintStart_toStartOf="parent"-->
-                <!--app:layout_constraintTop_toTopOf="parent"-->
-                <!--app:layout_constraintVertical_bias="0.768" />-->
-
-        </LinearLayout>
+        </RelativeLayout>
     </ScrollView>
 
 

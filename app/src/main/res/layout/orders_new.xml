@@ -1,70 +1,292 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<!--<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content">-->
+
+    <!--<android.support.constraint.ConstraintLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginBottom="4dp">-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/cropname"-->
+            <!--android:fontFamily="@font/expletus_sans_medium_italic"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:layout_marginEnd="8dp"-->
+            <!--android:layout_marginBottom="8dp"-->
+            <!--android:padding="8dp"-->
+            <!--android:text="TextView"-->
+            <!--android:textSize="20sp"-->
+            <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/cropquantity"-->
+            <!--android:fontFamily="@font/expletus_sans_medium_italic"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:layout_marginEnd="8dp"-->
+            <!--android:layout_marginBottom="8dp"-->
+            <!--android:padding="8dp"-->
+            <!--android:text="TextView"-->
+            <!--android:textSize="20sp"-->
+            <!--app:layout_constraintTop_toBottomOf="@id/cropname" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/cropPrice"-->
+            <!--android:fontFamily="@font/expletus_sans_medium_italic"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:layout_marginEnd="8dp"-->
+            <!--android:layout_marginBottom="8dp"-->
+            <!--android:padding="8dp"-->
+            <!--android:text="TextView"-->
+            <!--android:textSize="20sp"-->
+            <!--app:layout_constraintTop_toBottomOf="@id/cropquantity" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/address"-->
+            <!--android:fontFamily="@font/expletus_sans_medium_italic"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:layout_marginEnd="8dp"-->
+            <!--android:layout_marginBottom="8dp"-->
+            <!--android:padding="8dp"-->
+            <!--android:text="TextView"-->
+            <!--android:textSize="20sp"-->
+            <!--app:layout_constraintTop_toBottomOf="@id/cropPrice" />-->
+    <!--</android.support.constraint.ConstraintLayout>-->
+<!--</android.support.v7.widget.CardView>-->
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <android.support.constraint.ConstraintLayout
+    android:layout_height="match_parent"
+    tools:context=".secondActivity">
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="4dp">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
-        <TextView
-            android:id="@+id/cropname"
-            android:fontFamily="@font/expletus_sans_medium_italic"
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="395dp"
+            android:background="@color/colorPrime"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="370dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:background="@drawable/gradient1"/>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:padding="8dp"
-            android:text="TextView"
-            android:textSize="20sp"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="vertical"
+            android:layout_marginTop="-75dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
 
-        <TextView
-            android:id="@+id/cropquantity"
-            android:fontFamily="@font/expletus_sans_medium_italic"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:padding="8dp"
-            android:text="TextView"
-            android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@id/cropname" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/cropPrice"
-            android:fontFamily="@font/expletus_sans_medium_italic"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:padding="8dp"
-            android:text="TextView"
-            android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@id/cropquantity" />
 
-        <TextView
-            android:id="@+id/address"
-            android:fontFamily="@font/expletus_sans_medium_italic"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:padding="8dp"
-            android:text="TextView"
-            android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@id/cropPrice" />
-    </android.support.constraint.ConstraintLayout>
-</android.support.v7.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="85dp"
+                        app:contentPaddingTop="15dp"
+                        app:contentPaddingRight="15dp"
+                        app:contentPaddingLeft="15dp"
+                        app:contentPaddingBottom="15dp"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginTop="20dp"
+                                android:paddingVertical="10dp">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/expletus_sans_medium_italic"
+                                    android:text="Crop Name"
+                                    android:textColor="@color/blue"
+                                    android:textSize="18sp"/>
+
+                                <HorizontalScrollView
+                                    android:id="@+id/userContact1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:id="@+id/cropname"
+                                        android:inputType="text"
+                                        android:layout_width="wrap_content"
+                                        android:fontFamily="@font/expletus_sans_medium_italic"
+                                        android:layout_height="wrap_content"
+
+                                        android:textColor="@color/black"
+                                        android:hint="enter the number here"
+                                        android:background="@drawable/edittext_back"
+                                        android:textSize="18sp" />
+                                </HorizontalScrollView>
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_marginTop="10dp"
+                                    android:background="@color/black"></View>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingVertical="10dp">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/expletus_sans_medium_italic"
+                                        android:text="Quantity"
+                                        android:textColor="@color/blue"
+                                        android:textSize="18sp"/>
+                                    <HorizontalScrollView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+
+                                        <TextView
+                                            android:id="@+id/cropquantity"
+                                            android:layout_width="wrap_content"
+                                            android:fontFamily="@font/expletus_sans_medium_italic"
+                                            android:layout_height="wrap_content"
+
+                                            android:textColor="@color/black"
+                                            android:hint="enter the email here"
+                                            android:background="@drawable/edittext_back"
+                                            android:textSize="18sp" />
+                                    </HorizontalScrollView>
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:layout_marginTop="10dp"
+                                        android:background="@color/black"></View>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingVertical="10dp">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/expletus_sans_medium_italic"
+                                        android:text="Price"
+                                        android:textColor="@color/blue"
+                                        android:textSize="18sp"/>
+
+                                    <HorizontalScrollView
+                                        android:id="@+id/userAddress1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+
+                                        <TextView
+                                            android:id="@+id/cropPrice"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/expletus_sans_medium_italic"
+
+                                            android:textColor="@color/black"
+                                            android:hint="enter the current address here"
+                                            android:background="@drawable/edittext_back"
+                                            android:textSize="18sp" />tools:context=".MainActivity"
+                                    </HorizontalScrollView>
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:layout_marginTop="10dp"
+                                        android:background="@color/black"></View>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingVertical="10dp">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:fontFamily="@font/expletus_sans_medium_italic"
+                                        android:layout_height="wrap_content"
+                                        android:text="Shipping Address"
+                                        android:textColor="@color/blue"
+                                        android:textSize="18sp"/>
+
+                                    <HorizontalScrollView
+                                        android:id="@+id/userPermanent1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+
+                                        <TextView
+                                            android:id="@+id/address"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/expletus_sans_medium_italic"
+                                            android:background="@drawable/edittext_back"
+                                            android:textColor="@color/black"
+                                            android:hint="enter the permanent address here"
+                                            android:textSize="18sp" />
+                                    </HorizontalScrollView>
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:layout_marginTop="10dp"
+                                        android:background="@color/black"></View>
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>

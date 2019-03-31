@@ -73,10 +73,10 @@ class OrdersLisAdapter extends BaseAdapter {
 //                .placeholder(activity.getDrawable(R.drawable.cauli))
 //                .error(activity.getDrawable(R.drawable.cauli))
 //                .into(viewHolder.imageview);
-            viewHolder.cropname.setText("Name: " + myOrdersArrayList.get(pos).getCropname());
-            viewHolder.cropQuantity.setText("Quantity : " + myOrdersArrayList.get(pos).getQuantity());
-            viewHolder.cropPrice.setText("Price : " + myOrdersArrayList.get(pos).getCropPrice());
-            viewHolder.cropAddress.setText("Shipping Address : " + myOrdersArrayList.get(pos).getShippingAddress());
+            viewHolder.cropname.setText(myOrdersArrayList.get(pos).getCropname());
+            viewHolder.cropQuantity.setText( myOrdersArrayList.get(pos).getQuantity());
+            viewHolder.cropPrice.setText(myOrdersArrayList.get(pos).getCropPrice());
+            viewHolder.cropAddress.setText( myOrdersArrayList.get(pos).getShippingAddress());
 
 
         return vi;
