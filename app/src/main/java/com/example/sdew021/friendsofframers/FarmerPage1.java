@@ -104,6 +104,10 @@ public class FarmerPage1 extends AppCompatActivity {
                     mAuth=FirebaseAuth.getInstance();
                     mAuth.signOut();
                     startActivity(new Intent(FarmerPage1.this,MainActivity.class));
+                }else if(menuItemId==R.id.nav_help){
+                    startActivity(new Intent(FarmerPage1.this,help.class));
+                }else if(menuItemId==R.id.nav_feedback){
+                    startActivity(new Intent(FarmerPage1.this,feedback.class));
                 }
                 return true;
             }
