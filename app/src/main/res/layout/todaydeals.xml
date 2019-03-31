@@ -3,6 +3,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -46,43 +47,22 @@
 
 
 
-    <!--<TextView-->
-        <!--android:id="@+id/deals"-->
-        <!--android:layout_width="423dp"-->
-        <!--android:layout_height="55dp"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:text="Deals of the Day"-->
-        <!--android:textAlignment="center"-->
-        <!--android:textColor="@color/black"-->
-        <!--android:textSize="24sp"-->
+    <!--<ScrollView-->
+        <!--android:id="@+id/dealscrol"-->
+        <!--android:layout_below="@+id/deals"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
         <!--app:layout_constraintBottom_toBottomOf="parent"-->
         <!--app:layout_constraintEnd_toEndOf="parent"-->
         <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--app:layout_constraintVertical_bias="0.0" />-->
-
-    <ScrollView
-        android:id="@+id/dealscrol"
-        android:layout_below="@+id/deals"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        <!--app:layout_constraintTop_toTopOf="parent">-->
 
         <RelativeLayout
             android:layout_width="match_parent"
+            android:background="@drawable/background"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="735dp"
-                android:background="@drawable/gradient1"/>
 
 
             <android.support.v7.widget.CardView
@@ -109,37 +89,227 @@
                 </ImageView>
             </android.support.v7.widget.CardView>
 
-            <TextView
-                android:id="@+id/sugarcaneprice"
-                android:layout_width="match_parent"
-                android:layout_height="32dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="216dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="-241dp"
-                android:fontFamily="@font/expletus_sans_medium_italic"
-                android:text="@string/sugarcaneprice"
-                android:textColor="@color/blue"
-                android:textSize="25sp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imagecard" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/black"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="255dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/sugarcaneprice" />
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:background="@color/black"-->
+                <!--android:layout_alignParentStart="true"-->
+                <!--android:layout_alignParentTop="true"-->
+                <!--android:layout_marginTop="255dp"-->
+                <!--app:layout_constraintLeft_toLeftOf="parent"-->
+                <!--app:layout_constraintRight_toRightOf="parent"-->
+                <!--app:layout_constraintTop_toBottomOf="@id/sugarcaneprice" />-->
 
 
 
         </RelativeLayout>
-    </ScrollView>
+    <!--</ScrollView>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical"
+        android:paddingVertical="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/expletus_sans_medium_italic"
+            android:text="Crop Name"
+            android:textColor="@color/blue"
+            android:textSize="18sp"/>
+
+        <HorizontalScrollView
+            android:id="@+id/userAddress1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/userAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/expletus_sans_medium_italic"
+                android:textColor="@color/black"
+                android:hint="Name"
+                android:textSize="18sp" />
+        </HorizontalScrollView>
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/black"></View>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view1"
+        android:layout_marginTop="-10dp"
+        android:orientation="vertical"
+        android:paddingVertical="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/expletus_sans_medium_italic"
+            android:text="Farmer Name"
+            android:textColor="@color/blue"
+            android:textSize="18sp"/>
+
+        <HorizontalScrollView
+            android:id="@+id/farmeradd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/farmername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/expletus_sans_medium_italic"
+                android:textColor="@color/black"
+                android:hint="Name"
+                android:textSize="18sp" />
+        </HorizontalScrollView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/black"></View>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view1"
+        android:layout_marginTop="-10dp"
+        android:orientation="vertical"
+        android:paddingVertical="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/expletus_sans_medium_italic"
+            android:text="Rating"
+            android:textColor="@color/blue"
+            android:textSize="18sp"/>
+
+        <HorizontalScrollView
+            android:id="@+id/farmerrate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/farmerrating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/expletus_sans_medium_italic"
+                android:textColor="@color/black"
+                android:hint="Name"
+                android:textSize="18sp" />
+        </HorizontalScrollView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/black"></View>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view1"
+        android:layout_marginTop="-10dp"
+        android:orientation="vertical"
+        android:paddingVertical="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/expletus_sans_medium_italic"
+            android:text="Crop Price"
+            android:textColor="@color/blue"
+            android:textSize="18sp"/>
+
+        <HorizontalScrollView
+            android:id="@+id/farmerprice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/expletus_sans_medium_italic"
+                android:textColor="@color/black"
+                android:hint="Name"
+                android:textSize="18sp" />
+        </HorizontalScrollView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/black"></View>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view1"
+        android:layout_marginTop="-10dp"
+        android:orientation="vertical"
+        android:paddingVertical="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/expletus_sans_medium_italic"
+            android:text="Stock"
+            android:textColor="@color/blue"
+            android:textSize="18sp"/>
+
+        <HorizontalScrollView
+            android:id="@+id/farmerstoc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/farmerstock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/expletus_sans_medium_italic"
+                android:textColor="@color/black"
+                android:hint="Name"
+                android:textSize="18sp" />
+        </HorizontalScrollView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/black"></View>
+    </LinearLayout>
+
+
+
+
 
 
 </LinearLayout>
