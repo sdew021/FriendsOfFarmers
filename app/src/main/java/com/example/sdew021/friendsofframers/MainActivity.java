@@ -96,7 +96,8 @@ public class MainActivity extends AppCompatActivity {
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                 String role1 = dataSnapshot.getValue(String.class);
-                                                if(role1.compareTo("consumer") !=0 )
+                                                if(role1!=null)
+                                                    if(role1.compareTo("consumer") !=0 )
                                                 startActivity(new Intent(MainActivity.this, ConsumerActivity.class));
                                             }
 
@@ -105,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
 
                                             }
                                         });
-                                        startActivity(new Intent(MainActivity.this, ConsumerActivity.class));
                                     }
                                 }
 
