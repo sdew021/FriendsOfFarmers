@@ -1,6 +1,7 @@
 package com.example.sdew021.friendsofframers;
 
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -53,6 +54,8 @@ public class SugarcaneActivity extends AppCompatActivity {
     int flag = 1;
     List<User> userList;
     UserAdapter userAdapter;
+    private TextView priceView,quantatyView,pOrdersView;
+    private DatabaseReference mDatabaseReference;
 
     TextView textView1,textView2,textView3,textView4,textView5;
 
@@ -60,6 +63,10 @@ public class SugarcaneActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rice);
+
+        priceView=findViewById(R.id.cp);
+        quantatyView=findViewById(R.id.quant);
+        pOrdersView=findViewById(R.id.porders);
 
         img = (ImageView) findViewById(R.id.riceimage);
         img.setImageResource(R.drawable.sugarcane);
@@ -69,6 +76,25 @@ public class SugarcaneActivity extends AppCompatActivity {
         editText2 = (EditText) findViewById(R.id.enterquantity2);//https://friends-of-farmers.firebaseio.com/Rishi/Farmer1/Crops/Crop2
         user= FirebaseAuth.getInstance().getCurrentUser();
         userId=user.getUid();
+
+
+        mDatabaseReference=FirebaseDatabase.getInstance().getReference().child("Users").
+                child("Farmer").child(user.getUid()).child("crops").child("sugarcane");
+        mDatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                priceView.setText(dataSnapshot.child("price").getValue(String.class));
+                quantatyView.setText(dataSnapshot.child("stock").getValue(String.class));
+                pOrdersView.setText(dataSnapshot.child("pendingOrders").getValue(String.class));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").
                 child("Farmer").child(user.getUid()).child("crops").child("sugarcane");//        button1.setOnClickListener(new View.OnClickListener() {
 //                                       @Override

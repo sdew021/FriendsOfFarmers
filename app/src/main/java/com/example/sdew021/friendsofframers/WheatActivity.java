@@ -47,6 +47,8 @@ public class WheatActivity extends AppCompatActivity {
     private FirebaseUser user;
     private int stock;
     private ImageView img;
+    private TextView priceView,quantatyView,pOrdersView;
+    private DatabaseReference mDatabaseReference;
     private String userId;
 
     EditText editText1;
@@ -62,6 +64,10 @@ public class WheatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rice);
 
+        priceView=findViewById(R.id.cp);
+        quantatyView=findViewById(R.id.quant);
+        pOrdersView=findViewById(R.id.porders);
+
         img = (ImageView) findViewById(R.id.riceimage);
         img.setImageResource(R.drawable.wheat);
         button1 = (Button) findViewById(R.id.button1);
@@ -70,6 +76,26 @@ public class WheatActivity extends AppCompatActivity {
         editText2 = (EditText) findViewById(R.id.enterquantity2);
         user= FirebaseAuth.getInstance().getCurrentUser();
         userId=user.getUid();
+
+        mDatabaseReference=FirebaseDatabase.getInstance().getReference().child("Users").
+                child("Farmer").child(user.getUid()).child("crops").child("wheat");
+        mDatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                priceView.setText(dataSnapshot.child("price").getValue(String.class));
+                quantatyView.setText(dataSnapshot.child("stock").getValue(String.class));
+                pOrdersView.setText(dataSnapshot.child("pendingOrders").getValue(String.class));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").
                 child("Farmer").child(user.getUid()).child("crops").child("wheat");
 
