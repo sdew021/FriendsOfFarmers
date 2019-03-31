@@ -13,17 +13,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".placeOrder"></activity>
+        <activity android:name=".feedback"></activity>
+        <activity android:name=".help" />
+        <activity android:name=".placeOrder" />
         <activity android:name=".checkout" />
-        <activity android:name=".PankajFarmerActivity"></activity>
+        <activity android:name=".PankajFarmerActivity" />
         <activity android:name=".MyApplication" />
         <activity android:name=".PankajCrops" />
         <activity android:name=".PankajFarmers" />
         <activity android:name=".FarmerPage1" />
-        <activity android:name=".PasswordActivity"/>
+        <activity android:name=".PasswordActivity" />
         <activity
             android:name=".WheatActivity"
-            android:parentActivityName=".farmerActivity"></activity>
+            android:parentActivityName=".farmerActivity" />
         <activity
             android:name=".SugarcaneActivity"
             android:parentActivityName=".farmerActivity" />
@@ -37,11 +39,12 @@
         <activity android:name=".start" />
         <activity android:name=".ConsumerActivity" />
         <activity android:name=".EditProfile" />
-        <activity android:name=".consumerWallet"/>
+        <activity android:name=".consumerWallet" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Profile_Activity" />
         <activity android:name=".TestDatabase" />
         <activity android:name=".animActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -61,9 +64,11 @@
         <activity
             android:name=".Activity2"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".DalActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".FarmerWallet"/>
+        <activity
+            android:name=".DalActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".FarmerWallet" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
