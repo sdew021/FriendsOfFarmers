@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +46,7 @@ public class WheatActivity extends AppCompatActivity {
     private ChildEventListener mChildEventListner;
     private FirebaseUser user;
     private int stock;
+    private ImageView img;
 
     EditText editText1;
     EditText editText2;
@@ -59,11 +61,13 @@ public class WheatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rice);
 
-
+        img = (ImageView) findViewById(R.id.riceimage);
+        img.setImageResource(R.drawable.wheat);
         button1 = (Button) findViewById(R.id.button1);
         button2 = (Button) findViewById(R.id.button2);
         editText1 = (EditText) findViewById(R.id.enterquantity);
-        editText2 = (EditText) findViewById(R.id.enterquantity2);//https://friends-of-farmers.firebaseio.com/Rishi/Farmer1/Crops/Crop2
+        editText2 = (EditText) findViewById(R.id.enterquantity2);
+       //https://friends-of-farmers.firebaseio.com/Rishi/Farmer1/Crops/Crop2
         user= FirebaseAuth.getInstance().getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").
                 child("Farmer").child(user.getUid()).child("crops").child("wheat");//        button1.setOnClickListener(new View.OnClickListener() {

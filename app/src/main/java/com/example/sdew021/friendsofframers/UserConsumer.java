@@ -41,20 +41,20 @@ class UserConsumer {
         this.email = email;
     }
 
-    public String getCurrentAddress() {
+    public String getCurrentAdd() {
         return currentAdd;
     }
 
-    public void setCurrentAddress(String currentAddress) {
-        this.currentAdd = currentAddress;
+    public void setCurrentAdd(String currentAddress) {
+        this.currentAdd = currentAdd;
     }
 
-    public String getPermanentAddress() {
+    public String getPermanentAdd() {
         return permanentAdd;
     }
 
-    public void setPermanentAddress(String permanentAddress) {
-        this.permanentAdd= permanentAddress;
+    public void setPermanentAdd(String permanentAdd) {
+        this.permanentAdd= permanentAdd;
     }
 
     @Override

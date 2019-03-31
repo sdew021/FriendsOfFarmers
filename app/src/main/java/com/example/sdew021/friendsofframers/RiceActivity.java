@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +49,7 @@ public class RiceActivity extends AppCompatActivity {
     private int stock;
     EditText editText1;
     EditText editText2;
+    private ImageView img;
     int flag = 1;
     List<User> userList;
     UserAdapter userAdapter;
@@ -59,7 +61,8 @@ public class RiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rice);
 
-
+        img = (ImageView) findViewById(R.id.riceimage);
+        img.setImageResource(R.drawable.rice);
         button1 = (Button) findViewById(R.id.button1);
         button2 = (Button) findViewById(R.id.button2);
         editText1 = (EditText) findViewById(R.id.enterquantity);

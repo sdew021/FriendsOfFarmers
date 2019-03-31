@@ -7,19 +7,27 @@
         <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_person_black_24dp"
-            android:title="My Account" />
+            android:title="My Profile" />
         <item
             android:id="@+id/nav_deals"
             android:icon="@drawable/ic_favorite_black_24dp"
             android:title="Deals of the Day!" />
         <item
+            android:id="@+id/nav_cart"
+            android:icon="@drawable/ic_local_grocery_store_black_24dp"
+            android:title="My Cart" />
+        <item
             android:id="@+id/nav_orders"
             android:icon="@drawable/ic_folder_black_24dp"
             android:title="My Orders" />
+        <item
+            android:id="@+id/nav_wallet"
+            android:icon="@drawable/ic_account_balance_wallet_black_24dp"
+            android:title="My Wallet" />
 
         <item android:id="@+id/nav_exit"
             android:icon="@drawable/ic_exit_to_app_black_24dp"
-            android:title="LOGOUT"/>
+            android:title="Logout"/>
     </group>
     <!--<item-->
         <!--android:id="@+id/group2"-->

@@ -15,5 +15,9 @@
     <color name="red">#f44141</color>
     <color name="blue">#0000FF</color>
     <color name="lightGrey">#D3D3D3</color>
+    <color name="colorPrime">#5bbc59</color>
+    <color name="colorPrimeDark">#248e50</color>
+    <color name="colorAccen">#bf40ff</color>
+    <color name="colorWhite">#FFFFFF</color>
     <color name="yellow">#ffcc00</color>`
 </resources>

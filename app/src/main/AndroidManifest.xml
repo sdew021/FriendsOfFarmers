@@ -42,6 +42,7 @@
         <activity android:name=".start"/>
         <activity android:name=".ConsumerActivity"/>
         <activity android:name=".EditProfile" />
+        <activity android:name=".consumerWallet"/>
         <activity android:name=".MainActivity" />
         <activity android:name=".Profile_Activity" />
         <activity android:name=".TestDatabase" />
