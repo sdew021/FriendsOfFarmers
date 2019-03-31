@@ -21,25 +21,14 @@ public class dealsday extends AppCompatActivity {
         sugarcane.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(dealsday.this,Activity2.class));
+                startActivity(new Intent(dealsday.this,farmerActivity.class));
             }
         });
+
+
+
 //
-//        Wheat=findViewById(R.id.wheatimage);
-//        Wheat.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(dealsday.this,Activity2.class));
-//            }
-//        });
 //
-//        Dal=findViewById(R.id.);
-//        Dal.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(dealsday.this,Activity2.class));
-//            }
-//        });
     }
 
 }

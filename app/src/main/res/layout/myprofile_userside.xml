@@ -29,12 +29,15 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp">
 
+
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profImg"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:src="@drawable/farmer_icon_app"

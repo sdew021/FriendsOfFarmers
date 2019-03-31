@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,11 +31,13 @@ public class secondActivity extends AppCompatActivity{
     EditText name,address,contact,permanentaddress,email;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
+    private ImageView profImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.myprofile_userside);
+        profImg = findViewById(R.id.profImg);
         name =findViewById(R.id.userName);
         address = findViewById(R.id.userAddress);
         permanentaddress =  findViewById(R.id.userPermanent);
@@ -45,6 +48,7 @@ public class secondActivity extends AppCompatActivity{
         permanentaddress.setEnabled(false);
         contact.setEnabled(false);
         name.setEnabled(false);
+        profImg.setEnabled(false);
 
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child("Consumer").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -65,6 +69,7 @@ public class secondActivity extends AppCompatActivity{
                 permanentaddress.setText(user.getPermanentAdd());
                 contact.setText(user.getPhone());
                 email.setText(user.getEmail());
+//                profImg.setImageResource(user.getProfImg());
 
 //                email.setEnabled(false);
 //                address.setEnabled(false);
@@ -94,10 +99,12 @@ public class secondActivity extends AppCompatActivity{
         myRef.child("name").setValue(name.getText().toString());
         myRef.child("permanentAddress").setValue(permanentaddress.getText().toString());
         myRef.child("phone").setValue(contact.getText().toString());
+//        myRef.child("profImg").setValue(profImg.get)
         name.setEnabled(false);
         address.setEnabled(false);
         permanentaddress.setEnabled(false);
         contact.setEnabled(false);
+        profImg.setEnabled(false);
     }
 
     public void edit(View view) {
@@ -105,6 +112,7 @@ public class secondActivity extends AppCompatActivity{
         address.setEnabled(true);
         permanentaddress.setEnabled(true);
         contact.setEnabled(true);
+        profImg.setEnabled(true);
     }
 }
 

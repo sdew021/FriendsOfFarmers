@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,9 +32,10 @@ import com.squareup.picasso.Picasso;
 
 public class Profile_Activity extends AppCompatActivity {
 
-    private TextView emailView,contactView,permanentAddView,currentAddView,nameView,editDetails;
+    private TextView emailView,contactView,permanentAddView,currentAddView,nameView;
     private DatabaseReference mDatabaseRefernce;
     private ImageView profileImage;
+    private FloatingActionButton editDetails;
     private StorageReference mStorageReference;
     private RatingBar ratingBar;
     private FirebaseUser  currentFirebaseUser;
