@@ -62,6 +62,7 @@ public class PankajFarmerActivity extends AppCompatActivity implements AdapterVi
     private ChildEventListener mChildEventListner;
     private FirebaseUser currentFirebaseUser;
     String searchText;
+    public static String clickedCropName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -175,21 +176,26 @@ public class PankajFarmerActivity extends AppCompatActivity implements AdapterVi
                 if (crop != null) {
                     Log.i("Item clicked", "");
                     if (crop.getName().toLowerCase().compareTo("wheat") == 0) {
-                        Intent intent1 = new Intent(PankajFarmerActivity.this, WheatActivity.class);
+                        PankajFarmerActivity.clickedCropName="wheat";
+                        Intent intent1 = new Intent(PankajFarmerActivity.this, checkout.class);
                         startActivity(intent1);
                     } else if (crop.getName().toLowerCase().compareTo("corn") == 0) {
-                        Intent intent2 = new Intent(PankajFarmerActivity.this, CornActivity.class);
+                        PankajFarmerActivity.clickedCropName="corn";
+                        Intent intent2 = new Intent(PankajFarmerActivity.this, checkout.class);
 
                         startActivity(intent2);
                     } else if (crop.getName().toLowerCase().compareTo("sugarcane") == 0) {
-                        Intent intent3 = new Intent(PankajFarmerActivity.this, SugarcaneActivity.class);
+                        PankajFarmerActivity.clickedCropName="sugarcane";
+                        Intent intent3 = new Intent(PankajFarmerActivity.this, checkout.class);
                         startActivity(intent3);
                     } else if(crop.getName().toLowerCase().compareTo("rice") == 0){
-                        Intent intent4 = new Intent(PankajFarmerActivity.this, RiceActivity.class);
+                        PankajFarmerActivity.clickedCropName="rice";
+                        Intent intent4 = new Intent(PankajFarmerActivity.this, checkout.class);
                         startActivity(intent4);
                     }
                     else{
-                        Intent intent4 = new Intent(PankajFarmerActivity.this, DalActivity.class);
+                        PankajFarmerActivity.clickedCropName="dal";
+                        Intent intent4 = new Intent(PankajFarmerActivity.this, checkout.class);
                         startActivity(intent4);
                     }
 
