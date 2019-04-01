@@ -60,7 +60,7 @@ public class User {
     }
 
     public String getQuantity() {
-        return Quantity+ " Kg";
+        return Quantity;
     }
 
     User(){}
