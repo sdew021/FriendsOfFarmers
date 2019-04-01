@@ -1,3 +1,8 @@
+/*
+ * Contributed by Rishi Sharma
+ *  17CO135
+ *  */
+
 package com.example.sdew021.friendsofframers;
 
 import android.content.Intent;

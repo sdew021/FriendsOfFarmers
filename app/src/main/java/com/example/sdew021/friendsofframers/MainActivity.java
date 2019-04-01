@@ -1,3 +1,8 @@
+/*
+ * Contributed by Abhishek Ranjan
+ *  17CO203
+ *  */
+
 package com.example.sdew021.friendsofframers;
 
 import android.content.Intent;
@@ -72,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Email=email.getText().toString().trim();
                 password = Password.getText().toString().trim();
-
+                if(validatee(Email,password) ){
                 firebaseAuth.signInWithEmailAndPassword(Email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -125,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
                         }
                     }
-                });
+                });}
             }
         });
 
@@ -181,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
         Boolean result = false;
         if(name.isEmpty() || password.isEmpty() ){
             Toast.makeText(this, "Please enter all the details", Toast.LENGTH_SHORT).show();
+            return false;
         }else{
             result = true;
         }
