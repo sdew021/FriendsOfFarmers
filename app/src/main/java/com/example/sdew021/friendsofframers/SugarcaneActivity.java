@@ -54,7 +54,7 @@ public class SugarcaneActivity extends AppCompatActivity {
     int flag = 1;
     List<User> userList;
     UserAdapter userAdapter;
-    private TextView priceView,quantatyView,pOrdersView;
+    private TextView priceView,quantatyView,pOrdersView,cropname;
     private DatabaseReference mDatabaseReference;
 
     TextView textView1,textView2,textView3,textView4,textView5;
@@ -282,6 +282,9 @@ public class SugarcaneActivity extends AppCompatActivity {
         };
         listdatabaseRefernce.addChildEventListener(childEventListener);
         mChildEventListner=childEventListener;
+
+        cropname=findViewById(R.id.textrice);
+        cropname.setText("Sugarcane");
     }
 }
 

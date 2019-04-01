@@ -56,7 +56,7 @@ public class RiceActivity extends AppCompatActivity {
     List<User> userList;
     UserAdapter userAdapter;
     private String userId;
-    private TextView priceView,quantatyView,pOrdersView;
+    private TextView priceView,quantatyView,pOrdersView,cropname;
 
     TextView textView1,textView2,textView3,textView4,textView5;
 
@@ -285,5 +285,10 @@ public class RiceActivity extends AppCompatActivity {
         };
         listdatabaseRefernce.addChildEventListener(childEventListener);
         mChildEventListner=childEventListener;
+
+        cropname=findViewById(R.id.textrice);
+        cropname.setText("Rice");
     }
+
+
 }
