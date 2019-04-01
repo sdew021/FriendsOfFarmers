@@ -50,7 +50,7 @@ public class CornActivity extends AppCompatActivity {
     private ImageView img;
     private String userId;
 
-    private TextView priceView,quantatyView,pOrdersView;
+    private TextView priceView,quantatyView,pOrdersView,cropname;
     private DatabaseReference mDatabaseReference;
     EditText editText1;
     EditText editText2;
@@ -287,6 +287,9 @@ public class CornActivity extends AppCompatActivity {
         };
         listdatabaseRefernce.addChildEventListener(childEventListener);
         mChildEventListner=childEventListener;
+
+        cropname=findViewById(R.id.textrice);
+        cropname.setText("Corn");
     }
 }
 

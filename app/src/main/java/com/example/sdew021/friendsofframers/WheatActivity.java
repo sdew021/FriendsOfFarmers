@@ -47,7 +47,7 @@ public class WheatActivity extends AppCompatActivity {
     private FirebaseUser user;
     private int stock;
     private ImageView img;
-    private TextView priceView,quantatyView,pOrdersView;
+    private TextView priceView,quantatyView,pOrdersView,cropname;
     private DatabaseReference mDatabaseReference;
     private String userId;
 
@@ -211,6 +211,9 @@ public class WheatActivity extends AppCompatActivity {
         };
         listdatabaseRefernce.addChildEventListener(childEventListener);
         mChildEventListner=childEventListener;
+
+        cropname=findViewById(R.id.textrice);
+        cropname.setText("Wheat");
     }
 }
 
