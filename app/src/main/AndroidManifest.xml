@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".FarmerRating"></activity>
         <activity android:name=".feedback" />
         <activity android:name=".help" />
         <activity android:name=".placeOrder" />

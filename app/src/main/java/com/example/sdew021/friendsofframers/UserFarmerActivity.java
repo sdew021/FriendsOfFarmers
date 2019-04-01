@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -55,10 +56,15 @@ public class UserFarmerActivity extends AppCompatActivity implements AdapterView
     private FirebaseUser currentFirebaseUser;
     String searchText;
     public static String clickedCropName;
+    private Button ratingActivityBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pankaj_farmers_crops);
+
+        ratingActivityBtn=findViewById(R.id.ratingAcivityBtn);
+
+
         searchText="";
         CropList = (RecyclerView) findViewById(R.id.recyclerView);
 //        spinner=(Spinner) findViewById(R.id.spinner);
@@ -139,6 +145,16 @@ public class UserFarmerActivity extends AppCompatActivity implements AdapterView
         };
 
         mDatabaseRefrence2.addValueEventListener(dataListner);
+
+
+
+
+        ratingActivityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserFarmerActivity.this,FarmerRating.class));
+            }
+        });
 
     }
     public void openActivity2(){
