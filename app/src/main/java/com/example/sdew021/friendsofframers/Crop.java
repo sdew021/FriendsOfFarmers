@@ -1,6 +1,6 @@
 /*
  *   Contributed by Prateek Sahu
- *   17CO135 and 17CO130
+ *   17CO130
  */
 
 

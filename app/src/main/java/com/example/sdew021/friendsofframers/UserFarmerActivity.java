@@ -1,5 +1,5 @@
 /*
- *    Prateek(17Co130) and Pankaj(17CO128)
+ *    Prateek(17CO130) and Pankaj(17CO128)
  *
  */
 
