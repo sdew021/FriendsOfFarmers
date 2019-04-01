@@ -68,11 +68,12 @@ public class dealsday extends AppCompatActivity {
         });
 
 
-        cropNameView.setText(cropName);
-        croprice.setText(cropPrice);
-        rate.setText(Integer.toString(rating));
-        farmername.setText(farmerName);
-        stoc.setText(stock);
+        cropNameView.setText("corn");
+        croprice.setText("10");
+        rate.setText(Integer.toString(3));
+        farmername.setText("Prateek Sahu");
+        stoc.setText("629");
+        sugarcane.setImageResource(R.drawable.corn);
 
         sugarcane.setOnClickListener(new View.OnClickListener() {
             @Override
