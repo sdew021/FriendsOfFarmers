@@ -21,15 +21,15 @@ import com.google.firebase.database.ValueEventListener;
 public class dealsday extends AppCompatActivity {
 
 
-    private ImageView sugarcane,Dal,Wheat;
+    private ImageView sugarcane;
     private DatabaseReference mDatabaserefernce;
-    private double minPrice;
+    private int minPrice;
     private String cropName,farmerName,cropPrice,stock;
     private int rating;
     private TextView cropNameView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        minPrice=Double.MAX_VALUE;
+        minPrice=Integer.MAX_VALUE;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.todaydeals);
         sugarcane=findViewById(R.id.sugarcaneimage);
@@ -41,11 +41,11 @@ public class dealsday extends AppCompatActivity {
                 for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
                     DataSnapshot cropSnapshot=dataSnapshot1.child("crops");
                     for(DataSnapshot cropSnapshot1:cropSnapshot.getChildren()){
-                        double price=Double.parseDouble(cropSnapshot1.child("price").getValue(String.class));
+                        int price=Integer.parseInt(cropSnapshot1.child("price").getValue(String.class));
                         if(price<minPrice){
-                            cropName=cropSnapshot.child("name").getValue(String.class);
+                            cropName=cropSnapshot1.child("name").getValue(String.class);
                             farmerName=dataSnapshot1.child("name").getValue(String.class);
-                            cropPrice=Double.toString(price);
+                            cropPrice=Integer.toString(price);
                             minPrice=price;
                             stock=cropSnapshot1.child("stock").getValue(String.class);
                             rating=dataSnapshot1.child("rating").getValue(Integer.class);
@@ -62,7 +62,6 @@ public class dealsday extends AppCompatActivity {
 
 
         cropNameView.setText(cropName);
-
 
         sugarcane.setOnClickListener(new View.OnClickListener() {
             @Override
