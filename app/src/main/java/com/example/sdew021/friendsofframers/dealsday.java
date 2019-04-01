@@ -78,10 +78,9 @@ public class dealsday extends AppCompatActivity {
         sugarcane.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(dealsday.this,farmerActivity.class));
+                startActivity(new Intent(dealsday.this,UserFarmers.class));
             }
         });
-
     }
 
 }
