@@ -21,7 +21,7 @@
             android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/darkblue"
+            android:background="#673AB7"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,6 +51,7 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/button_bg1"
                     android:id="@+id/ratingAcivityBtn"
                     android:text="Rating"/>
 

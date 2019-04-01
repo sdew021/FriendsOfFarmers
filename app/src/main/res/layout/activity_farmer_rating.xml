@@ -4,33 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".FarmerRating">
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+        <!--android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Your Rating from 5"
-            android:textSize="30dp"/>
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Rate Here"
-            android:textSize="20dp"
-            android:layout_margin="20dp"
-            android:id="@+id/ratingView"
-            android:inputType="number"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Submit"
-            android:layout_margin="20dp"
-            android:id="@+id/rateBtn"/>
-    </LinearLayout>
+        android:orientation="vertical">-->
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="8dp"
+
+
+        android:fontFamily="@font/expletus_sans_medium_italic"
+        android:gravity="center_horizontal"
+        android:padding="5dp"
+        android:text="Your Rating out of 5"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ratingView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="80dp"
+        android:paddingStart="10dp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:fontFamily="@font/expletus_sans_medium_italic"
+        android:background="@drawable/edittext_bg"
+        android:drawableStart="@drawable/ic_star_half_black_24dp"
+        android:hint="Rate Here"
+        android:inputType="number"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <Button
+        android:id="@+id/rateBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="130dp"
+        android:gravity="center"
+        android:textSize="25dp"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/expletus_sans_medium_italic"
+        android:background="@drawable/button_bg"
+        android:text="Submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratingView" />
+
 </android.support.constraint.ConstraintLayout>

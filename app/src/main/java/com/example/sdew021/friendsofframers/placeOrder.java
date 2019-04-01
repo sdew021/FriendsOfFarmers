@@ -132,6 +132,7 @@ public class placeOrder extends AppCompatActivity {
 
                             }
                         });
+                        Toast.makeText(placeOrder.this,"Item Added to cart",Toast.LENGTH_SHORT);
                     }
                 }
                 else
