@@ -26,7 +26,7 @@ public class dealsday extends AppCompatActivity {
     private int minPrice;
     private String cropName,farmerName,cropPrice,stock;
     private int rating;
-    private TextView cropNameView;
+    private TextView cropNameView,farmername,rate,croprice,stoc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         minPrice=Integer.MAX_VALUE;
@@ -34,6 +34,11 @@ public class dealsday extends AppCompatActivity {
         setContentView(R.layout.todaydeals);
         sugarcane=findViewById(R.id.sugarcaneimage);
         cropNameView=findViewById(R.id.userAddress);
+        farmername=findViewById(R.id.farmername);
+        rate=findViewById(R.id.farmerrating);
+        croprice=findViewById(R.id.price);
+        stoc=findViewById(R.id.farmerstock);
+
         mDatabaserefernce= FirebaseDatabase.getInstance().getReference().child("User").child("Farmer");
         mDatabaserefernce.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -42,6 +47,8 @@ public class dealsday extends AppCompatActivity {
                     DataSnapshot cropSnapshot=dataSnapshot1.child("crops");
                     for(DataSnapshot cropSnapshot1:cropSnapshot.getChildren()){
                         int price=Integer.parseInt(cropSnapshot1.child("price").getValue(String.class));
+                        if(price<minPrice)
+                    {
                         if(price<minPrice){
                             cropName=cropSnapshot1.child("name").getValue(String.class);
                             farmerName=dataSnapshot1.child("name").getValue(String.class);
@@ -62,6 +69,10 @@ public class dealsday extends AppCompatActivity {
 
 
         cropNameView.setText(cropName);
+        croprice.setText(cropPrice);
+        rate.setText(Integer.toString(rating));
+        farmername.setText(farmerName);
+        stoc.setText(stock);
 
         sugarcane.setOnClickListener(new View.OnClickListener() {
             @Override
