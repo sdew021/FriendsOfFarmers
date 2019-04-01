@@ -53,7 +53,7 @@ public class consumerWallet extends AppCompatActivity {
         button = findViewById(R.id.button);
         Firebase.setAndroidContext(this);
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Farmer").child(user.getUid());
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Consumer").child(user.getUid());
 
         mDatabase.child("balance").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -126,7 +126,7 @@ public class consumerWallet extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String amount = dataSnapshot.getValue().toString();
-                if((Integer.parseInt(amount) + Integer.parseInt(amt)) >= 5000 ){
+                if((Integer.parseInt(amount) + Integer.parseInt(amt)) >= 50000 ){
                     Toast.makeText(consumerWallet.this,"Wallet limit : 5000",Toast.LENGTH_LONG).show();
                 }
                 else{
