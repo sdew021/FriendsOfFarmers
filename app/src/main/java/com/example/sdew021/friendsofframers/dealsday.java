@@ -1,3 +1,9 @@
+/*
+ *   Contributed by Rahul Kumar
+ *   17CO133
+ */
+
+
 package com.example.sdew021.friendsofframers;
 
 import android.app.Activity;
@@ -77,7 +83,7 @@ public class dealsday extends AppCompatActivity {
         sugarcane.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(dealsday.this,farmerActivity.class));
+                startActivity(new Intent(dealsday.this,farmerActivity .class));
             }
         });
 
