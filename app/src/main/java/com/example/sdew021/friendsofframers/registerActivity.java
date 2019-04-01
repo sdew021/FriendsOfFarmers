@@ -133,7 +133,11 @@ public class registerActivity  extends AppCompatActivity {
         otpbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(isEmpty(editText4)){
+                    Toast.makeText(registerActivity.this,"Enter Contact",Toast.LENGTH_SHORT).show();
+                }else{
                 String phone = editText4.getText().toString();
+
 
 
 
@@ -145,7 +149,7 @@ public class registerActivity  extends AppCompatActivity {
                             new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
                 }
 
-            }
+            }}
         });
         button.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -252,6 +256,7 @@ public class registerActivity  extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //startActivity(new Intent(registerActivity.this,registerActivity.class));
                 clearForm((ViewGroup) findViewById(R.id.scrollView2));
             }
         });

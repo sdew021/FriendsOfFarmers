@@ -1,3 +1,9 @@
+/*
+ *   Contributed by Rishi Sharma and Prateek
+ *   17CO135 and 17CO130
+ */
+
+
 package com.example.sdew021.friendsofframers;
 
 import android.content.Context;

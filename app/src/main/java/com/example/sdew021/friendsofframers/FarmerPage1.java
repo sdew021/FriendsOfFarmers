@@ -1,3 +1,9 @@
+/*
+ *   Contributed by Prateek Sahu
+ *   17CO130
+ */
+
+
 package com.example.sdew021.friendsofframers;
 
 import android.content.Intent;
@@ -7,6 +13,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -42,6 +49,7 @@ public class FarmerPage1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_page1);
+
         btnCrop=findViewById(R.id.btncrop);
         btnCrop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +60,7 @@ public class FarmerPage1 extends AppCompatActivity {
 
         NavigationView navigationView=findViewById(R.id.nav_view);
         drawerLayout=findViewById(R.id.drawer_layout);
+        drawerLayout.openDrawer(Gravity.START);
         user= FirebaseAuth.getInstance().getCurrentUser();
         userId=user.getUid();
         mStorageReference= FirebaseStorage.getInstance().

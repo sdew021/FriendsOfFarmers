@@ -41,9 +41,9 @@ public class checkout extends AppCompatActivity {
                 emailView.setText(dataSnapshot.child("email").getValue(String.class));
                 cropView.setText(UserFarmerActivity.clickedCropName);
                 stockView.setText(dataSnapshot.child("crops").child(UserFarmerActivity.clickedCropName)
-                        .child("stock").getValue(String.class));
+                        .child("stock").getValue(String.class)+"Kg");
                 priceView.setText(dataSnapshot.child("crops").child(UserFarmerActivity.clickedCropName)
-                        .child("price").getValue(String.class));
+                        .child("price").getValue(String.class)+"per Kg");
             }
 
             @Override

@@ -1,3 +1,10 @@
+/*
+ *   Contributed by Prateek Sahu
+ *    17CO130
+ */
+
+
+
 package com.example.sdew021.friendsofframers;
 
 import android.content.ContentResolver;
@@ -43,7 +50,7 @@ import com.squareup.picasso.Picasso;
 
 public class EditProfile extends AppCompatActivity {
 
-    private TextView emailView,contactView,permanentAddView,currentAddView,nameView;
+    private TextView contactView,permanentAddView,currentAddView,nameView;
     private DatabaseReference mDatabaseRefernce;
     private StorageReference mStorageReference;
     private Button saveButton,selectImage,changePassword;
@@ -59,7 +66,6 @@ public class EditProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
         checkImage=0;
-        emailView=findViewById(R.id.email);
         contactView=findViewById(R.id.contact);
         permanentAddView=findViewById(R.id.permanentAdd);
         currentAddView=findViewById(R.id.currentAdd);
@@ -77,21 +83,11 @@ public class EditProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String email,contact,currentAdd,permanentAdd;
-                email=emailView.getText().toString();
                 contact=contactView.getText().toString();
                 currentAdd=currentAddView.getText().toString();
                 permanentAdd=permanentAddView.getText().toString();
                 changePassword=findViewById(R.id.changePassword);
                 int var=0;
-                if(!email.isEmpty()){
-                    if(isValidEmail(email)) {
-                        mDatabaseRefernce.child("email").setValue(email);
-                        var++;
-                    }
-                    else
-                        Toast.makeText(EditProfile.this," Email Address invalid,Cannot be updated",Toast.LENGTH_SHORT).show();
-
-                }
                 if(!contact.isEmpty()){
                     if(contact.length()==10) {
                         mDatabaseRefernce.child("contact").setValue(contact);
