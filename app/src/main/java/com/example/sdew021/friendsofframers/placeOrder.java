@@ -1,3 +1,9 @@
+/*
+ *   Contributed by pankaj(17Co128) and Prateek(17Co130)
+ *
+ */
+
+
 package com.example.sdew021.friendsofframers;
 
 import android.support.annotation.NonNull;
@@ -132,7 +138,7 @@ public class placeOrder extends AppCompatActivity {
 
                             }
                         });
-                        Toast.makeText(placeOrder.this,"Item Added to cart",Toast.LENGTH_SHORT);
+                        Toast.makeText(placeOrder.this,"Item Added to cart",Toast.LENGTH_SHORT).show();
                     }
                 }
                 else

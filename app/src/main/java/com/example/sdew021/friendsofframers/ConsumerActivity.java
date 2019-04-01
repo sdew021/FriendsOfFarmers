@@ -40,20 +40,19 @@ public class ConsumerActivity extends AppCompatActivity implements NavigationVie
 
     TextView name_profile;
     private FirebaseUser user;
-
-
-
+    private DatabaseReference mDatabaseReference;
+    private FirebaseUser currentUser;
+    private String userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consumer);
         //profile = new Users();
-
+        currentUser=FirebaseAuth.getInstance().getCurrentUser();
+        userId=currentUser.getUid();
+        mDatabaseReference=FirebaseDatabase.getInstance().getReference().child("Users").child("Consumer").child(userId);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        String userId = user.getUid();
         mAuth = FirebaseAuth.getInstance();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -94,22 +93,22 @@ public class ConsumerActivity extends AppCompatActivity implements NavigationVie
         //databaseReference = FirebaseDatabase.getInstance().getReference(user_id);
 
 
-        myRef.addValueEventListener(new ValueEventListener() {
+
+        mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                UserConsumer user = dataSnapshot.getValue(UserConsumer.class);
                 name_profile = findViewById(R.id.name_profile);
-                // Log.d("Second", user);
-                //  name_profile.setText(user.getName());
-
+                name_profile.setText(dataSnapshot.child("name").getValue(String.class));
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-//                Toast.makeText(ConsumerActivity.this, databaseError.getCode(), Toast.LENGTH_SHORT).show();
 
             }
         });
+                // Log.d("Second", user);
+                //  name_profile.setText(user.getName());
+
 //        final TextView t_name = findViewById(R.id.name_profile);
 
 

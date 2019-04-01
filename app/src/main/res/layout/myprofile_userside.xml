@@ -255,23 +255,6 @@
 
                    </LinearLayout>
 
-                   <Button
-                       android:id="@+id/btnProfile"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:layout_alignParentStart="true"
-                       android:layout_alignParentTop="true"
-                       android:layout_alignParentEnd="true"
-                       android:layout_gravity="center"
-                       android:layout_margin="10dp"
-                       android:layout_marginStart="10dp"
-                       android:layout_marginLeft="40dp"
-                       android:background="@drawable/button_bg1"
-                       android:fontFamily="@font/expletus_sans_medium_italic"
-                       android:padding="10dp"
-                       android:text="Upload Image"
-                       android:textColor="@color/black"
-                       android:textSize="20dp" />
 
                </LinearLayout>
 

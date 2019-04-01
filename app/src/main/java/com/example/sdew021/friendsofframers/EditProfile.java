@@ -109,7 +109,6 @@ public class EditProfile extends AppCompatActivity {
                     uploadFile(uri);
                 }
                 if(var>0) {
-                    startActivity(new Intent(EditProfile.this,Profile_Activity.class));
                     Toast.makeText(EditProfile.this, "Valid Details Updated Succesfully", Toast.LENGTH_SHORT).show();
                 }
                 if(var==0&&checkImage!=1)
