@@ -40,22 +40,22 @@ public class dealsday extends AppCompatActivity {
         stoc=findViewById(R.id.farmerstock);
 
         mDatabaserefernce= FirebaseDatabase.getInstance().getReference().child("User").child("Farmer");
-        mDatabaserefernce.addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabaserefernce.addListenerForSingleValueEvent(new ValueEventListener(){
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
-                    DataSnapshot cropSnapshot=dataSnapshot1.child("crops");
-                    for(DataSnapshot cropSnapshot1:cropSnapshot.getChildren()){
-                        int price=Integer.parseInt(cropSnapshot1.child("price").getValue(String.class));
-                        if(price<minPrice)
-                    {
-                        if(price<minPrice){
-                            cropName=cropSnapshot1.child("name").getValue(String.class);
-                            farmerName=dataSnapshot1.child("name").getValue(String.class);
-                            cropPrice=Integer.toString(price);
-                            minPrice=price;
-                            stock=cropSnapshot1.child("stock").getValue(String.class);
-                            rating=dataSnapshot1.child("rating").getValue(Integer.class);
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    DataSnapshot cropSnapshot = dataSnapshot1.child("crops");
+                    for (DataSnapshot cropSnapshot1 : cropSnapshot.getChildren()) {
+                        int price = Integer.parseInt(cropSnapshot1.child("price").getValue(String.class));
+                        if (price < minPrice) {
+                            if (price < minPrice) {
+                                cropName = cropSnapshot1.child("name").getValue(String.class);
+                                farmerName = dataSnapshot1.child("name").getValue(String.class);
+                                cropPrice = Integer.toString(price);
+                                minPrice = price;
+                                stock = cropSnapshot1.child("stock").getValue(String.class);
+                                rating = dataSnapshot1.child("rating").getValue(Integer.class);
+                            }
                         }
                     }
                 }
